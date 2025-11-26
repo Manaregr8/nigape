@@ -1,5 +1,8 @@
+// app/layout.js  (ya layout.tsx)
 import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
+import Header from "../Homesections/Header.jsx";
+import Footer from "../Homesections/Footer.jsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,32 +15,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: {
-    default: "Multi-site Blog System",
-    template: "%s | Multi-site Blog System",
-  },
-  description: "Reusable Next.js 14 blog template with Prisma, TipTap, and an admin console.",
-  openGraph: {
-    title: "Multi-site Blog System",
-    description: "Reusable Next.js 14 blog template with Prisma, TipTap, and an admin console.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Multi-site Blog System",
-    description: "Reusable Next.js 14 blog template with Prisma, TipTap, and an admin console.",
-  },
+  title: "AI Companion",
+  description: "Your emotionally intelligent friend",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} app-shell`}>
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+      <head>
+        {/* Tailwind CDN */}
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        {/* Custom Colors — YEH LINE THODI GALAT THI, AB FIX KI */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              tailwind.config = {
+                theme: {
+                  extend: {
+                    colors: {
+                      pink: { 300: '#f9a8d4', 400: '#f472b6', 500: '#ec4899', 600: '#db2777' },
+                      purple: { 300: '#d8b4fe', 400: '#c084fc', 500: '#a78bfa', 600: '#8b5cf6' },
+                      cyan: { 300: '#99f6e4', 400: '#22d3ee' }
+                    }
+                  }
+                }
+              }
+            `.trim(),
+          }}
+        />
+      </head>
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
