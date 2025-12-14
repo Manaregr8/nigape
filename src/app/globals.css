@@ -281,7 +281,7 @@
 
 /* HERO GRADIENT TEXT - 100% WORKING with CDN */
 .hero-gradient-text-1 {
-  background: linear-gradient(to right, #df1785, #a762ec, #03ccea);
+  background: linear-gradient(to right, #e3d7de, #f2e8fc, #03ccea);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -289,7 +289,7 @@
 }
 
 .hero-gradient-text-2 {
-  background: linear-gradient(to right, #22d3ee, #8b5cf6, #ec4899);
+  background: linear-gradient(to right, #22d3ee, #fefdff, #ece1e6);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

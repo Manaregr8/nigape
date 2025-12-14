@@ -17,12 +17,12 @@ export default function Home() {
           sizes="100vw"
         />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/20" /> 
+        <div className="absolute inset-0 bg-black/10" /> 
         
       </div>
 
       {/* Scanlines Effect */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-scanlines" />
+      {/* <div className="absolute inset-0 opacity-10 pointer-events-none bg-black" /> */}
 
       {/* Main Content */}
       <div className="relative text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 w-full">
