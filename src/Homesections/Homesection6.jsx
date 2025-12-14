@@ -55,7 +55,7 @@ export default function AIEditorialSlider() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-8 md:py-12">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-pink-900 to-slate-900 py-8 md:py-12">
       
       {/* Animated Background Effects */}
       <div className="absolute inset-0 opacity-20">
@@ -72,7 +72,7 @@ export default function AIEditorialSlider() {
       <div className="relative max-w-7xl mx-auto px-4 w-full">
         
         {/* Title */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center pt-10 mb-8 md:mb-12">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-3">
             AI Insights
           </h2>

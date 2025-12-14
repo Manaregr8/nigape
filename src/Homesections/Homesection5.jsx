@@ -74,11 +74,11 @@ export default function HomeSection5() {
         </div>
 
         {/* Optional Bottom Text */}
-        <div className="text-center mt-20">
+        {/* <div className="text-center mt-20">
           <h3 className="text-3xl md:text-5xl font-bold text-gray-300">
             Fair Launch • No Presale • Community First
           </h3>
-        </div>
+        </div> */}
 
       </div>
     </section>
