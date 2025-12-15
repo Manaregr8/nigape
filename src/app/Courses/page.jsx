@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 // Mock data for courses
 const courses = [
@@ -18,7 +18,7 @@ const courses = [
     id: 2,
     title: "Prompt Engineering Mastery",
     category: "prompt",
-    description: "Master the art of crafting effective prompts for any AI model",
+    description: "Master the art effective prompts for any AI model",
     duration: "4 weeks",
     level: "Beginner",
     students: 4521,
@@ -57,23 +57,24 @@ const categories = [
 const Marquee = () => {
   const aiTech = [
     "TensorFlow", "PyTorch", "LangChain", "Llama 3", "Claude 3", "Gemini", 
-    "OpenAI GPT-4", "Hugging Face", "AWS SageMaker", "Vector DBs", "RAG", 
-    "Fine-tuning", "Agents", "Prompt Engineering", "MLOps", "LLM APIs"
+    "GPT-4", "Hugging Face", "SageMaker", "Vector DBs", "RAG", 
+    "Fine-tuning", "AI Agents", "Prompt Engineering", "MLOps", "LLM APIs"
   ];
 
   return (
-    <div className="relative overflow-hidden py-4 bg-gray-900">
+    <div className="relative overflow-hidden py-3 bg-gray-900">
       <div className="flex animate-marquee whitespace-nowrap">
         {[...aiTech, ...aiTech].map((tech, i) => (
           <span
             key={i}
-            className="mx-6 text-indigo-300 font-mono text-sm md:text-base"
+            className="mx-5 text-indigo-400 font-mono text-sm"
           >
             {tech} •
           </span>
         ))}
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-900 via-transparent to-gray-900 pointer-events-none"></div>
+      <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none"></div>
+      <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
     </div>
   );
 };
@@ -81,14 +82,14 @@ const Marquee = () => {
 // Filter Bar Component
 const FilterBar = ({ categories, selectedCategory, onSelect }) => {
   return (
-    <div className="flex flex-wrap gap-3 justify-center">
+    <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
       {categories.map((cat) => (
         <button
           key={cat.id}
           onClick={() => onSelect(cat.id)}
-          className={`px-6 py-2 rounded-full font-medium transition-all ${
+          className={`px-5 py-2.5 rounded-full font-medium transition-colors whitespace-nowrap ${
             selectedCategory === cat.id
-              ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg"
+              ? "bg-indigo-600 text-white"
               : "bg-gray-800 text-gray-300 hover:bg-gray-700"
           }`}
         >
@@ -102,23 +103,19 @@ const FilterBar = ({ categories, selectedCategory, onSelect }) => {
 // Course Card Component
 const CourseCard = ({ course }) => {
   return (
-    <div className="bg-gray-800/40 backdrop-blur border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all hover:transform hover:scale-105">
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-          <p className="text-gray-400 text-sm">{course.description}</p>
-        </div>
-      </div>
+    <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-indigo-500/40 transition-colors">
+      <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
+      <p className="text-gray-400 text-sm mb-4">{course.description}</p>
       
-      <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+      <div className="flex flex-wrap gap-3 text-xs text-gray-400 mb-5">
         <span>📚 {course.duration}</span>
         <span>📊 {course.level}</span>
         <span>👥 {course.students.toLocaleString()} students</span>
       </div>
       
       <div className="flex items-center justify-between">
-        <span className="text-2xl font-bold text-indigo-400">{course.price}</span>
-        <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-2 px-6 rounded-full transition-all">
+        <span className="text-xl font-bold text-indigo-400">{course.price}</span>
+        <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-5 rounded-lg transition-colors whitespace-nowrap">
           Enroll Now
         </button>
       </div>
@@ -135,30 +132,30 @@ export default function CoursesPage() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100">
-      {/* AI Tech Marquee */}
+    <div className="min-h-screen bg-gray-950 text-gray-100">
+      {/* Top Marquee */}
       <Marquee />
 
-      {/* Hero + Offer Section with Floating Mentor */}
-      <div className="relative py-20 px-4 overflow-hidden">
+      {/* Hero Section */}
+      <div className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-            {/* Left Side - Text and Offer Card */}
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            {/* Text Content */}
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-300 mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-300 mb-6">
                 Master the Future of AI
               </h1>
-              <p className="text-xl text-gray-300 mb-10">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
                 Learn from industry pioneers. Build real AI systems. Launch your career in 2025.
               </p>
 
               {/* Offer Card */}
-              <div className="bg-gray-800/60 backdrop-blur-md border border-indigo-500/30 rounded-2xl p-6">
+              <div className="bg-gray-800/60 backdrop-blur border border-gray-700 rounded-xl p-6 max-w-md mx-auto lg:mx-0">
                 <div className="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-gray-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
                   EXCLUSIVE OFFER
                 </div>
-                <h2 className="text-2xl font-bold mb-4 text-white">✨ 7-Day Free Trial + AI Starter Kit</h2>
-                <ul className="text-left space-y-2 mb-6">
+                <h2 className="text-xl font-bold text-white mb-3">✨ 7-Day Free Trial + AI Starter Kit</h2>
+                <ul className="text-left space-y-2 mb-5 text-gray-200">
                   {[
                     "Full access to all AI courses",
                     "4 Prompt Engineering Playbooks (PDF)",
@@ -166,58 +163,53 @@ export default function CoursesPage() {
                     "Private Discord AI Community",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <span className="text-green-400 mr-2 mt-1">✓</span>
-                      <span className="text-gray-200">{item}</span>
+                      <span className="text-green-400 mr-2 mt-0.5">✓</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
                 <a
                   href="/signup"
-                  className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-indigo-500/30"
+                  className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-2.5 px-6 rounded-lg transition-all w-full text-center"
                 >
                   Start Free Trial →
                 </a>
-                <p className="text-xs text-gray-400 mt-3">
+                <p className="text-xs text-gray-400 mt-3 text-center">
                   No credit card • Only 50 spots left • Expires Dec 31, 2025
                 </p>
               </div>
             </div>
 
-            {/* Right Side - Mentor Photo */}
-            <div className="hidden lg:block flex-shrink-0 w-80 h-96 animate-float">
-              {/* Soft glow behind */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-[2rem] blur-2xl"></div>
-              
-              {/* Main image container */}
-              <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/10">
+            {/* Mentor Photo — No float, no glow */}
+            <div className="flex-shrink-0 w-64 h-72 lg:w-72 lg:h-80">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
                 <img
                   src="/shagun.jpeg"
-                  alt="Dr. Mehta - AI Mentor"
-                  className="w-full h-full object-cover object-center scale-110"
+                  alt="Dr. Shagun Mehta – AI Mentor"
+                  className="w-full h-full object-cover"
                 />
-                {/* Subtle overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent"></div>
+                {/* Optional: subtle overlay for contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
               </div>
-              
-              {/* Name badge below */}
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-800/90 backdrop-blur-md border border-indigo-500/30 rounded-full px-6 py-2 whitespace-nowrap">
-                <p className="text-sm font-semibold text-white">Dr. Shagun Mehta</p>
-                <p className="text-xs text-indigo-300">AI Research Lead</p>
+              <div className="mt-4 text-center">
+                <p className="font-semibold text-white">Dr. Shagun Mehta</p>
+                <p className="text-sm text-indigo-300">AI Research Lead</p>
               </div>
             </div>
           </div>
+        </div>
       </div>
 
-      {/* Marquee again (bottom) */}
+      {/* Bottom Marquee */}
       <Marquee />
 
       {/* Courses Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
             AI Programs Built for Builders
           </h2>
-          <p className="text-gray-400 mt-4">Choose your path in the age of intelligence</p>
+          <p className="text-gray-400 mt-3">Choose your path in the age of intelligence</p>
         </div>
 
         <FilterBar
@@ -226,7 +218,7 @@ export default function CoursesPage() {
           onSelect={setSelectedCategory}
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredCourses.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
@@ -234,7 +226,7 @@ export default function CoursesPage() {
       </div>
 
       {/* Testimonials */}
-      <div className="py-16 bg-gray-900/50">
+      <div className="py-16 bg-gray-900/40">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-pink-300">
             Trusted by the Next Generation of AI Engineers
@@ -257,7 +249,7 @@ export default function CoursesPage() {
                 text: "Saved $20k/month in dev costs using techniques from Week 3.",
               },
             ].map((t, i) => (
-              <div key={i} className="bg-gray-800/40 backdrop-blur border border-gray-700 rounded-xl p-6">
+              <div key={i} className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-xl p-6">
                 <div className="text-yellow-400 mb-3">{"★".repeat(5)}</div>
                 <p className="italic text-gray-200 mb-4">"{t.text}"</p>
                 <p className="font-semibold text-white">{t.name}</p>
@@ -275,24 +267,12 @@ export default function CoursesPage() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 25s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
         }
-        
-        @keyframes float {
-          0% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(2deg); }
-          100% { transform: translateY(0px) rotate(0deg); }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
       `}</style>
     </div>
-      </div>
   );
-
-
 }

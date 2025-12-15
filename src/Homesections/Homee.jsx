@@ -1,101 +1,151 @@
-// app/page.jsx  (tera original code – sirf yeh part change kiya hai)
+// app/page.jsx
 
-import { Home, Info, Contact, BookOpen } from 'lucide-react';
-import Image from 'next/image';
-import localFont from 'next/font/local';
+import { Home, Info, Contact, BookOpen } from "lucide-react";
+import Image from "next/image";
 
 export default function Homee() {
   const navItems = [
-    { name: 'About', icon: Info, href: 'About' },
-    { name: 'Contact us', icon: Contact, href: 'Contactus' },
-    { name: 'Courses', icon: BookOpen, href: 'Courses' },
+    { name: "About", icon: Info, href: "/About" },
+    { name: "Contact", icon: Contact, href: "/Contactus" },
+    { name: "Courses", icon: BookOpen, href: "/Courses" },
   ];
-  const nigapefont = ({src:"../font/Chainbox.otf"});
-
 
   return (
-    <>
-      <div
-        className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat pb-32"
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
 
-      >
-        <Image
-          src="/d.png"
-          alt="AI Companions Hero"
-          fill
-          priority
-          className="object-cover object-bottom h-48 w-96"
-          quality={100}
-        />
-        <div className="absolute inset-0 " />
+      {/* Background Image */}
+      <Image
+        src="/backfinal.jpg"
+        alt="AI Institute Background"
+        fill
+        priority
+        className="object-cover object-center sm:object-bottom"
+        quality={100}
+      />
 
-        <div className="relative z-10 md:max-w-6xl mx-auto px-6 pt-10 flex flex-col items-start">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
-          {/* Bottom navbar – bilkul same */}
-          <nav className="mt-0 w-[80%]  max-w-2xl mx-auto pb-10">
-            <div
-              className="
-      flex 
-      items-center 
-      justify-center md:justify-between     /* Center on mobile, spread on big screen */
-      gap-6 md:gap-10 
-      px-6 md:px-10 
-      py-5 
-      bg-black/40
-      rounded-full 
-      shadow-2xl 
-      overflow-x-auto 
-      scrollbar-hide
-      backdrop-blur
-      
-    
-    "
+      {/* Content Wrapper */}
+      <div className="relative z-10 flex min-h-screen flex-col items-center px-4 sm:px-6 lg:px-8">
+
+        {/* ================= NAVBAR ================= */}
+        <nav className="mt-5 w-full max-w-6xl">
+          <div className="flex items-center justify-between rounded-full bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 sm:px-6 sm:py-3 shadow-xl">
+
+            {/* Home */}
+            <a
+              href="/"
+              className="flex items-center gap-2 rounded-full px-4 py-2 text-white font-semibold transition hover:scale-105"
+              style={{ backgroundColor: "rgb(125, 60, 77)" }}
             >
-              {/* Home Button */}
-              <div
-                className="flex items-center  gap-3 px-2 md:px-7 py-3 rounded-full shadow-lg whitespace-nowrap shrink-0"
-                style={{ backgroundColor: 'rgb(125, 60, 77)' }}
-              >
-                <Home size={24} className="text-white shrink-0" strokeWidth={2.8} />
-                <span className="text-white font-bold text-sm tracking-wide">Home</span>
-              </div>
-             
-              {/* Icons */}
-              <div className="flex items-center gap-6 md:gap-8">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="p-3 text-white hover:text-white transition-all duration-200 hover:scale-110 shrink-0"
-                  >
-                    <item.icon size={26} strokeWidth={2.2} />
-                  </a>
-                ))}
-              </div>
+              <Home className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="hidden sm:inline">Home</span>
+            </a>
+
+            {/* Nav Icons */}
+            <div className="flex items-center gap-3 sm:gap-5">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  title={item.name}
+                  className="relative p-2 text-white transition hover:scale-110"
+                >
+                  <span className="absolute inset-0 rounded-full bg-white/0 hover:bg-white/20 transition" />
+                  <item.icon className="relative h-5 w-5 sm:h-6 sm:w-6" />
+                </a>
+              ))}
             </div>
-          </nav>
-
-
-          {/* Tera original card – bilkul same */}
-          <div className="w-full max-w-2xl bg-white/30 backdrop-blur-2xl p-8 sm:p-10 lg:p-12 rounded-3xl shadow-2xl shadow-pink-700/50 border-2 border-white/40">
-            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-              AI Companions
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-black/90 leading-relaxed">
-              Our vision is to revolutionize companionship with AI Companions —
-              highly customizable, interactive, and immersive virtual partners
-              designed to meet your unique desires.
-            </p>
-            <button className="mt-10 px-8 py-4 rounded-full bg-gray-900 text-white text-lg font-bold hover:bg-gray-800 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-              Learn More
-            </button>
           </div>
+        </nav>
+
+        {/* ================= HERO ================= */}
+     <section className="min-h-[85vh] flex flex-col items-center justify-center text-center px-4">
+
+  {/* Gradient Heading */}
+  <h1
+    className="
+      max-w-4xl
+      text-3xl
+      sm:text-4xl
+      md:text-5xl
+      lg:text-6xl
+      font-extrabold
+      leading-tight
+      bg-gradient-to-r
+      from-cyan-300
+      via-purple-400
+      to-pink-400
+      bg-clip-text
+      text-transparent
+    "
+  >
+    Unlock Your AI Career with India&apos;s First Premium Generative AI Institute
+  </h1>
+
+  {/* Description */}
+  <p
+    className="
+      mt-6
+      max-w-2xl
+      text-base
+      sm:text-lg
+      text-white/85
+      leading-relaxed
+    "
+  >
+    Get hands-on Generative AI and Prompt Engineering skills through
+    industry-driven projects — graduate with the portfolio, confidence
+    and connections employers demand.
+  </p>
+
+  {/* Feature Pills */}
+  <div className="mt-8 space-y-4 w-full max-w-2xl">
+    <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-sm sm:text-base text-white/90">
+      <span className="font-semibold text-white">Industry-driven:</span>{" "}
+      Curriculum built to bridge India’s 1M+ AI talent gap
+    </div>
+
+    <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-sm sm:text-base text-white/90">
+      <span className="font-semibold text-white">Future-focused:</span>{" "}
+      Join India’s GenAI wave — 3.6M learners already upskilling
+    </div>
+  </div>
+
+  {/* CTA Buttons */}
+  <div className="mt-10 flex flex-col sm:flex-row gap-4">
+    <button className="
+      rounded-full
+      bg-white
+      px-8 py-4
+      text-base sm:text-lg
+      font-bold
+      text-gray-900
+      transition
+      hover:scale-105
+    ">
+      Join NIGAPE Now
+    </button>
+
+    <button className="
+      rounded-full
+      border border-white/60
+      px-8 py-4
+      text-base sm:text-lg
+      font-bold
+      text-white
+      transition
+      hover:bg-white/10
+    ">
+      Talk to a Counselor
+    </button>
+  </div>
+
+</section>
 
 
-
-
-        </div>
       </div>
-    </>
+    </div>
   );
 }
