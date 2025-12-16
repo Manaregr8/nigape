@@ -1,76 +1,110 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HomeSection2() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full py-20 sm:py-32 lg:py-40 overflow-hidden">
 
-      {/* Gradient Background via CSS (CDN mein nahi chalta tha) */}
-      <div className="absolute inset-0 bg-gradient-custom" />
+      {/* Background: Gradient + Image */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-blue-900/20 to-pink-900/30 z-0" />
+      
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/.png"
+          alt="AI Companions Background"
+          fill
+          priority
+          className="object-cover opacity-70"
+          quality={100}
+        />
+      </div>
 
-      {/* Background Image */}
-      <Image
-        src="/4.png"
-        alt="AI Companions Background"
-        fill
-        priority
-        className="object-cover opacity-80"
-        quality={100}
-      />
+      <div className="relative max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10 py-12 sm:py-16 lg:py-20">
 
-      {/* Dark overlay for text readability */}
-      {/* <div className="absolute inset-0 bg-black/50" /> */}
-
-      <div className="relative max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
-
-        {/* Left Text Card - Glassmorphism */}
-        <div className="glass-card p-10 lg:p-14 rounded-3xl border border-white backdrop-blur-2xl">
-          <h2 className="text-4xl md:text-6xl font-black text-pink-600 mb-8 leading-tight">
-            What is <span className="text-black bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400">AI Virtual</span><br />
-            Companions?
+        {/* Left: Glass Card */}
+        <div className="glass-card p-8 sm:p-10 md:p-12 rounded-3xl border border-white/20 backdrop-blur-2xl bg-white/10 shadow-2xl">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-8 leading-tight">
+            What You Will Gain
           </h2>
-          <p className="text-black text-lg leading-relaxed mb-10">
-            AI Virtual Companions offers a range of features designed to create highly personalised and immersive experiences for users.
-            By leveraging cutting-edge AI, VR, AR, and blockchain technologies, and integrating our native $AIC token, we provide users with a unique and engaging virtual companionship experience.
+          <p className="text-white text-lg leading-relaxed mb-8 font-medium">
+            At NIGAPE, you don't just learn theory – you get results. Graduates emerge with:
           </p>
-          <button className="px-10 py-5 glass-button text-white font-bold rounded-full hover:scale-110 transition-all duration-300 shadow-2xl">
-            Learn More
-          </button>
+
+          {/* Benefits List */}
+          <div className="space-y-6 mb-10">
+            {[
+              {
+                title: "Industry-Ready Skills",
+                color: "text-pink-400",
+                desc: "Master AI concepts (machine learning, deep learning, NLP, computer vision) and apply them through prompt engineering and real AI system design."
+              },
+              {
+                title: " Unshakeable Confidence",
+                color: "text-purple-400",
+                desc: "By solving real problems and demoing projects, you'll know you can innovate with AI in any workplace."
+              },
+              {
+                title: " Extensive Industry Exposure",
+                color: "text-cyan-400",
+                desc: "Work on team projects that replicate actual R&D cycles. Receive feedback from AI professionals. Build an AI portfolio that stands out."
+              },
+              {
+                title: " Career Clarity & Readiness",
+                color: "text-pink-400",
+                desc: "With guidance from our mentors and counsellors, you'll identify the AI roles that fit your strengths and have the resume and interview practice to land them."
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="fade-in-up" style={{ animationDelay: `${idx * 0.15}s` }}>
+                <h3 className={`text-xl font-bold ${item.color} mb-2`}>{item.title}</h3>
+                <p className="text-white/90 text-base leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-white/80 text-base leading-relaxed mb-10 italic font-medium">
+            Ready to transform? Take the first step – explore our courses and launch your AI journey.
+          </p>
+
+          <Link href="/courses">
+            <button className="px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-full hover:scale-[1.04] active:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/30">
+              Explore Courses
+            </button>
+          </Link>
         </div>
 
-        {/* Right Floating AI Characters */}
-        <div className="relative h-96 lg:h-full min-h-96 flex items-center justify-center">
+        {/* Right: Floating AI Characters */}
+        <div className="relative h-96 lg:h-[80vh] flex items-center justify-center py-12">
 
-          {/* Center Main Image */}
-          <div className="absolute animate-bounce-slow w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+          {/* Main Center Character */}
+          <div className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-bounce-slow">
             <Image
               src="/2.png"
               alt="Main AI Companion"
               fill
-              sizes="(max-width: 768px) 70vw, 420px"
-              className="rounded-3xl shadow-2xl border-8 border-white/30 object-cover glowing-border"
+              className="object-cover rounded-3xl border-4 border-white/40 glowing-border"
               priority
             />
           </div>
 
           {/* Top Right */}
-          <div className="absolute top-0 right-0 animate-float delay-500 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64">
+          <div className="absolute top-10 right-0 w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 animate-float opacity-90">
             <Image
               src="/3.png"
               alt="Companion"
               fill
-              sizes="240px"
-              className="rounded-3xl shadow-2xl border-4 border-purple-500/60 object-cover"
+              className="object-cover rounded-3xl border-4 border-purple-500/40"
             />
           </div>
 
           {/* Bottom Left */}
-          <div className="absolute bottom-0 left-0 animate-float delay-1000 w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56">
+          <div className="absolute bottom-10 left-0 w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 animate-float opacity-90">
             <Image
               src="/1.png"
               alt="Companion"
               fill
-              sizes="200px"
-              className="rounded-3xl shadow-2xl border-4 border-pink-500/60 object-cover"
+              className="object-cover rounded-3xl border-4 border-pink-500/40"
             />
           </div>
         </div>

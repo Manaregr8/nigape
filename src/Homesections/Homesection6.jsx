@@ -55,7 +55,7 @@ export default function AIEditorialSlider() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-pink-900 to-slate-900 py-8 md:py-12">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black py-8 md:py-12">
       
       {/* Animated Background Effects */}
       <div className="absolute inset-0 opacity-20">

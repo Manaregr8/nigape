@@ -34,7 +34,7 @@ export default function RoadmapSection() {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/g.png"
+          src="/.png"
           alt="Background"
           fill
           className="object-cover object-center"

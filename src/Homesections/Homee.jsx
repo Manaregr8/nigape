@@ -14,7 +14,7 @@ export default function Homee() {
 
       {/* ================= BACKGROUND ================= */}
       <Image
-        src="/finalbg.jpg"
+        src="/.jpg"
         alt="AI Background"
         fill
         priority
