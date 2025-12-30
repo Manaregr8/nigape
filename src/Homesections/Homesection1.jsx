@@ -1,82 +1,107 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import React from 'react';
 
-export default function Home() {
+export default function NigapeGallery() {
+  const galleryItems = [
+    { id: 1, src: "/Nigapepic/1.webp", alt: "AI Lab with students collaborating" },
+    { id: 2, src: "/Nigapepic/2.webp", alt: "Mentor-led workshop session" },
+    { id: 3, src: "/Nigapepic/3.webp", alt: "Modern classroom setup" },
+    { id: 4, src: "/Nigapepic/4.webp", alt: "Students presenting AI projects" },
+    { id: 5, src: "/Nigapepic/5.webp", alt: "Hackathon event" },
+    { id: 6, src: "/Nigapepic/6.webp", alt: "Dedicated AI workspace" },
+    { id: 7, src: "/Nigapepic/7.webp", alt: "One-on-one mentorship" },
+    { id: 8, src: "/Nigapepic/8.webp", alt: "Group coding session" },
+    { id: 9, src: "/Nigapepic/9.webp", alt: "AI infrastructure server room" },
+  ];
+
   return (
-    <section className="relative w-full py-20 sm:py-32 lg:py-40 overflow-hidden">
-      
-      {/* Background Image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/.png"
-          alt="AI Companions Hero"
-          fill
-          priority
-          className="object-cover object-center"
-          quality={100}
-          sizes="100vw"
-        />
-        {/* Dark gradient overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
-        {/* Scanlines — subtle */}
-        <div 
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.15) 1px, transparent 1px)`,
-            backgroundSize: '100% 4px',
-          }}
-        />
-      </div>
+    <div className="min-h-screen bg-black py-12 sm:py-16 px-4 sm:px-6 font-['Geist', sans-serif]">
+      <div className="max-w-[1200px] mx-auto">
+        {/* First Row: Bento Grid Layout - Left Large + Right Two Stacked */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
+          {/* LEFT: Large Hero Card (spans 2 columns) */}
+          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-2xl border border-[#9234eb]/30 group bg-gradient-to-br from-[#1a1a2e] to-[#16213e] h-[350px] sm:h-[450px] lg:h-[500px]">
+            <img
+              src={galleryItems[0].src}
+              alt={galleryItems[0].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+           
+            {/* Bottom Headline */}
+            <div className="absolute bottom-8 left-8 right-8 p-6 bg-black/60 backdrop-blur-xl rounded-2xl border border-[#9234eb]/50 shadow-2xl">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                Own a Piece <br />of the Digital Future
+              </h2>
+            </div>
+          </div>
 
-      <div className="relative text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
-
-        {/* Animated Gradient Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6 sm:mb-8">
-          <span className="bg-gradient-to-r from-pink-700 via-purple-700 to-blue-700 bg-clip-text text-transparent animate-gradient-x">
-            Courses & Unique Advantages
-          </span>
-        </h1>
-
-        <p className="text-lg sm:text-xl text-black leading-relaxed mb-16 sm:mb-20 max-w-4xl mx-auto font-medium">
-          Our programs are not your typical classroom courses. Each course is co-designed with AI industry experts to mirror real AI workflows and hiring trends. You'll work on live projects – from building LLM-based apps to NLP pipelines – exactly as teams do in tech companies. Our mentors come from top AI firms and ensure you learn the practical skills in demand today.
-        </p>
-
-        {/* Advantages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
-          {[
-            { icon: 'm', title: 'Hands-on Projects', desc: 'Every student completes a capstone AI project, reviewed in sprints like in a tech company (not a textbook assignment).' },
-            { icon: 'v', title: 'Corporate-style Environment', desc: 'Classes run like professional teams – with code reviews, mentorship sessions and team collaborations.' },
-            { icon: 'm', title: 'Aligned with Hiring Needs', desc: 'We continuously update content based on industry feedback, so you learn the exact skills recruiters look for.' },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="group bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/15 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover:shadow-xl"
-              style={{ animation: `fadeInUp 0.6s ease-out ${0.2 * idx}s both` }}
-            >
-              <div className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110">
-                {item.icon}
+          {/* RIGHT: Two Stacked Cards */}
+          <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-5">
+            {/* TOP CARD */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#9234eb]/30 group bg-gradient-to-br from-[#1a1a2e] to-[#16213e] h-[200px] sm:h-[220px] lg:h-[245px]">
+              <img
+                src={galleryItems[1].src}
+                alt={galleryItems[1].alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              {/* Top-right Arrow Button */}
+              <div className="absolute top-5 right-5">
+                <a href="">
+                  <button className="bg-black/80 backdrop-blur-sm text-white text-xl font-bold w-10 h-10 rounded-full shadow-lg hover:bg-black hover:scale-110 transition-all duration-300 flex items-center justify-center border border-white/20">
+                    ↗
+                  </button>
+                </a>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-white leading-relaxed">{item.desc}</p>
+            </div>
+
+            {/* BOTTOM CARD */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#9234eb]/30 group bg-gradient-to-br from-[#1a1a2e] to-[#16213e] h-[200px] sm:h-[220px] lg:h-[245px]">
+              <img
+                src={galleryItems[2].src}
+                alt={galleryItems[2].alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              {/* Bottom-right CTA Button */}
+              <div className="absolute top-5 right-5">
+                <button className="bg-[#FF40EB] backdrop-blur-sm border-2 border-[#FF40EB] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg">
+                 <a href="/About"> About us →</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Second Row: 3 Equal Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-5">
+          {galleryItems.slice(3, 6).map((item) => (
+            <div key={item.id} className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#9234eb]/30 group bg-gradient-to-br from-[#1a1a2e] to-[#16213e] h-[220px] sm:h-[280px]">
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-br from-pink-600/10 to-purple-700/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 sm:p-12 transition-all duration-500 hover:shadow-xl hover:shadow-purple-900/20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to lead in AI?
-          </h2>
-          <Link href="/enroll">
-            <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300 transform hover:scale-105">
-              Enroll Now
+       
+
+        {/* Footer CTAs */}
+        <div className="text-center mt-10 sm:mt-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl bg-transparent border-2 border-[#9234eb] text-white font-bold text-sm sm:text-base hover:bg-[#9234eb]/20 hover:scale-105 transition-all duration-300 shadow-lg">
+              Schedule a Campus Tour
             </button>
-          </Link>
-          <p className="text-white/70 mt-5 text-sm sm:text-base">
-            Secure your seat in India's most future-proof AI programs
-          </p>
+            <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl bg-gradient-to-r from-[#9234eb] to-[#7b2cbf] text-white font-bold text-sm sm:text-base hover:from-[#8a2edc] hover:to-[#6a1fa8] hover:scale-105 transition-all duration-300 shadow-xl">
+              Explore Our Programs
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

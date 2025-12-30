@@ -5,70 +5,70 @@ import { Home, Info, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
-import Iridescence from '@/bits/Iridescence';
+import Iridescence from '@/Homesections/bits/Iridescence.js';
 
 
-const navItems = [
-  { name: "About", icon: Info, href: "About" },
-  { name: "Courses", icon: BookOpen, href: "/courses" },
-];
+// const navItems = [
+//   { name: "About", icon: Info, href: "About" },
+//   { name: "Courses", icon: BookOpen, href: "/courses" },
+// ];
 
 const socials = ["X", "Discord", "Telegram", "Instagram"];
 
-const Navbar = memo(() => (
-  <motion.nav
-    initial={{ opacity: 0, y: -30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.3 }}
-    className="fixed top-6 sm:top-8 left-0 right-0 z-50 flex justify-center pointer-events-none px-4"
-  >
-    <div className="pointer-events-auto w-full max-w-4xl">
-      <div
-        className="
-        flex items-center justify-between 
-        px-5 py-4 sm:px-8 sm:py-5 
-        bg-black/70 backdrop-blur-xl 
-        rounded-2xl sm:rounded-full 
-        shadow-2xl border border-white/10
-        overflow-x-auto scrollbar-hide
-      "
-      >
-        {/* Home Button */}
-        <Link
-          href="/"
-          className="
-            flex items-center gap-3 
-            px-5 py-3 rounded-full 
-            text-white font-bold text-sm 
-            bg-gradient-to-r from-purple-500 to-pink-500
-            shadow-lg hover:shadow-purple-500/50 
-            transition-all duration-300 
-            whitespace-nowrap shrink-0
-          "
-        >
-          <Home size={22} strokeWidth={2.8} />
-          <span className="hidden sm:inline">Home</span>
-        </Link>
+// const Navbar = memo(() => (
+//   <motion.nav
+//     initial={{ opacity: 0, y: -30 }}
+//     animate={{ opacity: 1, y: 0 }}
+//     transition={{ duration: 0.8, delay: 0.3 }}
+//     className="fixed top-6 sm:top-8 left-0 right-0 z-50 flex justify-center pointer-events-none px-4"
+//   >
+//     <div className="pointer-events-auto w-full max-w-4xl">
+//       <div
+//         className="
+//         flex items-center justify-between 
+//         px-5 py-4 sm:px-8 sm:py-5 
+//         bg-black/70 backdrop-blur-xl 
+//         rounded-2xl sm:rounded-full 
+//         shadow-2xl border border-white/10
+//         overflow-x-auto scrollbar-hide
+//       "
+//       >
+//         {/* Home Button */}
+//         <Link
+//           href="/"
+//           className="
+//             flex items-center gap-3 
+//             px-5 py-3 rounded-full 
+//             text-white font-bold text-sm 
+//             bg-gradient-to-r from-purple-500 to-pink-500
+//             shadow-lg hover:shadow-purple-500/50 
+//             transition-all duration-300 
+//             whitespace-nowrap shrink-0
+//           "
+//         >
+//           <Home size={22} strokeWidth={2.8} />
+//           <span className="hidden sm:inline">Home</span>
+//         </Link>
 
-        {/* Icons */}
-        <div className="flex items-center gap-5 sm:gap-7 shrink-0">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              aria-label={item.name}
-              className="p-3 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110 shrink-0"
-            >
-              <item.icon size={26} strokeWidth={2.2} />
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </motion.nav>
-));
+//         {/* Icons */}
+//         <div className="flex items-center gap-5 sm:gap-7 shrink-0">
+//           {navItems.map((item) => (
+//             <a
+//               key={item.name}
+//               href={item.href}
+//               aria-label={item.name}
+//               className="p-3 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110 shrink-0"
+//             >
+//               <item.icon size={26} strokeWidth={2.2} />
+//             </a>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   </motion.nav>
+// ));
 
-Navbar.displayName = "ContactNavbar";
+// Navbar.displayName = "ContactNavbar";
 
 export default function ContactPage() {
   return (
@@ -82,7 +82,7 @@ export default function ContactPage() {
           speed={1.0}
         />
       </div>
-      <Navbar />
+      
 
       {/* HERO */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-36 pb-40 text-center">

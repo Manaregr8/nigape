@@ -1,101 +1,88 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // const navItems = [
-  //   { name: 'About', href: 'About' },
-  //   { name: 'Roadmap', href: '#roadmap' },
-  //   { name: 'Tokenomics', href: '#tokenomics' },
-  //   { name: 'Team', href: '#team' },
-  //   { name: 'Partners', href: '#partners' }
-  // ];
-
   return (
-    <nav>
-      {/* <div className="max-w-7xl mx-auto px-6 py-4"> */}
-        {/* <div className="flex items-center justify-between"> */}
-          {/* Logo */}
-          {/* <a href="/" className="text-2xl font-bold">
-            <span className="text-red-400">AIC</span>
-            <span className="text-gray-900">ompanions</span>
-          </a> */}
+    <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50 bg-black/20 backdrop-blur-lg rounded-full border border-white/20 shadow-lg px-4 py-2 w-[95%] max-w-md sm:max-w-lg md:max-w-xl">
+      <div className="flex items-center justify-between gap-4">
+        {/* Home Button */}
+        <Link
+          href="/"
+          className="bg-[#FF40EB] hover:bg-purple-700 text-white font-medium px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-200 shadow-md hover:shadow-purple-500/50 text-sm sm:text-base whitespace-nowrap"
+        >
+          Home
+        </Link>
 
-          {/* Desktop Navigation */}
-          {/* <div className="hidden md:flex  items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-black hover:text-red-400 transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div> */}
-
-          {/* Buy AIC Button */}
-          {/* <div className="hidden md:block"> */}
-            {/* <button className="bg-linear-to-r from-pink-300 to-pink-200 hover:from-pink-400 hover:to-pink-300 text-gray-800 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">
-              Buy AIC
-            </button> */}
-          {/* </div> */}
-                
-          {/* Mobile menu button */}
-          {/* <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+        {/* Icons */}
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+          {/* Info / About */}
+          <Link
+            href="/About"
+            className="text-white hover:text-gray-300 p-2 rounded-full transition-colors duration-200"
+            aria-label="About"
           >
             <svg
-              className="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 sm:h-6 sm:w-6"
               fill="none"
-              stroke="currentColor"
               viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
-          </button>
-        </div> */}
+          </Link>
 
-        {/* Mobile Navigation */}
-        {/* {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            <div className="flex flex-col space-y-3">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-800 hover:text-red-400 transition-colors duration-200 font-medium px-2 py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <button className="bg-linear-to-r from-pink-300 to-pink-200 hover:from-pink-400 hover:to-pink-300 text-gray-800 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-md mt-2">
-                Buy AIC
-              </button>
-            </div>
-          </div>
-        )}
-      </div> */}
+          {/* Profile / Contact */}
+          <Link
+            href="/Contactus"
+            className="text-white hover:text-gray-300 p-2 rounded-full transition-colors duration-200"
+            aria-label="Contact us"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 sm:h-6 sm:w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </Link>
+
+          {/* Docs / Courses */}
+          <Link
+            href="/Courses"
+            className="text-white hover:text-gray-300 p-2 rounded-full transition-colors duration-200"
+            aria-label="Courses"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 sm:h-6 sm:w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }
-
-//  className="fixed top-3 left-3 right-3 z-50 bg-linear-to-b from-white/20 to-white/20 backdrop-blur-1 rounded-full border-2 border-white

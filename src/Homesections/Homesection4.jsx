@@ -1,141 +1,138 @@
-// components/RoadmapSection.jsx (ya jahan bhi hai)
-import Image from "next/image";
+// components/RoadmapSection.jsx
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 
 export default function RoadmapSection() {
   const phases = [
     {
       phase: "Phase 1",
-      time: "Q4 2024 – Q1 2025",
-      title: "Foundation & Launch",
-      desc: "Whitepaper Release — Website Launch — Token Launch — CMC, CG, Blockfolio, & Delta Listing — Techrate & Certik Audits — 1st Global Exchange Partnership Listing",
+      time: "Foundation Setup",
+      title: "Office-Like Labs",
+      desc:
+        "Learn in high-tech classrooms equipped like an AI startup's R&D lab. You'll work in teams on fixed schedules, just like a real AI development cycle.",
+      image:
+        "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/689a491a35ad9b5025ada1da_solutions-styling-cms-travelogic.webp",
     },
     {
       phase: "Phase 2",
-      time: "Q1 2025 – Q2 2025",
-      title: "Companion Features & Growth",
-      desc: "Launch customizable companion features and celebrity models, alongside community building, exchange listings, partnerships, and further marketing campaigns.",
+      time: "Mentorship & Guidance",
+      title: "Professional Mentors",
+      desc:
+        "Every class is led by instructors who have worked in the AI industry. They guide you through projects, give one-on-one feedback, and teach you to think like AI engineers.",
+      image:
+        "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/689b542c5ac27db204a0b600_freelancers-hero.webp",
     },
     {
       phase: "Phase 3",
-      time: "Q2 2025 – Q3 2025",
-      title: "Gamification & Collectibles",
-      desc: "Expanding user-generated platforms, introducing gamification and play-to-earn mechanisms, and enhancing digital collectible integrations.",
+      time: "Practical Application",
+      title: "Iterative Projects",
+      desc:
+        "Courses follow a Learn → Apply → Showcase model. You learn a concept, immediately apply it to a mini-project, and then present it for review – replicating corporate sprints.",
+      image:
+        "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/689a491aa21232a64a940747_solutions-styling-urban-development.webp",
     },
     {
       phase: "Phase 4",
-      time: "Q3 2025 Onwards",
-      title: "AI + Smart Home Integration",
-      desc: "AI-driven personalization, integrate smart home devices and wearable tech, and expand the platform's reach both culturally and geographically.",
+      time: "Industry Experience",
+      title: "Real-World Problem Solving",
+      desc:
+        "Assignments are derived from actual industry challenges. You won't build 'toy' examples; you'll tackle case studies and use real datasets under expert guidance.",
+      image:
+        "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/689a491a35ad9b5025ada1da_solutions-styling-cms-travelogic.webp",
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef(null);
+
+ useEffect(() => {
+  const onScroll = () => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+    const top = rect.top + window.scrollY;
+    const height = container.offsetHeight;
+
+    const scrollMiddle =
+      window.scrollY + window.innerHeight / 2 - 150;
+
+    const phaseHeight = height / phases.length;
+
+    let index = Math.floor((scrollMiddle - top) / phaseHeight);
+    index = Math.max(0, Math.min(phases.length - 1, index));
+
+    setActiveIndex(index);
+  };
+
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+  return () => window.removeEventListener("scroll", onScroll);
+}, [phases.length]);
+
+
+  const currentPhase = phases[activeIndex];
+
   return (
-    <section className="relative py-16 md:py-32 overflow-hidden ">
-      {/* Background Image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/.png"
-          alt="Background"
-          fill
-          className="object-cover object-center"
-          quality={100}
-          priority
-          unoptimized
-        />
-        {/* <div className="absolute inset-0 bg-black/70" />  */}
+    <section className="relative bg-black text-white">
+      {/* HEADER */}
+      <div className="max-w-[1350px] mx-auto px-6 py-20 text-center">
+        <span className="inline-block mb-4 px-4 py-2 text-xs uppercase tracking-wider rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/20">
+          Learning Journey
+        </span>
+        <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+          Our <span className="text-[#FF40EB]">AI Roadmap</span>
+        </h2>
+        <p className="text-white/70 max-w-2xl mx-auto">
+          A structured, industry-aligned path from zero to job-ready AI engineer.
+        </p>
       </div>
 
-      {/* Scanlines Effect */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-scanlines" />
-
-      <div className="relative max-w-7xl mx-auto px-6 md:px-8">
-        {/* Title */}
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-20">
-          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-            Roadmap
-          </span>
-        </h2>
-
-        <div className="relative">
-          {/* NEON CENTER LINE - Desktop */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-1 h-full neon-line-vertical rounded-full" aria-hidden="true" />
-
-          {phases.map((item, index) => {
-            const isLeft = index % 2 === 0;
-
-            return (
-              <div key={index} className="relative mb-20 md:mb-32">
-                {/* Desktop Layout */}
-                <div className="hidden md:flex items-center justify-center gap-8">
-                  {isLeft ? (
-                    <>
-                      {/* Left Card */}
-                      <div className="w-5/12 text-right">
-                        <div className="bg-white/5 backdrop-blur-xl border ring-pink-700 border-purple-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-purple-600/60 hover:scale-105 transition-all duration-500 group">
-                          <h3 className="text-4xl font-bold text-pink-400 mb-3">{item.phase}</h3>
-                          <p className="text-cyan-300 text-lg font-mono mt-2">{item.time}</p>
-                          <h4 className="text-2xl font-bold text-white mt-6">{item.title}</h4>
-                          <p className="text-gray-300 mt-4 leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-
-                      {/* Center Dot */}
-                      <div className="relative">
-                        <div className="absolute inset-0 w-12 h-12 bg-cyan-400 rounded-full animate-ping opacity-75" />
-                        <div className="relative w-12 h-12 bg-gradient-to-br from-pink-500 to-cyan-400 rounded-full shadow-2xl ring-4 ring-purple-500/50" />
-                      </div>
-
-                      <div className="w-5/12" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-5/12" />
-
-                      {/* Center Dot */}
-                      <div className="relative">
-                        <div className="absolute inset-0 w-12 h-12 bg-cyan-400 rounded-full animate-ping opacity-75" />
-                        <div className="relative w-12 h-12 bg-gradient-to-br from-pink-500 to-cyan-400 rounded-full shadow-2xl ring-4 ring-purple-500/50" />
-                      </div>
-
-                      {/* Right Card */}
-                      <div className="w-5/12 text-left">
-                        <div className="bg-white/5 backdrop-blur-xl border border-purple-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-purple-600/60 hover:scale-105 transition-all duration-500 group">
-                          <h3 className="text-4xl font-bold text-pink-400 mb-3">{item.phase}</h3>
-                          <p className="text-cyan-300 text-lg font-mono mt-2">{item.time}</p>
-                          <h4 className="text-2xl font-bold text-white mt-6">{item.title}</h4>
-                          <p className="text-gray-300 mt-4 leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    </>
-                  )}
+      {/* CONTENT */}
+      <div className="max-w-[1350px] mx-auto px-6 grid lg:grid-cols-2 gap-16">
+        {/* LEFT — PHASES */}
+        <div ref={containerRef}>
+          {phases.map((item, index) => (
+            <div
+              key={index}
+              className={`min-h-screen flex items-center transition-all duration-500 ${
+                index === activeIndex ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="relative pl-14">
+                <div className="absolute left-0 top-1 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white bg-[#FF40EB] shadow-[0_0_16px_rgba(146,52,235,0.7)]">
+                  <span className="text-black font-bold">{index + 1}</span>
                 </div>
 
-                {/* Mobile Layout */}
-                <div className="md:hidden flex items-start gap-6">
-                  <div className="shrink-0">
-                    <div className="relative">
-                      <div className="absolute inset-0 w-8 h-8 bg-cyan-400 rounded-full animate-ping opacity-75" />
-                      <div className="relative w-8 h-8 bg-gradient-to-br from-pink-500 to-cyan-400 rounded-full shadow-xl ring-2 ring-purple-500" />
-                    </div>
+                <div className="bg-black/60 backdrop-blur-xl border border-[#FF40EB]/40 rounded-2xl p-8 max-w-lg">
+                  <div className="text-[#FF40EB] text-sm font-semibold mb-1">
+                    {item.phase}
                   </div>
-
-                  <div className="flex-1 pb-12">
-                    <div className="bg-white/5 backdrop-blur-xl border border-purple-500/30 rounded-2xl p-6 shadow-xl">
-                      <h3 className="text-2xl font-bold text-pink-400">{item.phase}</h3>
-                      <p className="text-cyan-300 text-sm font-mono mt-1">{item.time}</p>
-                      <h4 className="text-xl font-bold text-white mt-4">{item.title}</h4>
-                      <p className="text-gray-300 text-sm mt-3 leading-relaxed">{item.desc}</p>
-                    </div>
+                  <div className="text-xs uppercase tracking-wider text-white/60 mb-2">
+                    {item.time}
                   </div>
+                  <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                  <p className="text-white/70 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-
-                {/* Mobile Neon Line */}
-                {index < phases.length - 1 && (
-                  <div className="md:hidden absolute left-10 top-20 bottom-0 w-1 neon-line-mobile rounded-full" />
-                )}
               </div>
-            );
-          })}
+            </div>
+          ))}
+        </div>
+
+        {/* RIGHT — STICKY IMAGE */}
+        <div className="hidden lg:block">
+          <div className="sticky top-0 h-screen flex items-center">
+            <div className="w-full h-[80vh] rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={currentPhase.image}
+                alt={currentPhase.title}
+                className="w-full h-full object-cover transition-opacity duration-500"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

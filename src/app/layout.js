@@ -1,17 +1,18 @@
-// app/layout.js  (ya layout.tsx)
+// app/layout.js
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../Homesections/Header.jsx";
 import Footer from "../Homesections/Footer.jsx";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// ✅ Use consistent variable names
+const geist = Geist({
   subsets: ["latin"],
+  variable: "--font-geist", // ← matches CSS & Tailwind
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata = {
@@ -23,33 +24,40 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Tailwind CDN */}
+        {/* ✅ Clean Tailwind CDN URL (remove extra spaces) */}
         <script src="https://cdn.tailwindcss.com"></script>
 
-        {/* Custom Colors — YEH LINE THODI GALAT THI, AB FIX KI */}
+        {/* Optional: Tailwind config for font utilities & custom colors */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               tailwind.config = {
                 theme: {
                   extend: {
+                    fontFamily: {
+                      sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
+                      mono: ['var(--font-geist-mono)', 'monospace']
+                    },
                     colors: {
                       pink: { 300: '#f9a8d4', 400: '#f472b6', 500: '#ec4899', 600: '#db2777' },
-                      purple: { 300: '#d8b4fe', 400: '#c084fc', 500: '#a78bfa', 600: '#8b5cf6' },
+                      purple: { 300: '#d8b4fe', 400: '#c084fc', 500: '#a855f7', 600: '#9333ea' },
                       cyan: { 300: '#99f6e4', 400: '#22d3ee' }
                     }
                   }
                 }
               }
-            `.trim(),
+            `,
           }}
         />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
-        <Header />
+      {/* ✅ Apply font variables to body */}
+      <body
+        className={`${geist.variable} ${geistMono.variable} antialiased`}
+      >
+        <Header/>
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );

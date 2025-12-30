@@ -1,86 +1,98 @@
-import Image from "next/image";
+// TestimonialsSection.tsx
+import React from 'react';
 
-export default function HomeSection5() {
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      quote:
+        "Before <span style='color:#9234eb; font-weight:600'>NIGAPE</span>, I had just finished school and had zero coding experience. Within weeks of joining, I was building my first AI chatbot project. Today I’m leading an AI project at a startup. The career clarity and confidence I gained here is unbelievable.",
+      name: "Rahul",
+      role: "Class 12 graduate",
+      avatarUrl: "https://i.pravatar.cc/40?img=1",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "I was an engineer stuck in a non-tech role. <span style='color:#9234eb; font-weight:600'>NIGAPE</span>’s program turned my career around: I now work as a Data Scientist, creating NLP solutions. The real projects and corporate-style learning made all the difference.",
+      name: "Priya",
+      role: "Working Professional",
+      avatarUrl: "https://i.pravatar.cc/40?img=2",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "<span style='color:#9234eb; font-weight:600'>NIGAPE</span>’s mentorship gave me clarity. I went from being confused about AI jobs to having a portfolio of completed AI projects and a clear path: now I’m happily placed at a tech company working on Computer Vision.",
+      name: "Ankit",
+      role: "College Student",
+      avatarUrl: "https://i.pravatar.cc/40?img=3",
+      linkedinUrl: "#",
+    },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden ">
-
-      {/* Background Image - AB DIKHEGI PURI! */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/h.png"
-          alt="Tokenomics VR Girl"
-          fill
-          priority
-          className="object-cover opacity-65"
-        />
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" /> */}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-white">
-
-        {/* Title */}
-        <h2 className="text-center text-5xl md:text-8xl font-black mb-20">
-          <span className="tokenomics-title-gradient">Tokenomics</span>
+    <section className="py-16 h-screen px-4 bg-black">
+      <div className="max-w-6xl mx-auto my-10 ">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#FF40EB] text-center pb-20">
+          Testimonials 
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t, index) => (
+            <div key={index} className="relative w-full max-w-md mx-auto">
+              {/* Background layers for depth */}
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-30 transform translate-x-2 translate-y-2"></div>
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-50 transform translate-x-1 translate-y-1"></div>
 
-          {/* LEFT: Token Bars */}
-          <div className="space-y-8">
-            {[
-              { label: "Liquidity", percent: 70, color: "cyan", amount: "700M" },
-              { label: "Core Team", percent: 15, color: "purple", amount: "150M" },
-              { label: "Partnerships / Dev", percent: 10, color: "pink", amount: "100M" },
-              { label: "Advisors", percent: 5, color: "green", amount: "50M" },
-            ].map((item, i) => (
-              <div key={i} className="space-y-3">
-                <div className="flex justify-between text-lg font-medium">
-                  <span className={`text-${item.color}-400 font-bold`}>{item.label}</span>
-                  <span className="text-gray-300">{item.amount} • {item.percent}%</span>
+              {/* Main card */}
+              <div className="relative bg-white rounded-xl shadow-xl p-6 z-10">
+                {/* Top tab */}
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-white rounded-t-lg border border-gray-200 flex items-center justify-center">
+                  <span className="text-lg font-bold text-[#9234eb]">NIGAPE</span>
                 </div>
-                <div className="w-full h-9 bg-white/10 rounded-full overflow-hidden border border-white/10">
-                  <div
-                    className={`h-full rounded-full progress-glow-${item.color} progress-bar`}
-                    style={{ width: `${item.percent}%`, animationDelay: `${i * 0.2}s` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
 
-          {/* RIGHT: Donut Chart + Background Image Visible */}
-          <div className="relative flex justify-center items-center">
+                {/* Quote mark in purple */}
+                <div className="text-3xl text-[#9234eb] mb-4">“</div>
 
-            {/* Background Image ke upar donut lag raha hai — ab image bhi dikhegi! */}
-            <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px]">
+                {/* Quote text with highlighted NIGAPE */}
+                <p
+                  className="text-gray-700 leading-relaxed mb-6"
+                  dangerouslySetInnerHTML={{ __html: t.quote }}
+                />
 
-              {/* Rotating Donut Ring */}
-              <div className="absolute inset-4 donut-ring z-10" />
+                {/* Footer with avatar & LinkedIn */}
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center space-x-3">
+                    <img
+                      src={t.avatarUrl.trim()} // Fixed extra spaces in URL
+                      alt={t.name}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">{t.name}</p>
+                      <p className="text-sm text-gray-500">{t.role}</p>
+                    </div>
+                  </div>
 
-              {/* Outer Glow Effect */}
-              <div className="absolute inset-0 donut-glow z-0" />
-
-              {/* Center Glass Card (Static) */}
-              <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                <div className="glass-center w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-purple-500/70 flex flex-col items-center justify-center shadow-2xl backdrop-blur-2xl">
-                  <p className="text-gray-400 text-sm uppercase tracking-widest">Total Supply</p>
-                  <p className="text-5xl md:text-6xl font-black text-white mt-3">1B</p>
-                  <p className="text-4xl md:text-5xl font-bold text-cyan-400 tracking-widest mt-2">$AIC</p>
+                  {/* LinkedIn icon */}
+                  <a
+                    href={t.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#9234eb] transition-colors"
+                    aria-label={`${t.name} on LinkedIn`}
+                  >
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.55v-5.895c0-1.405-.027-3.199-1.95-3.199-1.95 0-2.256 1.514-2.256 3.089v6.005H5.59V8.91h3.49v1.664h.05c1.128-1.91 3.089-2.89 5.02-2.89 5.338 0 6.33 3.526 6.33 8.124v7.644zM2.59 0h3.55v11.49H2.59V0z" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-
+          ))}
         </div>
-
-        {/* Optional Bottom Text */}
-        {/* <div className="text-center mt-20">
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-300">
-            Fair Launch • No Presale • Community First
-          </h3>
-        </div> */}
-
       </div>
     </section>
   );
-}
+};
+
+export default TestimonialsSection;

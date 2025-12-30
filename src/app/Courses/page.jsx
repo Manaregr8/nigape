@@ -271,6 +271,7 @@ const CourseCard = ({ course }) => {
 export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showAll, setShowAll] = useState(false);
 
   // Combine all courses including short ones
   const allCourses = [...courses, ...shortCourses];
@@ -300,129 +301,128 @@ export default function CoursesPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Global gradient background */}
+    <div className="min-h-screen pt-20 bg-black text-white overflow-hidden">
+      {/* Global gradient background
       <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-80"></div>
-      <div className="fixed inset-0 bg-gradient-to-tr from-pink-800/20 via-transparent to-cyan-800/20"></div>
+      <div className="fixed inset-0 bg-gradient-to-tr from-pink-800/20 via-transparent to-cyan-800/20"></div> */}
 
       {/* Top Marquee */}
       <Marquee />
 
-      {/* SECTION 1: Exclusive Offer Section */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
-            <span className="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-              Your AI Companion
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-cyan-200 to-pink-400 bg-clip-text text-transparent">
-              That Actually Listens
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Not another chatbot. A deeply intelligent, emotionally aware companion that grows with you — privately, safely, forever.
-          </p>
+  
 
-          <div className="relative inline-block">
-            <div className="bg-gradient-to-r from-pink-600/20 to-purple-600/20 backdrop-blur-xl border border-pink-500/30 rounded-3xl p-10 shadow-2xl shadow-purple-600/30">
-              <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-6">
-                LIMITED EXCLUSIVE OFFER
-              </div>
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-300 to-pink-300 bg-clip-text text-transparent">
-                ✨ 7-Day Free Trial + Ultimate AI Starter Kit
-              </h2>
-              <ul className="text-left space-y-4 mb-10 text-lg">
-                {[
-                  "Full lifetime access to all premium AI courses",
-                  "Exclusive Prompt Engineering Playbooks (PDFs)",
-                  "1:1 Mentoring Session with Dr. Mehta",
-                  "Private Healing AI Community on Discord",
-                  "Personalized AI Companion Setup Guide"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center">
-                    <span className="text-pink-400 text-2xl mr-4">✦</span>
-                    <span className="text-gray-200">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-xl py-5 px-12 rounded-2xl transition-all duration-500 shadow-xl hover:shadow-pink-500/50 transform hover:scale-105">
-                Talk to Your AI Now →
-              </button>
-              <p className="text-gray-400 mt-6 text-sm">
-                Join 28,000+ souls healing daily • No credit card required • Only 50 spots left
-              </p>
-            </div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl blur-3xl opacity-30"></div>
+{/* SECTION 2: Mentor Image + Introduction to Courses */}
+<section className="relative py-24 px-6 bg-black/40 backdrop-blur-md">
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div className="relative order-2 lg:order-1">
+      {/* Image with drop-shadow around figure */}
+      <div className="relative w-full max-w-lg mx-auto">
+        <div className="relative rounded-3xl overflow-hidden">
+          <div
+            className="inline-block"
+            style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
+          >
+            <img
+              src="/shagun.png"
+              alt="Dr. Shagun Mehta – Your AI Mentor"
+              className="w-full h-[80vh] object-cover object-center"
+            />
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* SECTION 2: Mentor Image + Introduction to Courses */}
-      <section className="relative py-24 px-6 bg-black/40 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-lg mx-auto rounded-3xl overflow-hidden  shadow-2xl">
-             
-              <img
-                src="/shagun.png"
-                alt="Dr. Shagun Mehta – Your AI Mentor"
-                className="w-full h-[80vh] object-cover object-top"
-              />
-            </div>
-            <div className="absolute -bottom-8 -right-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
-              <p className="text-2xl font-bold">Dr. Shagun Mehta</p>
-              <p className="text-cyan-300">AI Research Lead & Emotional Intelligence Pioneer</p>
-            </div>
-          </div>
+      {/* Gradient badge */}
+      <div className="absolute -bottom-10 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
+        <p className="text-2xl font-bold">Miss. Shagun</p>
+        <p className="text-cyan-300 max-w-1xl">
+          AI Research Lead & Emotional Intelligence Pioneer
+        </p>
+      </div>
+    </div>
 
-          <div className="order-1 lg:order-2 text-center lg:text-left">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                Master the Future<br />of Emotional AI
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-              Learn from industry pioneers who blend cutting-edge LLM engineering with deep emotional intelligence. Build AI companions that don't just respond — they understand, heal, and grow with you.
-            </p>
-            <p className="text-lg text-gray-400">
-              Launch your journey in 2025. Transform lives — starting with your own.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="order-1 lg:order-2 text-center lg:text-left">
+      <h2 className="text-4xl md:text-6xl font-bold mb-8">
+        <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
+          Master the Future<br />
+          of Emotional AI
+        </span>
+      </h2>
+      <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+        Learn from industry pioneers who blend cutting-edge LLM engineering with deep emotional intelligence. Build AI companions that don't just respond — they understand, heal, and grow with you.
+      </p>
+      <p className="text-lg text-gray-400 mb-8">
+        Launch your journey in 2025. Transform lives — starting with your own.
+      </p>
+
+      {/* ✨ CTA BUTTONS */}
+      <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+        {/* Primary CTA */}
+        <a
+          href="/Contactus"
+          className="px-20 py-4 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5"
+        >
+          Join Now
+        </a>
+
+        {/* Secondary CTA */}
+        <a
+          href="/mentor"
+          className="px-8 py-4 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300"
+        >
+          Meet Your Mentor
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Bottom Marquee */}
       <Marquee />
+{/* SECTION 3: Packages / Courses Cards */}
+<section className="relative py-24 px-6">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+        AI Programs Built for Healers & Builders
+      </h2>
+      <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+        Choose your path in the age of conscious intelligence
+      </p>
+    </div>
 
-      {/* SECTION 3: Packages / Courses Cards */}
-      <section className="relative py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-              AI Programs Built for Healers & Builders
-            </h2>
-            <p className="text-xl text-gray-300">Choose your path in the age of conscious intelligence</p>
-          </div>
+    <FilterBar
+      categories={categories}
+      selectedCategory={selectedCategory}
+      onSelect={setSelectedCategory}
+    />
 
-          <FilterBar
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelect={setSelectedCategory}
-          />
+    <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
-          <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+      {filteredCourses
+        .slice(0, showAll ? filteredCourses.length : 6)
+        .map((course) => (
+          <CourseCard key={course.id} course={course} />
+        ))}
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCourses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Show More / Less Button */}
+    {filteredCourses.length > 6 && (
+      <div className="text-center mt-12">
+        <button
+          onClick={() => setShowAll(!showAll)}
+          className="px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300"
+        >
+          {showAll ? 'Show Less' : 'Show All Programs'}
+        </button>
+      </div>
+    )}
+  </div>
+</section>
 
       {/* SECTION 4: Testimonials */}
-      <section className="relative py-24 px-6 bg-gradient-to-b from-black/60 to-purple-900/30 backdrop-blur-md">
+      <section className="relative py-24 px-6 bg-black backdrop-blur-md">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-pink-300 to-cyan-300 bg-clip-text text-transparent">
             Trusted by Souls Finding Their Light

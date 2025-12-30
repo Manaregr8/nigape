@@ -74,10 +74,10 @@ export default function AIEditorialSlider() {
         {/* Title */}
         <div className="text-center pt-10 mb-8 md:mb-12">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-3">
-            AI Insights
+           Career Support & Outcomes  
           </h2>
           <p className="text-blue-300/60 text-sm md:text-base tracking-wide">
-            Next-generation intelligence at your fingertips
+         We empower your career growth 
           </p>
         </div>
 
@@ -130,49 +130,51 @@ export default function AIEditorialSlider() {
             </div>
           </div>
 
-          {/* Single Small Card - Auto-cycling */}
-          <div className="w-full lg:w-[32%]">
-            <div
-              onClick={() => goToSlide((currentIndex + 1) % slides.length)}
-              className="cursor-pointer group/small transition-all duration-700 hover:scale-[1.02]">
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-950/30 to-purple-950/30 backdrop-blur-xl border border-blue-400/30 shadow-lg shadow-blue-500/10 hover:border-blue-400/50 hover:shadow-blue-500/20 transition-all duration-700">
-                
-                <div className="relative h-[500px] overflow-hidden">
-                  <img
-                    src={slides[(currentIndex + 1) % slides.length].img}
-                    alt={slides[(currentIndex + 1) % slides.length].name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover/small:scale-110"
-                  />
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/15 to-pink-600/15 mix-blend-overlay" />
-                  
-                  {/* Badge */}
-                  <div className="absolute top-6 left-6">
-                    <span className="inline-block px-4 py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold tracking-wider rounded-lg shadow-lg">
-                      {slides[(currentIndex + 1) % slides.length].badge}
-                    </span>
-                  </div>
+        {/* Single Small Card - Auto-cycling */}
+<div className="w-full lg:w-[32%]">
+  <div
+    onClick={() => goToSlide((currentIndex + 1) % slides.length)}
+    className="cursor-pointer group/small transition-all duration-700 hover:scale-[1.02]"
+  >
+    <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-950/30 to-purple-950/30 backdrop-blur-xl border border-blue-400/30 shadow-lg shadow-blue-500/10 hover:border-blue-400/50 hover:shadow-blue-500/20 transition-all duration-700">
+      
+      {/* 👇 Add responsive height here */}
+      <div className="relative h-[200px] sm:h-[450px] lg:h-[500px] overflow-hidden">
+        <img
+          src={slides[(currentIndex + 1) % slides.length].img}
+          alt={slides[(currentIndex + 1) % slides.length].name}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover/small:scale-110"
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/15 to-pink-600/15 mix-blend-overlay" />
+        
+        {/* Badge */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[10px] sm:text-xs font-bold tracking-wider rounded-lg shadow-sm sm:shadow-lg">
+            {slides[(currentIndex + 1) % slides.length].badge}
+          </span>
+        </div>
 
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/90 to-transparent">
-                    <h4 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-2 leading-tight">
-                      {slides[(currentIndex + 1) % slides.length].name}
-                    </h4>
-                    <p className="text-gray-300 text-sm mb-3">
-                      {slides[(currentIndex + 1) % slides.length].role}
-                    </p>
-                    <button className="inline-flex items-center gap-2 text-white hover:text-blue-300 font-medium transition-all duration-300">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Read more</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Content */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black via-black/90 to-transparent">
+          <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight mb-1 sm:mb-2 leading-tight">
+            {slides[(currentIndex + 1) % slides.length].name}
+          </h4>
+          <p className="text-gray-300 text-[11px] sm:text-sm mb-2 sm:mb-3">
+            {slides[(currentIndex + 1) % slides.length].role}
+          </p>
+          <button className="inline-flex items-center gap-1.5 text-white hover:text-blue-300 font-medium text-[11px] sm:text-sm transition-all duration-300">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Read more</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* Controls */}
