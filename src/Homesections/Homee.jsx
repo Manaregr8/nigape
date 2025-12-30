@@ -56,7 +56,7 @@ export default function Homee() {
       <div className="relative z-10 min-h-screen flex flex-col ">
                {/* HERO */}
         <section className="flex-1  flex items-center">
-          <div className="mx-auto pt-20 w-full max-w-7xl px-4">
+          <div className="mx-auto pt-5 md:pt-20 w-full max-w-7xl px-4">
             <div className="space-y-10 text-center max-w-8xl mx-auto">
               <h1
                 className=" font-black uppercase tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.8rem] drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
