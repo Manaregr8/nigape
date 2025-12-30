@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -38,8 +37,8 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen pt-28 sm:pt-36 bg-black py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto mt-8 sm:mt-12 border-t border-gray-800/40 pt-8">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
@@ -55,12 +54,12 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#FF40EB] animate-slide-up hover:bg-gradient-to-r from-black/30 to-[#FF40EB]"
+              className="border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#FF40EB] animate-slide-up hover:bg-gradient-to-l from-[#FF40EB] to-black/30"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between bg-black hover:bg-gradient-to-r from-black/30 to-[#FF40EB] transition-colors duration-200"
+                className="w-full px-6 py-5 text-left flex items-center justify-between bg-black hover:bg-gradient-to-l from-[#FF40EB] to-black/30 transition-colors duration-200"
               >
                 <span className="text-lg font-semibold text-white pr-4">
                   {faq.question}
@@ -77,7 +76,7 @@ export default function FAQSection() {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 py-5  border-t border-gray-800">
+                <div className="px-6 py-5 bg-gray-900/50 border-t border-gray-800">
                   <p className="text-gray-300 leading-relaxed">
                     {faq.answer}
                   </p>
