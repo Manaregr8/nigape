@@ -7,7 +7,7 @@ const TestimonialsSection = () => {
       quote:
         "Before <span style='color:#9234eb; font-weight:600'>NIGAPE</span>, I had just finished school and had zero coding experience. Within weeks of joining, I was building my first AI chatbot project. Today I’m leading an AI project at a startup. The career clarity and confidence I gained here is unbelievable.",
       name: "Rahul",
-      role: "Class 12 graduate",
+      role: "Class 1 2 graduate",
       avatarUrl: "https://i.pravatar.cc/40?img=1",
       linkedinUrl: "#",
     },
@@ -30,40 +30,40 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-16 h-screen px-4 bg-black">
-      <div className="max-w-6xl mx-auto my-10 ">
-        <h2 className="text-3xl md:text-5xl font-bold text-[#FF40EB] text-center pb-20">
-          Testimonials 
+    <section className="py-8 md:py-12 px-4 bg-black overflow-visible">
+      <div className="max-w-6xl mx-auto w-full">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#FF40EB] text-center pb-10 md:pb-16">
+          Testimonials
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((t, index) => (
-            <div key={index} className="relative w-full max-w-md mx-auto">
+            <div key={index} className="relative w-full overflow-visible">
               {/* Background layers for depth */}
-              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-30 transform translate-x-2 translate-y-2"></div>
-              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-50 transform translate-x-1 translate-y-1"></div>
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-30 transform translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2"></div>
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-50 transform translate-x-0 translate-y-0 md:translate-x-1 md:translate-y-1"></div>
 
               {/* Main card */}
-              <div className="relative bg-white rounded-xl shadow-xl p-6 z-10">
+              <div className="relative bg-white rounded-xl shadow-xl p-4 md:p-6 z-10">
                 {/* Top tab */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-white rounded-t-lg border border-gray-200 flex items-center justify-center">
-                  <span className="text-lg font-bold text-[#9234eb]">NIGAPE</span>
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-20 h-7 sm:-top-6 sm:w-24 sm:h-8 bg-white rounded-t-lg border border-gray-200 flex items-center justify-center">
+                  <span className="text-sm sm:text-lg font-bold text-[#9234eb]">NIGAPE</span>
                 </div>
 
-                {/* Quote mark in purple */}
-                <div className="text-3xl text-[#9234eb] mb-4">“</div>
+                {/* Quote mark */}
+                <div className="text-2xl md:text-3xl text-[#9234eb] mb-4">“</div>
 
-                {/* Quote text with highlighted NIGAPE */}
+                {/* Quote text */}
                 <p
-                  className="text-gray-700 leading-relaxed mb-6"
+                  className="text-gray-700 leading-relaxed mb-6 text-sm md:text-base"
                   dangerouslySetInnerHTML={{ __html: t.quote }}
                 />
 
-                {/* Footer with avatar & LinkedIn */}
+                {/* Footer */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <div className="flex items-center space-x-3">
                     <img
-                      src={t.avatarUrl.trim()} // Fixed extra spaces in URL
+                      src={t.avatarUrl.trim()}
                       alt={t.name}
                       className="w-10 h-10 rounded-full object-cover"
                     />
