@@ -55,12 +55,12 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#FF40EB] animate-slide-up hover:bg-gradient-to-l from-[#FF40EB] to-black/30"
+              className="border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-[#FF40EB] animate-slide-up hover:bg-gradient-to-r from-black/30 to-[#FF40EB]"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between bg-black hover:bg-gradient-to-l from-[#FF40EB] to-black/30 transition-colors duration-200"
+                className="w-full px-6 py-5 text-left flex items-center justify-between bg-black hover:bg-gradient-to-r from-black/30 to-[#FF40EB] transition-colors duration-200"
               >
                 <span className="text-lg font-semibold text-white pr-4">
                   {faq.question}
@@ -77,7 +77,7 @@ export default function FAQSection() {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 py-5 bg-gray-900/50 border-t border-gray-800">
+                <div className="px-6 py-5  border-t border-gray-800">
                   <p className="text-gray-300 leading-relaxed">
                     {faq.answer}
                   </p>

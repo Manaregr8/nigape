@@ -312,7 +312,7 @@ export default function CoursesPage() {
   
 
 {/* SECTION 2: Mentor Image + Introduction to Courses */}
-<section className="relative py-24 px-6 bg-black/40 backdrop-blur-md">
+<section className="relative py-2 pb-20 px-6 bg-black/40 backdrop-blur-md">
   <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
     <div className="relative order-2 lg:order-1">
       {/* Image with drop-shadow around figure */}
@@ -332,7 +332,7 @@ export default function CoursesPage() {
       </div>
 
       {/* Gradient badge */}
-      <div className="absolute -bottom-10 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
+      <div className="absolute -bottom-8 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
         <p className="text-2xl font-bold">Miss. Shagun</p>
         <p className="text-cyan-300 max-w-1xl">
           AI Research Lead & Emotional Intelligence Pioneer
