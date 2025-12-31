@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      {/* ✅ Apply font variables to body */}
+    
       <body
         className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
