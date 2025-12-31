@@ -3,11 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../Homesections/Header.jsx";
 import Footer from "../Homesections/Footer.jsx";
+import ClientWrapper from "./wraper.jsx";
 
 // ✅ Use consistent variable names
 const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-geist", // ← matches CSS & Tailwind
+  variable: "--font-geist",
 });
 
 const geistMono = Geist_Mono({
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "AI Companion",
+  title: "NIGAPE - Training the Future with AI",
   description: "Your emotionally intelligent friend",
 };
 
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Clean Tailwind CDN URL (remove extra spaces) */}
+        {/* ✅ Clean Tailwind CDN URL */}
         <script src="https://cdn.tailwindcss.com"></script>
 
         {/* Optional: Tailwind config for font utilities & custom colors */}
@@ -55,9 +56,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
-        <Header/>
-        {children}
-        <Footer/>
+        <ClientWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </ClientWrapper>
       </body>
     </html>
   );
