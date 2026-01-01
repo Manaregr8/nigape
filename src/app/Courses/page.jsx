@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 
-// Mock data for courses (same as before)
+// Mock data for courses (with placeholder images)
 const courses = [
   {
     id: 1,
@@ -15,7 +15,7 @@ const courses = [
     price: "$499",
     lessons: 35,
     rating: 4.8,
-    image: "/course1.jpg" // Placeholder - replace with actual image path
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const courses = [
     price: "$199",
     lessons: 12,
     rating: 4.9,
-    image: "/course2.jpg"
+    image: "https://images.unsplash.com/photo-1676277791608-ac67b5f1dd3f?w=500&h=300&fit=crop"
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const courses = [
     price: "$599",
     lessons: 24,
     rating: 4.7,
-    image: "/course3.jpg"
+    image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=500&h=300&fit=crop"
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const courses = [
     price: "$399",
     lessons: 18,
     rating: 4.6,
-    image: "/course4.jpg"
+    image: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=500&h=300&fit=crop"
   }
 ];
 
@@ -70,7 +70,7 @@ const shortCourses = [
     price: "$49",
     lessons: 8,
     rating: 4.5,
-    image: "/short1.jpg"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&h=300&fit=crop"
   },
   {
     id: 6,
@@ -82,7 +82,7 @@ const shortCourses = [
     price: "$99",
     lessons: 12,
     rating: 4.7,
-    image: "/short2.jpg"
+    image: "https://images.unsplash.com/photo-1675271591055-1d6396e52ee7?w=500&h=300&fit=crop"
   },
   {
     id: 7,
@@ -94,7 +94,7 @@ const shortCourses = [
     price: "$199",
     lessons: 20,
     rating: 4.6,
-    image: "/short3.jpg"
+    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop"
   },
   {
     id: 8,
@@ -106,7 +106,7 @@ const shortCourses = [
     price: "$199",
     lessons: 18,
     rating: 4.8,
-    image: "/short4.jpg"
+    image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=500&h=300&fit=crop"
   },
   {
     id: 9,
@@ -118,7 +118,7 @@ const shortCourses = [
     price: "$299",
     lessons: 25,
     rating: 4.9,
-    image: "/short5.jpg"
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=300&fit=crop"
   }
 ];
 
@@ -197,73 +197,50 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
   );
 };
 
-// Course Card (redesigned to vertical, matches image)
+// Course Card (without price)
 const CourseCard = ({ course }) => {
-  const renderStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-    return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <svg key={`full-${i}`} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-            <path d="M9.049 2.917c1.927-1.823 5.023-1.823 6.95 0 1.927 1.823 1.927 4.819 0 6.641L12.87 15.06c-1.154 1.154-2.93 1.154-4.084 0l-6.06-6.06c-1.154-1.154-1.154-2.93 0-4.084s2.93-1.154 4.084 0l6.06 6.06z" />
-          </svg>
-        ))}
-        {hasHalfStar && (
-          <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-            <path d="M9.049 2.917c1.927-1.823 5.023-1.823 6.95 0 1.927 1.823 1.927 4.819 0 6.641L12.87 15.06c-1.154 1.154-2.93 1.154-4.084 0l-6.06-6.06c-1.154-1.154-1.154-2.93 0-4.084s2.93-1.154 4.084 0l6.06 6.06z" />
-            <path d="M17.418 15.06c-1.154 1.154-2.93 1.154-4.084 0l-6.06-6.06c-1.154-1.154-1.154-2.93 0-4.084s2.93-1.154 4.084 0l6.06 6.06c1.154 1.154 1.154 2.93 0 4.084z" fillOpacity="0.5" />
-          </svg>
-        )}
-        {[...Array(emptyStars)].map((_, i) => (
-          <svg key={`empty-${i}`} className="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20">
-            <path d="M9.049 2.917c1.927-1.823 5.023-1.823 6.95 0 1.927 1.823 1.927 4.819 0 6.641L12.87 15.06c-1.154 1.154-2.93 1.154-4.084 0l-6.06-6.06c-1.154-1.154-1.154-2.93 0-4.084s2.93-1.154 4.084 0l6.06 6.06z" fillOpacity="0.5" />
-          </svg>
-        ))}
-      </div>
-    );
-  };
-
   return (
-    <div className="group relative bg-gray-900 border border-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:border-pink-500/50">
+    <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
       {/* Image Header */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-78 overflow-hidden">
         <img
           src={course.image}
           alt={course.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute top-3 left-3 bg-black/60 text-white px-2 py-1 rounded-full text-xs font-medium">
+        {/* Category Badge */}
+        <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
           {course.category === "engineering" ? "Engineering" :
            course.category === "prompt" ? "Prompt" :
            course.category === "business" ? "Business" :
-           "Short"}
+           "Short"} • {course.lessons}
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-        <p className="text-sm text-gray-400 mb-4 line-clamp-2">{course.description}</p>
-        <div className="flex items-center mb-3">
-          {renderStars(course.rating)}
-          <span className="ml-2 text-sm text-gray-400">({Math.round(course.students / 100)} Reviews)</span>
-        </div>
-        <div className="flex items-center justify-between mt-6">
-          <span className="text-2xl font-bold text-pink-400">{course.price}</span>
-          <div className="flex items-center text-sm text-gray-400">
-            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-            {course.lessons} Lessons
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 leading-snug">{course.title}</h3>
+        
+        <p className="text-sm text-gray-400 mb-3">{course.instructor?.name || course.instructor || 'Team Nigape'}</p>
+        
+        <p className="text-sm text-gray-300 mb-4 line-clamp-2">{course.description}</p>
+
+        <div className="mt-auto">
+          {/* Rating */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-yellow-400 font-bold text-base">{course.rating?.toFixed(1)}</span>
+            <span className="text-yellow-400">★★★★★</span>
+            <span className="text-xs text-gray-400">({course.students?.toLocaleString()})</span>
           </div>
+
+          {/* Bestseller Badge */}
+          {(course.rating >= 4.7 || course.students > 1000) && (
+            <div className="flex items-center justify-start">
+              <span className="bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Bestseller</span>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
   );
 };
@@ -302,157 +279,121 @@ export default function CoursesPage() {
 
   return (
     <div className="min-h-screen pt-20 bg-black text-white overflow-hidden">
-      {/* Global gradient background
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-80"></div>
+      {/* Global gradient background */}
+      {/* <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-80"></div>
       <div className="fixed inset-0 bg-gradient-to-tr from-pink-800/20 via-transparent to-cyan-800/20"></div> */}
 
       {/* Top Marquee */}
       <Marquee />
 
-  
+      {/* SECTION 2: Mentor Image + Introduction to Courses */}
+      <section className="relative py-24 px-6 bg-black/40 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative order-2 lg:order-1">
+            {/* Image with drop-shadow around figure */}
+            <div className="relative w-full max-w-lg mx-auto">
+              <div className="relative rounded-3xl overflow-hidden">
+                <div
+                  className="inline-block"
+                  style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
+                >
+                  <img
+                    src="/shagun.png"
+                    alt="Dr. Shagun Mehta – Your AI Mentor"
+                    className="w-full h-[80vh] object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
 
-{/* SECTION 2: Mentor Image + Introduction to Courses */}
-<section className="relative py-2 pb-20 px-6 bg-black/40 backdrop-blur-md">
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-    <div className="relative order-2 lg:order-1">
-      {/* Image with drop-shadow around figure */}
-      <div className="relative w-full max-w-lg mx-auto">
-        <div className="relative rounded-3xl overflow-hidden">
-          <div
-            className="inline-block"
-            style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
-          >
-            <img
-              src="/shagun.png"
-              alt="Dr. Shagun Mehta – Your AI Mentor"
-              className="w-full h-[80vh] object-cover object-center"
-            />
+            {/* Gradient badge */}
+            <div className="absolute -bottom-10 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
+              <p className="text-2xl font-bold">Miss. Shagun</p>
+              <p className="text-cyan-300 max-w-1xl">
+                AI Research Lead & Emotional Intelligence Pioneer
+              </p>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2 text-center lg:text-left">
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                Master the Future<br />
+                of Emotional AI
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+              Learn from industry pioneers who blend cutting-edge LLM engineering with deep emotional intelligence. Build AI companions that don't just respond — they understand, heal, and grow with you.
+            </p>
+            <p className="text-lg text-gray-400 mb-8">
+              Launch your journey in 2025. Transform lives — starting with your own.
+            </p>
+
+            {/* ✨ CTA BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+              {/* Primary CTA */}
+              <a
+                href="/Contactus"
+                className="px-20 py-4 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                Join Now
+              </a>
+
+              {/* Secondary CTA */}
+              <a
+                href="/mentor"
+                className="px-8 py-4 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300"
+              >
+                Meet Your Mentor
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Gradient badge */}
-      <div className="absolute -bottom-8 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
-        <p className="text-2xl font-bold">Miss. Shagun</p>
-        <p className="text-cyan-300 max-w-1xl">
-          AI Research Lead & Emotional Intelligence Pioneer
-        </p>
-      </div>
-    </div>
-
-    <div className="order-1 lg:order-2 text-center lg:text-left">
-      <h2 className="text-4xl md:text-6xl font-bold mb-8">
-        <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
-          Master the Future<br />
-          of Emotional AI
-        </span>
-      </h2>
-      <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-        Learn from industry pioneers who blend cutting-edge LLM engineering with deep emotional intelligence. Build AI companions that don't just respond — they understand, heal, and grow with you.
-      </p>
-      <p className="text-lg text-gray-400 mb-8">
-        Launch your journey in 2025. Transform lives — starting with your own.
-      </p>
-
-      {/* ✨ CTA BUTTONS */}
-      <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-        {/* Primary CTA */}
-        <a
-          href="/Contactus"
-          className="px-20 py-4 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5"
-        >
-          Join Now
-        </a>
-
-        {/* Secondary CTA */}
-        <a
-          href="/mentor"
-          className="px-8 py-4 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300"
-        >
-          Meet Your Mentor
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Bottom Marquee */}
       <Marquee />
-{/* SECTION 3: Packages / Courses Cards */}
-<section className="relative py-24 px-6">
-  <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-        AI Programs Built for Healers & Builders
-      </h2>
-      <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-        Choose your path in the age of conscious intelligence
-      </p>
-    </div>
 
-    <FilterBar
-      categories={categories}
-      selectedCategory={selectedCategory}
-      onSelect={setSelectedCategory}
-    />
-
-    <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
-
-    {/* Cards Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-      {filteredCourses
-        .slice(0, showAll ? filteredCourses.length : 6)
-        .map((course) => (
-          <CourseCard key={course.id} course={course} />
-        ))}
-    </div>
-
-    {/* Show More / Less Button */}
-    {filteredCourses.length > 6 && (
-      <div className="text-center mt-12">
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300"
-        >
-          {showAll ? 'Show Less' : 'Show All Programs'}
-        </button>
-      </div>
-    )}
-  </div>
-</section>
-
-      {/* SECTION 4: Testimonials */}
-      <section className="relative py-24 px-6 bg-black backdrop-blur-md">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-pink-300 to-cyan-300 bg-clip-text text-transparent">
-            Trusted by Souls Finding Their Light
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[
-              {
-                name: "Priya S.",
-                role: "AI Engineer @ TechNova",
-                text: "This course didn't just teach me engineering — it helped me build an AI that truly listens. Life-changing.",
-              },
-              {
-                name: "Raj M.",
-                role: "Healing Practitioner",
-                text: "Finally, AI that understands emotion. My clients feel seen like never before.",
-              },
-              {
-                name: "James L.",
-                role: "Founder, SoulFlow AI",
-                text: "The techniques here saved months of therapy for thousands. Pure magic.",
-              },
-            ].map((t, i) => (
-              <div key={i} className="bg-gradient-to-b from-purple-900/30 to-black/50 backdrop-blur-xl border border-pink-500/30 rounded-2xl p-8 shadow-2xl shadow-purple-600/20">
-                <div className="text-pink-400 text-3xl mb-4">✦✦✦✦✦</div>
-                <p className="italic text-gray-200 text-lg mb-8">"{t.text}"</p>
-                <p className="font-bold text-white text-xl">{t.name}</p>
-                <p className="text-cyan-300">{t.role}</p>
-              </div>
-            ))}
+      {/* SECTION 3: Packages / Courses Cards */}
+      <section className="relative py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+              AI Programs Built for Healers & Builders
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Choose your path in the age of conscious intelligence
+            </p>
           </div>
+
+          <FilterBar
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelect={setSelectedCategory}
+          />
+
+          <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 items-stretch">
+            {filteredCourses
+              .slice(0, showAll ? filteredCourses.length : 6)
+              .map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+          </div>
+
+          {/* Show More / Less Button */}
+          {filteredCourses.length > 6 && (
+            <div className="text-center mt-12">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300"
+              >
+                {showAll ? 'Show Less' : 'Show All Programs'}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -465,10 +406,6 @@ export default function CoursesPage() {
         .animate-marquee {
           animation: marquee 30s linear infinite;
         }
-        /* Optional: pause on hover */
-        /* .animate-marquee:hover {
-          animation-play-state: paused;
-        } */
       `}</style>
     </div>
   );
