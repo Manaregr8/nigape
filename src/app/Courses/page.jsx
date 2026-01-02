@@ -232,7 +232,7 @@ export default function CoursesPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
               {/* Primary CTA */}
               <a
-                href="/Form"
+                href="/Form/form"
                 className="px-20 py-4 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 Join Now
@@ -240,7 +240,7 @@ export default function CoursesPage() {
 
               {/* Secondary CTA */}
               <a
-                href="/Form"
+                href="/Form/form"
                 className="px-8 py-4 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300"
               >
                 Meet Your Mentor

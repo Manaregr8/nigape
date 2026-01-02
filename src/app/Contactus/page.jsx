@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
 import Iridescence from '@/Homesections/bits/Iridescence.js';
+import FAQSection from '@/Homesections/Homesection7.jsx'; 
 
 
 // const navItems = [
@@ -76,12 +77,13 @@ export default function ContactPage() {
       {/* Background */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <Iridescence
-          color={[1, 1, 1]}        
+           color={[1, 0.25, 0.92]}       
           mouseReact={false}       
           amplitude={0.1}
           speed={1.0}
         />
       </div>
+      <div className="  absolute inset-0 -z-[1] bg-black/50 "></div>
       
 
       {/* HERO */}
@@ -91,7 +93,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-extrabold text-black mb-6 tracking-tight"
+            className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight"
           >
             Contact Us
           </motion.h1>
@@ -100,7 +102,7 @@ export default function ContactPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto"
           >
             Due to high volume of orders and interactions, it may take longer
             to respond. We appreciate your patience.
@@ -178,7 +180,7 @@ export default function ContactPage() {
                 Check our FAQs for instant answers.
               </p>
               <a
-                href="#"
+                href="/#faq"
                 className="inline-block mt-5 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 transition"
               >
                 View FAQs →

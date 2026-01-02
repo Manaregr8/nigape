@@ -1,99 +1,120 @@
-"use client";
-import React, { useState } from "react";
+// // ContactForm.tsx (Next.js + Tailwind CSS)
+// 'use client';
 
-export default function LandscapeForm() {
-	const [form, setForm] = useState({
-		name: "",
-		location: "",
-		description: "",
-		image: null,
-	});
+// import { useState } from 'react';
 
-	const handleChange = (e) => {
-		const { name, value, files } = e.target;
-		setForm((prev) => ({
-			...prev,
-			[name]: files ? files[0] : value,
-		}));
-	};
+// const ContactForm = () => {
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     phone: '',
+//     message: '',
+//   });
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		// Handle form submission logic here
-		alert("Landscape details submitted!");
-	};
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({ ...prev, [name]: value }));
+//   };
 
-	return (
-		<div className="min-h-screen flex items-center justify-center bg-black">
-			<form
-				onSubmit={handleSubmit}
-				className="w-full max-w-4xl p-10 rounded-xl shadow-lg bg-[#181818] border border-[#FF40EB]/30 flex flex-col md:flex-row gap-8"
-			>
-				{/* Left column: labels and inputs */}
-				<div className="flex-1 flex flex-col justify-center gap-6">
-					<h2 className="text-3xl font-bold mb-4 text-[#FF40EB]">Landscape Details</h2>
+//   const handleSubmit = (e: React.FormEvent) => {
+//     e.preventDefault();
+//     // Handle form submission
+//     console.log(formData);
+//   };
 
-					<label className="block">
-						<span className="text-[#FF40EB] font-semibold">Landscape Name</span>
-						<input
-							type="text"
-							name="name"
-							value={form.name}
-							onChange={handleChange}
-							required
-							className="mt-2 w-full px-4 py-2 rounded bg-black text-white border border-[#FF40EB]/40 focus:border-[#FF40EB] focus:outline-none"
-							placeholder="Enter name"
-						/>
-					</label>
+//   return (
+//     <div className="min-h-screen bg-black text-white font-mono">
+//       {/* Optional: pixel font import */}
+//       <style jsx global>{`
+//         @import url('https://fonts.cdnfonts.com/css/press-start-2p');
+//         .font-mono { font-family: 'Press Start 2P', monospace; }
+//       `}</style>
 
-					<label className="block">
-						<span className="text-[#FF40EB] font-semibold">Location</span>
-						<input
-							type="text"
-							name="location"
-							value={form.location}
-							onChange={handleChange}
-							required
-							className="mt-2 w-full px-4 py-2 rounded bg-black text-white border border-[#FF40EB]/40 focus:border-[#FF40EB] focus:outline-none"
-							placeholder="Enter location"
-						/>
-					</label>
+//       <div className="max-w-6xl mx-auto px-4 py-12">
+//         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+//           {/* Form Section */}
+//           <div className="w-full lg:w-1/2 space-y-6">
+//             <h2 className="text-2xl font-bold text-[#FF40EB] tracking-wide">GET IN TOUCH</h2>
+//             <form onSubmit={handleSubmit} className="space-y-6">
+//               <div>
+//                 <label htmlFor="name" className="block text-sm mb-2 text-[#FF40EB]">NAME</label>
+//                 <input
+//                   id="name"
+//                   name="name"
+//                   type="text"
+//                   value={formData.name}
+//                   onChange={handleChange}
+//                   required
+//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
+//                   placeholder="YOUR NAME"
+//                 />
+//               </div>
 
-					<label className="block">
-						<span className="text-[#FF40EB] font-semibold">Description</span>
-						<textarea
-							name="description"
-							value={form.description}
-							onChange={handleChange}
-							required
-							className="mt-2 w-full px-4 py-2 rounded bg-black text-white border border-[#FF40EB]/40 focus:border-[#FF40EB] focus:outline-none"
-							placeholder="Describe the landscape"
-							rows={4}
-						/>
-					</label>
-				</div>
+//               <div>
+//                 <label htmlFor="email" className="block text-sm mb-2 text-[#FF40EB]">EMAIL</label>
+//                 <input
+//                   id="email"
+//                   name="email"
+//                   type="email"
+//                   value={formData.email}
+//                   onChange={handleChange}
+//                   required
+//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
+//                   placeholder="YOUR@EMAIL.COM"
+//                 />
+//               </div>
 
-				{/* Right column: image upload and submit */}
-				<div className="flex-1 flex flex-col justify-center gap-6 items-center">
-					<label className="block w-full">
-						<span className="text-[#FF40EB] font-semibold">Image Upload</span>
-						<input
-							type="file"
-							name="image"
-							accept="image/*"
-							onChange={handleChange}
-							className="mt-2 w-full px-4 py-2 rounded bg-black text-white border border-[#FF40EB]/40 focus:border-[#FF40EB] focus:outline-none"
-						/>
-					</label>
+//               <div>
+//                 <label htmlFor="phone" className="block text-sm mb-2 text-[#FF40EB]">PHONE</label>
+//                 <input
+//                   id="phone"
+//                   name="phone"
+//                   type="tel"
+//                   value={formData.phone}
+//                   onChange={handleChange}
+//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
+//                   placeholder="YOUR NUMBER"
+//                 />
+//               </div>
 
-					<button
-						type="submit"
-						className="w-full py-3 rounded bg-[#FF40EB] text-black font-bold text-lg hover:bg-pink-600 transition mt-8"
-					>
-						Submit
-					</button>
-				</div>
-			</form>
-		</div>
-	);
-}
+//               <div>
+//                 <label htmlFor="message" className="block text-sm mb-2 text-[#FF40EB]">MESSAGE</label>
+//                 <textarea
+//                   id="message"
+//                   name="message"
+//                   value={formData.message}
+//                   onChange={handleChange}
+//                   required
+//                   rows={4}
+//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50 resize-none"
+//                   placeholder="YOUR MESSAGE"
+//                 />
+//               </div>
+
+//               <button
+//                 type="submit"
+//                 className="px-6 py-3 bg-[#FF40EB] text-black font-bold tracking-wider hover:bg-[#ff5df0] transition-colors duration-300"
+//               >
+//                 SEND
+//               </button>
+//             </form>
+//           </div>
+
+//           {/* AI Image Section */}
+//           <div className="w-full lg:w-1/2 flex justify-center">
+//             <div className="relative w-full max-w-md h-80 lg:h-96">
+//               {/* Placeholder for AI-themed image — replace with your actual image */}
+//               <div className="absolute inset-0 bg-gradient-to-br from-[#FF40EB]/10 to-purple-900/20 rounded-xl flex items-center justify-center">
+//                 <span className="text-[#FF40EB]/70 text-center px-4">
+//                   AI ILLUSTRATION<br />OR ABSTRACT<br />VISUALIZATION
+//                 </span>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ContactForm;
