@@ -75,7 +75,7 @@ export default function Footer() {
                   <MessageCircle className="w-5 h-5 text-[#FF40EB] group-hover:scale-110 transition" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-[#FF40EB]/10 border border-[#FF40EB]/30 flex items-center justify-center hover:bg-[#FF40EB]/20 hover:border-[#FF40EB] transition-all duration-300 group">
-                  <Globe className="w-5 h-5 text-[#FF40EB] group-hover:scale-110 transition" />
+                  <Globe className="w-10 h-10 text-[#FF40EB] group-hover:scale-110 transition" />
                 </a>
               </div>
             </div>
@@ -104,8 +104,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {['Twitter (X)', 'Telegram', 'Medium'].map((item) => (
                   <li key={item} className="group">
-                    <a href="#" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#FF40EB] rounded-full opacity-0 group-hover:opacity-100 transition"></span>
+                    <a href="#" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                       {item}
                     </a>
                   </li>
@@ -121,8 +120,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {['Privacy Policy', 'Terms of Service'].map((item) => (
                   <li key={item} className="group">
-                    <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block flex items-center gap-2">
-                      <Shield className="w-3 h-3 text-[#FF40EB] opacity-0 group-hover:opacity-60 transition" />
+                    <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                       {item}
                     </Link>
                   </li>
@@ -132,13 +130,13 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-10 md:mt-16 pt-6 border-t border-[#FF40EB]/20 grid grid-cols-2 md:flex justify-between items-center gap-6 text-sm">
+          <div className="mt-10 md:mt-16 pt-6 border-t border-[#FF40EB]/20 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-gray-500">
               <Copyright className="w-4 h-4" />
               <span>2025 NIGAPE. All rights reserved.</span>
             </div>
             
-            <div className="flex items-center gap-6 text-gray-500 order-first md:order-last">
+            <div className="flex items-center gap-6 text-gray-500">
               <span className="hover:text-[#FF40EB] cursor-default transition">Empowering India's AI Future</span>
               <span className="text-[#FF40EB] font-semibold flex items-center gap-1">
                 <span className="relative flex h-2 w-2">

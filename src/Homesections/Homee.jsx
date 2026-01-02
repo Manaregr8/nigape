@@ -82,12 +82,12 @@ export default function Homee() {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
-                <button className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition">
+                <a href="/Form" className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center">
                   Join NIGAPE Now
-                </button>
-                <button className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm">
+                </a>
+                <a href="/Form" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
                   Talk to a Counselor
-                </button>
+                </a>
               </div>
             </div>
           </div>

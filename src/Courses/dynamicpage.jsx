@@ -171,9 +171,9 @@ const CoursePage = ({ course }) => {
                     </div>
                   </div>
 
-                  <button className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] rounded-lg font-bold text-black hover:opacity-90 transition-opacity">
+                  <a href="/Form" className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] rounded-lg font-bold text-black hover:opacity-90 transition-opacity flex items-center justify-center">
                     Enroll Now
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
