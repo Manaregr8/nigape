@@ -41,7 +41,7 @@ const CoursePage = ({ course }) => {
                   <span className="inline-block px-3 py-1 bg-[#FF40EB]/20 text-[#FF40EB] rounded-full text-sm">
                     {course.level.charAt(0).toUpperCase() + course.level.slice(1)} • {course.mode}
                   </span>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF40EB] to-pink-300 text-transparent bg-clip-text">
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] text-transparent bg-clip-text">
                     {course.title}
                   </h1>
                   <p className="text-gray-300 mt-2">{course.description}</p>
@@ -171,7 +171,7 @@ const CoursePage = ({ course }) => {
                     </div>
                   </div>
 
-                  <button className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-pink-500 rounded-lg font-bold text-black hover:opacity-90 transition-opacity">
+                  <button className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] rounded-lg font-bold text-black hover:opacity-90 transition-opacity">
                     Enroll Now
                   </button>
                 </div>

@@ -22,7 +22,7 @@ export default function Accordion({ modules }) {
               aria-controls={`module-panel-${i}`}
             >
               <div className="flex items-center gap-5">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#FF40EB] to-pink-400 text-white font-bold text-lg border-2 border-[#FF40EB]/60 shadow-md">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#FF40EB] to-[#FF40EB] text-white font-bold text-lg border-2 border-[#FF40EB]/60 shadow-md">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-left">
@@ -42,7 +42,7 @@ export default function Accordion({ modules }) {
               style={{
                 opacity: isOpen ? 1 : 0,
                 pointerEvents: isOpen ? 'auto' : 'none',
-                background: isOpen ? "linear-gradient(90deg, #FF40EB22 0%, #000 100%)" : undefined,
+                background: isOpen ? "linear-gradient(90deg, #000 , 100%)" : undefined,
                 borderRadius: "1rem",
               }}
             >

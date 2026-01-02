@@ -186,7 +186,7 @@ export default function CoursesPage() {
       <Marquee />
 
       {/* SECTION 2: Mentor Image + Introduction to Courses */}
-      <section className="relative py-24 px-6 bg-black/40 backdrop-blur-md">
+      <section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative order-2 lg:order-1">
             {/* Image with drop-shadow around figure */}
@@ -251,7 +251,7 @@ export default function CoursesPage() {
       </section>
 
       {/* Bottom Marquee */}
-      <Marquee />
+      <Marquee  />
 
       {/* SECTION 3: Packages / Courses Cards */}
       <section className="relative py-24 px-6">
