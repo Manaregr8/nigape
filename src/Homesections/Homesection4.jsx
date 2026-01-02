@@ -12,7 +12,7 @@ export default function RoadmapSection() {
       desc:
         "Learn in high-tech classrooms equipped like an AI startup's R&D lab. You'll work in teams on fixed schedules, just like a real AI development cycle.",
       image:
-        "https://cdn.prod.website-files.com/686294e263eb7e215bd232f7/689a491a35ad9b5025ada1da_solutions-styling-cms-travelogic.webp",
+        "/Nigapepic/1.webp",
     },
     {
       phase: "Phase 2",
@@ -115,7 +115,7 @@ export default function RoadmapSection() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             </div>
           </div>
