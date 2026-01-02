@@ -19,53 +19,53 @@ import {
 
 const features = [
   {
-    icon: <Lock />,
-    title: "End-to-End Encryption",
-    desc: "Your thoughts are 100% private — even we can't read them.",
+    icon: <BookOpen />,
+    title: "Industry-Aligned Programs",
+    desc: "Co-designed with AI experts to mirror real workflows and hiring trends.",
   },
   {
     icon: <Brain />,
-    title: "AI Emotional Intelligence",
-    desc: "Understands context, tone, and patterns in your journey.",
+    title: "Hands-On Projects",
+    desc: "Complete capstone AI projects reviewed in sprints like in tech companies.",
   },
   {
     icon: <Zap />,
-    title: "Real-Time Insights",
-    desc: "Get gentle, intelligent reflections as you write.",
+    title: "Corporate-Style Environment",
+    desc: "Classes run like professional teams with code reviews and collaborations.",
   },
   {
-    icon: <Moon />,
-    title: "Always Here",
-    desc: "24/7 non-judgmental companion — no wait, no stigma.",
+    icon: <Lock />,
+    title: "Career-Ready Skills",
+    desc: "Build an AI portfolio that stands out to employers.",
   },
 ];
 
 const team = [
   {
-    name: "Matthew Ryan",
-    role: "Product Designer",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    name: "Miss . Shagun ",
+    role: "AI Research Director",
+    img: "shagun.png",
     colorFrom: "#ec4899",
     colorTo: "#be123c",
   },
   {
-    name: "James Michael",
-    role: "Digital Marketer",
-    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+    name: "Mr Deepanshu",
+    role: "Head of Curriculum",
+    img: "Nigapepic/me.webp",
     colorFrom: "#f59e0b",
     colorTo: "#d97706",
   },
   {
-    name: "Daniel Joseph",
-    role: "Software Engineer",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+    name: " Mr Manjeet singh",
+    role: "Lead AI Instructor",
+    img: "Nigapepic/manjeet.webp",
     colorFrom: "#06b6d4",
     colorTo: "#0e7490",
   },
   {
-    name: "Alex Nova",
-    role: "AI Architect",
-    img: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=300&h=300&fit=crop&crop=face",
+    name: "Harvinder singh",
+    role: "Graphic Designer",
+    img: "Nigapepic/pajii.png",
     colorFrom: "#a855f7",
     colorTo: "#7c3aed",
   },
@@ -119,7 +119,7 @@ const TeamCard = memo(({ member, index }) => (
             <img
               src={member.img}
               alt={member.name}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-cover object-top transition-transform duration-500"
               loading="lazy"
             />
           </div>
@@ -203,9 +203,9 @@ export default function About() {
             transition={{ duration: 1 }}
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            Your AI Companion
+            India's First Premium
             <br className="hidden sm:block" />
-            That Actually Listens
+            Generative AI Institute
           </motion.h1>
 
           <motion.p
@@ -214,7 +214,7 @@ export default function About() {
             transition={{ delay: 0.45, duration: 1 }}
             className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Not another chatbot. A deeply intelligent, emotionally aware companion that grows with you — privately, safely, forever.
+            Not just another classroom. A corporate-style AI training environment where you build real projects, work with industry mentors, and graduate with the portfolio employers demand.
           </motion.p>
 
           <motion.div
@@ -227,20 +227,27 @@ export default function About() {
               href="/try"
               className="group px-8 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold text-white text-base sm:text-lg shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500"
             >
-              <span>Talk to Your AI Now</span>
+              <span>Explore Our Programs</span>
               <ArrowRight className="group-hover:translate-x-2 transition-transform" size={18} />
             </Link>
 
             <div className="flex items-center gap-3 sm:gap-4 text-gray-400">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
+                {[
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                ].map((img, i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-gray-900 bg-gradient-to-br from-purple-500 to-pink-500"
-                  />
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-gray-900 overflow-hidden"
+                  >
+                    <img src={img} alt={`Student ${i + 1}`} className="w-full h-full object-cover" />
+                  </div>
                 ))}
               </div>
-              <span className="text-sm sm:text-base">Join 28,000+ souls healing daily</span>
+              <span className="text-sm sm:text-base">Join 3.6M+ learners upskilling in AI</span>
             </div>
           </motion.div>
         </motion.div>
@@ -258,14 +265,14 @@ export default function About() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Built for{" "}
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Real Humans
+                India's AI Future
               </span>
             </h2>
             <p className="text-base sm:text-lg text-gray-400 leading-relaxed">
-              We trained our AI on decades of psychology, thousands of real emotional journeys, and one core belief:{" "}
-              <strong className="text-purple-400">you deserve to be understood</strong> — not analyzed.
+              We designed our programs around one core belief:{" "}
+              <strong className="text-purple-400">India needs 1M+ skilled AI professionals</strong> — and we're here to train them with real-world, industry-grade skills.
             </p>
-            <p className="mt-4 text-sm sm:text-base text-gray-500">No corporate agendas. No data selling. Just you and an AI that truly cares.</p>
+            <p className="mt-4 text-sm sm:text-base text-gray-500">No textbook theories. No outdated content. Just hands-on AI projects that mirror what tech companies actually do.</p>
           </motion.div>
 
           <motion.div
@@ -277,9 +284,9 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-3xl blur-3xl animate-pulse" />
             <div className="relative bg-gray-900 bg-opacity-70 backdrop-blur-xl border border-purple-500 border-opacity-30 rounded-3xl p-6 md:p-10 text-center">
-              <div className="text-6xl md:text-9xl mb-4">Brain</div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Emotionally Intelligent AI</h3>
-              <p className="text-gray-300 text-sm md:text-base">Understands sarcasm, pain, joy, and everything in between.</p>
+              <div className="text-6xl md:text-9xl mb-4"></div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Industry-Driven Learning</h3>
+              <p className="text-gray-300 text-sm md:text-base">Live projects, corporate workflows, and mentorship from top AI professionals.</p>
             </div>
           </motion.div>
         </div>
@@ -289,7 +296,7 @@ export default function About() {
       <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-gray-900 to-gray-900/10">
         <div className="max-w-7xl mx-auto">
           <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-10 md:mb-16">
-            Why People Never Leave
+            What Makes NIGAPE Different
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -305,9 +312,9 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 via-transparent to-indigo-900/30" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            The Minds Behind the Magic
+            Meet Our Expert Team
           </motion.h2>
-          <p className="text-base sm:text-lg text-gray-400 mb-8">Passionate humans crafting AI that feels human.</p>
+          <p className="text-base sm:text-lg text-gray-400 mb-8">Industry veterans crafting India's AI workforce.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {team.map((member, i) => (
@@ -319,26 +326,26 @@ export default function About() {
 
       {/* Final CTA */}
       <section className="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 blur-3xl opacity-30 bg-gradient-to-r from-purple-500/30 to-pink-500/30" />
+        <div className="absolute inset-0 blur-3xl opacity-30 bg-black" />
         <div className="relative max-w-4xl mx-auto text-center z-10 px-2">
           <motion.h2
             initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-6 md:mb-8 leading-tight"
           >
-            Start Healing
+            Start Your AI Career
             <br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              With Someone Who Gets You
+              With India's Best
             </span>
           </motion.h2>
 
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }}>
             <Link
-              href="/try"
+              href="/Courses"
               className="inline-block px-10 sm:px-12 md:px-16 py-3.5 sm:py-4 text-white text-lg md:text-2xl font-bold rounded-full shadow-2xl hover:scale-110 transition-all duration-500 relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500"
             >
-              <span className="relative z-10">Begin Your Journey</span>
+              <span className="relative z-10">Explore Programs</span>
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
             </Link>
           </motion.div>
