@@ -1,120 +1,59 @@
-// // ContactForm.tsx (Next.js + Tailwind CSS)
-// 'use client';
+"use client";
 
-// import { useState } from 'react';
+export default function ContactForm() {
+  return (
+    <section className="w-full bg-black py-24 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-// const ContactForm = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     phone: '',
-//     message: '',
-//   });
+     
 
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     const { name, value } = e.target;
-//     setFormData(prev => ({ ...prev, [name]: value }));
-//   };
+        {/* RIGHT FORM */}
+        <div className="bg-[#0b0b0b] border border-[#FF40EB]/30 rounded-3xl p-6 lg:p-10 shadow-[0_0_60px_rgba(255,64,235,0.35)]">
+          <form
+            className="
+              grid grid-cols-1
+              lg:grid-cols-2
+              gap-5
+            "
+          >
+            {/* Name */}
+            <input className="input" placeholder="Your Name" />
 
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     // Handle form submission
-//     console.log(formData);
-//   };
+            {/* Email */}
+            <input className="input" placeholder="Your Email" />
 
-//   return (
-//     <div className="min-h-screen bg-black text-white font-mono">
-//       {/* Optional: pixel font import */}
-//       <style jsx global>{`
-//         @import url('https://fonts.cdnfonts.com/css/press-start-2p');
-//         .font-mono { font-family: 'Press Start 2P', monospace; }
-//       `}</style>
+            {/* Subject */}
+            <input
+              className="input lg:col-span-2"
+              placeholder="Subject"
+            />
 
-//       <div className="max-w-6xl mx-auto px-4 py-12">
-//         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-//           {/* Form Section */}
-//           <div className="w-full lg:w-1/2 space-y-6">
-//             <h2 className="text-2xl font-bold text-[#FF40EB] tracking-wide">GET IN TOUCH</h2>
-//             <form onSubmit={handleSubmit} className="space-y-6">
-//               <div>
-//                 <label htmlFor="name" className="block text-sm mb-2 text-[#FF40EB]">NAME</label>
-//                 <input
-//                   id="name"
-//                   name="name"
-//                   type="text"
-//                   value={formData.name}
-//                   onChange={handleChange}
-//                   required
-//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
-//                   placeholder="YOUR NAME"
-//                 />
-//               </div>
+            {/* Message */}
+            <textarea
+              rows={4}
+              className="input lg:col-span-2 resize-none"
+              placeholder="Your Message"
+            />
 
-//               <div>
-//                 <label htmlFor="email" className="block text-sm mb-2 text-[#FF40EB]">EMAIL</label>
-//                 <input
-//                   id="email"
-//                   name="email"
-//                   type="email"
-//                   value={formData.email}
-//                   onChange={handleChange}
-//                   required
-//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
-//                   placeholder="YOUR@EMAIL.COM"
-//                 />
-//               </div>
+            {/* Button */}
+            <div className="lg:col-span-2 flex lg:justify-end">
+              <button
+                className="
+                  w-full lg:w-auto
+                  bg-[#FF40EB] text-black
+                  font-semibold
+                  px-10 py-3 rounded-xl
+                  hover:shadow-[0_0_30px_#FF40EB]
+                  transition
+                "
+              >
+                Send Message →
+              </button>
+            </div>
+          </form>
+        </div>
 
-//               <div>
-//                 <label htmlFor="phone" className="block text-sm mb-2 text-[#FF40EB]">PHONE</label>
-//                 <input
-//                   id="phone"
-//                   name="phone"
-//                   type="tel"
-//                   value={formData.phone}
-//                   onChange={handleChange}
-//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50"
-//                   placeholder="YOUR NUMBER"
-//                 />
-//               </div>
-
-//               <div>
-//                 <label htmlFor="message" className="block text-sm mb-2 text-[#FF40EB]">MESSAGE</label>
-//                 <textarea
-//                   id="message"
-//                   name="message"
-//                   value={formData.message}
-//                   onChange={handleChange}
-//                   required
-//                   rows={4}
-//                   className="w-full bg-black border border-[#FF40EB]/30 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FF40EB] placeholder:text-[#FF40EB]/50 resize-none"
-//                   placeholder="YOUR MESSAGE"
-//                 />
-//               </div>
-
-//               <button
-//                 type="submit"
-//                 className="px-6 py-3 bg-[#FF40EB] text-black font-bold tracking-wider hover:bg-[#ff5df0] transition-colors duration-300"
-//               >
-//                 SEND
-//               </button>
-//             </form>
-//           </div>
-
-//           {/* AI Image Section */}
-//           <div className="w-full lg:w-1/2 flex justify-center">
-//             <div className="relative w-full max-w-md h-80 lg:h-96">
-//               {/* Placeholder for AI-themed image — replace with your actual image */}
-//               <div className="absolute inset-0 bg-gradient-to-br from-[#FF40EB]/10 to-purple-900/20 rounded-xl flex items-center justify-center">
-//                 <span className="text-[#FF40EB]/70 text-center px-4">
-//                   AI ILLUSTRATION<br />OR ABSTRACT<br />VISUALIZATION
-//                 </span>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ContactForm;
+      </div>
+    </section>
+  );
+}
