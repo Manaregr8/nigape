@@ -1,126 +1,21 @@
-'use client';
+"use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
+import { courses as dataCourses } from "../../Data/data";
 
-// Mock data for courses (with placeholder images)
-const courses = [
-  {
-    id: 1,
-    title: "LLM Engineering Bootcamp",
-    category: "engineering",
-    description: "Build production-ready AI applications with GPT-4, Claude, and LangChain",
-    duration: "12 weeks",
-    level: "Intermediate",
-    students: 2340,
-    price: "$499",
-    lessons: 35,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop"
-  },
-  {
-    id: 2,
-    title: "Prompt Engineering Mastery",
-    category: "prompt",
-    description: "Master the art effective prompts for any AI model",
-    duration: "4 weeks",
-    level: "Beginner",
-    students: 4521,
-    price: "$199",
-    lessons: 12,
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1676277791608-ac67b5f1dd3f?w=500&h=300&fit=crop"
-  },
-  {
-    id: 3,
-    title: "RAG Systems from Scratch",
-    category: "engineering",
-    description: "Build retrieval-augmented generation systems for enterprise",
-    duration: "8 weeks",
-    level: "Advanced",
-    students: 1234,
-    price: "$599",
-    lessons: 24,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=500&h=300&fit=crop"
-  },
-  {
-    id: 4,
-    title: "AI Product Management",
-    category: "business",
-    description: "Ship AI products that users love and investors fund",
-    duration: "6 weeks",
-    level: "Intermediate",
-    students: 892,
-    price: "$399",
-    lessons: 18,
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=500&h=300&fit=crop"
-  }
-];
+// Use courses from src/Data/data.js
+const courses = Array.isArray(dataCourses) ? dataCourses : [];
 
-// NIGAPE Short Courses (Packages)
-const shortCourses = [
-  {
-    id: 5,
-    title: "AI Literacy Course",
-    description: "Understand the fundamentals of AI, its impact, and how to use it responsibly.",
-    duration: "2 weeks",
-    level: "Beginner",
-    students: 8700,
-    price: "$49",
-    lessons: 8,
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&h=300&fit=crop"
-  },
-  {
-    id: 6,
-    title: "Generative AI for Professionals",
-    description: "Apply generative AI tools like ChatGPT, DALL·E, Midjourney in your workflow.",
-    duration: "3 weeks",
-    level: "Intermediate",
-    students: 5200,
-    price: "$99",
-    lessons: 12,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1675271591055-1d6396e52ee7?w=500&h=300&fit=crop"
-  },
-  {
-    id: 7,
-    title: "Natural Language Processing Professional",
-    description: "Build chatbots, sentiment analyzers, and text classifiers using NLP libraries.",
-    duration: "6 weeks",
-    level: "Intermediate",
-    students: 3100,
-    price: "$199",
-    lessons: 20,
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop"
-  },
-  {
-    id: 8,
-    title: "Computer Vision Professional",
-    description: "Detect objects, recognize faces, and build vision models with OpenCV & TensorFlow.",
-    duration: "6 weeks",
-    level: "Intermediate",
-    students: 2800,
-    price: "$199",
-    lessons: 18,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=500&h=300&fit=crop"
-  },
-  {
-    id: 9,
-    title: "Deep Learning Professional",
-    description: "Master neural networks, CNNs, RNNs, and transformers from scratch.",
-    duration: "8 weeks",
-    level: "Advanced",
-    students: 1900,
-    price: "$299",
-    lessons: 25,
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=300&fit=crop"
+// Derive short courses heuristically (monthlyPayments === 1 or short duration)
+const shortCourses = courses.filter((c) => {
+  try {
+    const dur = String(c.duration || "").toLowerCase();
+    return c.monthlyPayments === 1 || dur.includes("week") || dur.includes("1.5");
+  } catch (e) {
+    return false;
   }
-];
+});
 
 const categories = [
   { id: "all", label: "All Courses" },
@@ -200,20 +95,23 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
 // Course Card (without price)
 const CourseCard = ({ course }) => {
   return (
-    <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
+    <Link href={`/Courses/${course.id}`} className="block">
+      <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
       {/* Image Header */}
-      <div className="relative h-78 overflow-hidden">
-        <img
-          src={course.image}
-          alt={course.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+      <div className="relative h-64 ">
+            <img
+              src={course.image || "https://via.placeholder.com/600x300?text=Course+Image"}
+              alt={course.title}
+              loading="lazy"
+              onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x300?text=Course+Image'; }}
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
         {/* Category Badge */}
         <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
           {course.category === "engineering" ? "Engineering" :
            course.category === "prompt" ? "Prompt" :
            course.category === "business" ? "Business" :
-           "Short"} • {course.lessons}
+           "Short"} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
         </div>
       </div>
 
@@ -241,7 +139,8 @@ const CourseCard = ({ course }) => {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 };
 

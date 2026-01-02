@@ -509,5 +509,6 @@ export const courses = [
 ];
 
 export function getCourseById(id) {
-  return courses.find(course => course.id === parseInt(id));
+  const numId = parseInt(id);
+  return courses.find(course => course.id === numId || String(course.id) === String(id));
 }

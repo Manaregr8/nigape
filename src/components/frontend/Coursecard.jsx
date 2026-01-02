@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CourseCard({ course }) {
   return (
-    <Link href={`/courses/${course.id}`} className="block group">
+    <Link href={`/Courses/${course.id}`} className="block group">
       <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-full">
         {/* Optional: Course Image */}
         <div className="h-40 bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
