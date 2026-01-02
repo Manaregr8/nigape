@@ -133,11 +133,11 @@ export const courses = [
     description: "Deep dive into advanced LLMs, fine-tuning, custom prompt frameworks, and enterprise-grade generative AI systems.",
     fullDescription: "Designed for learners with basic AI knowledge, this 6-month advanced program covers state-of-the-art generative models, fine-tuning techniques, advanced prompting, agentic systems, and production deployment of GenAI solutions.",
     instructor: {
-      name: "Dr. Shagun",
+      name: "Miss. Shagun",
       title: "Lead Instructor – Advanced GenAI",
-      bio: "PhD in AI | Former Lead AI Researcher | Expert in LLMs & Prompt Engineering",
+      bio: "Master in AI | Former Lead AI Researcher | Expert in LLMs & Prompt Engineering",
       image: "/nimlacpic/shagun.png",
-      credentials: ["PhD in AI", "15+ Years Experience", "Published in top AI conferences"]
+      credentials: ["Master in AI", "15+ Years Experience", "Published in top AI conferences"]
     },
     topics: ["Advanced LLMs", "Fine-tuning", "Prompt Frameworks", "Agentic AI", "Multimodal Systems", "Production Deployment"],
     whatYouWillLearn: [
@@ -264,11 +264,11 @@ export const courses = [
     description: "Practical GenAI skills for working professionals. Learn to apply generative AI in business – text, image, data analysis, automation, and decision-making.",
     fullDescription: "Designed for working professionals who want to integrate GenAI into their current role or pivot to AI-focused positions. Focus on practical business applications, prompt engineering, and real-world use cases.",
     instructor: {
-      name: "Dr. Shagun",
+      name: "Miss. Shagun",
       title: "Lead Instructor – GenAI for Business",
-      bio: "PhD in AI | Industry veteran in AI transformation",
+      bio: "Master in AI | Industry veteran in AI transformation",
       image: "/nimlacpic/shagun.png",
-      credentials: ["PhD in AI", "15+ Years Experience"]
+      credentials: ["Master in AI", "15+ Years Experience"]
     },
     topics: ["Business GenAI", "Prompt Engineering", "AI Automation", "Data Analysis with AI", "AI Decision Making"],
     whatYouWillLearn: [
@@ -394,11 +394,11 @@ export const courses = [
     description: "Master computer vision – CNNs, object detection, segmentation, image generation, and real-world CV projects.",
     fullDescription: "Become a computer vision specialist. Learn CNNs, object detection, segmentation, generative vision models, and build industry-grade applications.",
     instructor: {
-      name: "Dr. Shagun",
+      name: "Miss. Shagun",
       title: "Lead Instructor – Computer Vision",
-      bio: "PhD in AI | Expert in vision models & generative AI",
+      bio: "Master in AI | Expert in vision models & generative AI",
       image: "/nimlacpic/shagun.png",
-      credentials: ["PhD in AI", "15+ Years Experience"]
+      credentials: ["Master in AI", "15+ Years Experience"]
     },
     topics: ["CNNs", "Object Detection", "Segmentation", "Image Generation", "Vision Transformers", "Multimodal Vision"],
     whatYouWillLearn: [
@@ -459,11 +459,11 @@ export const courses = [
     description: "In-depth deep learning: neural networks, CNNs, RNNs, GANs, transformers, reinforcement learning basics, and large model architectures.",
     fullDescription: "Master deep learning from fundamentals to advanced research-level topics. Build sophisticated models from scratch and prepare for R&D or specialized AI roles.",
     instructor: {
-      name: "Dr. Shagun",
+      name: "Miss. Shagun",
       title: "Lead Instructor – Deep Learning",
-      bio: "PhD in AI | Research background in deep learning architectures",
+      bio: "Master in AI | Research background in deep learning architectures",
       image: "/nimlacpic/shagun.png",
-      credentials: ["PhD in AI", "15+ Years Experience"]
+      credentials: ["Master in AI", "15+ Years Experience"]
     },
     topics: ["Neural Networks", "CNNs", "RNNs/LSTMs", "GANs", "Transformers", "Reinforcement Learning"],
     whatYouWillLearn: [
