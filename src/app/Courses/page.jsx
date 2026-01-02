@@ -94,34 +94,49 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
 
 // Course Card (without price)
 const CourseCard = ({ course }) => {
+  // Map course title to image filename in public/coursegraphic/
+  const courseGraphicMap = {
+    "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).png",
+    "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
+    "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).png",
+    "Generative AI for Professionals": "Generative AI for Professionals (4 Months).png",
+    "NLP Professional": "Natural Language Processing Professional (4 Months).png",
+    "Computer Vision Professional": "Computer Vision Professional (4 Months).png",
+    "Deep Learning Professional": "Deep Learning Professional (4 Months).png"
+  };
+  const courseGraphic = courseGraphicMap[course.title];
+  const imageSrc = courseGraphic
+    ? `/coursegraphic/${courseGraphic}`
+    : (course.image || "https://via.placeholder.com/600x300?text=Course+Image");
   return (
     <Link href={`/Courses/${course.id}`} className="block">
       <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
-      {/* Image Header */}
-      <div className="relative h-64 ">
-            <img
-              src={course.image || "https://via.placeholder.com/600x300?text=Course+Image"}
-              alt={course.title}
-              loading="lazy"
-              onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x300?text=Course+Image'; }}
-              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
-            />
-        {/* Category Badge */}
-        <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
-          {course.category === "engineering" ? "Engineering" :
-           course.category === "prompt" ? "Prompt" :
-           course.category === "business" ? "Business" :
-           "Short"} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
+        {/* Image Header with coursegraphic */}
+        <div className="relative h-64 bg-black flex items-start justify-center p-0">
+          <img
+            src={imageSrc}
+            alt={course.title}
+            loading="lazy"
+            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x300?text=Course+Image'; }}
+            className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 mt-0"
+            style={{ display: 'block', margin: '0 auto' }}
+          />
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
+            {course.category === "engineering" ? "Engineering" :
+              course.category === "prompt" ? "Prompt" :
+              course.category === "business" ? "Business" :
+              "Short"} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
+          </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 leading-snug">{course.title}</h3>
-        
-        <p className="text-sm text-gray-400 mb-3">{course.instructor?.name || course.instructor || 'Team Nigape'}</p>
-        
-        <p className="text-sm text-gray-300 mb-4 line-clamp-2">{course.description}</p>
+        {/* Content */}
+        <div className="p-6 flex-1 flex flex-col">
+          <h3 className="text-lg font-bold text-white mb-2 leading-snug break-words">{course.title}</h3>
+
+          <p className="text-sm text-gray-400 mb-3 break-words">{course.instructor?.name || course.instructor || 'Team Nigape'}</p>
+
+          <p className="text-sm text-gray-300 mb-4 break-words">{course.description}</p>
 
         <div className="mt-auto">
           {/* Rating */}

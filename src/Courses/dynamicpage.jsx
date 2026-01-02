@@ -12,6 +12,18 @@ const CoursePage = ({ course }) => {
     );
   }
 
+  // Map course title to image filename in public/coursegraphic/
+  const courseGraphicMap = {
+    "Diploma in Generative AI & Prompt Engineering": "/coursegraphic/Generative AI & Prompt Engineering (Diploma — 12 Months).png",
+    "Advanced Generative AI & Prompt Engineering": "/coursegraphic/Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
+    "AI Literacy for Everyone": "/coursegraphic/AI Literacy Course (1.5 Months).png",
+    "Generative AI for Professionals": "/coursegraphic/Generative AI for Professionals (4 Months).png",
+    "NLP Professional": "/coursegraphic/Natural Language Processing Professional (4 Months).png",
+    "Computer Vision Professional": "/coursegraphic/Computer Vision Professional (4 Months).png",
+    "Deep Learning Professional": "/coursegraphic/Deep Learning Professional (4 Months).png"
+  };
+  const courseGraphic = courseGraphicMap[course.title];
+  const imageSrc = courseGraphic || course.image || "https://via.placeholder.com/600x300?text=Course+Image";
   return (
     <>
       <Head>
@@ -28,7 +40,7 @@ const CoursePage = ({ course }) => {
               <div>
                 <div className="relative rounded-2xl overflow-hidden border border-[#FF40EB]/50 bg-gradient-to-br from-gray-900 to-black">
                   <Image
-                    src={course.image}
+                    src={imageSrc}
                     alt={course.title}
                     width={1200}
                     height={600}
@@ -135,7 +147,7 @@ const CoursePage = ({ course }) => {
                   {/* Small Course Image */}
                   <div className="relative rounded-xl overflow-hidden ">
                     <Image
-                      src={course.image}
+                      src={imageSrc}
                       alt={course.title}
                       width={300}
                       height={180}

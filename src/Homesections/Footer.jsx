@@ -54,9 +54,9 @@ export default function Footer() {
             
             {/* Brand */}
             <div className="space-y-6 md:space-y-2">
-              <div className="flex items-center space-x-3">
+              <div className="flex  items-left space-x-3">
                 <div className="relative">
-                  <img className='w-[140px] scale-105' src="/Nigapepic/nigape.svg" alt="NIGAPE" />
+                  <img className='w-[100px]  scale-105' src="/Nigapepic/nigape.svg" alt="NIGAPE" />
                 </div>
                 
               </div>
