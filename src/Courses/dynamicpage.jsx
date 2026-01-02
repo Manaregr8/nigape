@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { FiClock, FiUser, FiStar } from 'react-icons/fi';
+import Accordion from './Accordion';
 
 const CoursePage = ({ course }) => {
   if (!course) {
@@ -73,45 +74,12 @@ const CoursePage = ({ course }) => {
                 </ul>
               </section>
 
-              {/* CURRICULUM — UPDATED TO MATCH REFERENCE IMAGE */}
+              {/* CURRICULUM — ENHANCED WITH ACCORDION DROPDOWN */}
               <section>
                 <h2 className="text-2xl font-bold mb-4 text-[#FF40EB]">Curriculum</h2>
-                <div className="space-y-4">
-                  {course.modulesByMonth.map((mod, i) => (
-                    <div
-                      key={i}
-                      className="group relative border-t border-gray-700 pt-4 first:border-t-0"
-                    >
-                      {/* Numbered Label */}
-                      <div className="absolute left-0 top-0 w-10 h-10 flex items-center justify-center text-sm text-gray-400 group-hover:text-[#FF40EB] transition-colors">
-                        {String(i + 1).padStart(2, '0')}
-                      </div>
-
-                      {/* Content Area */}
-                      <div className="ml-14 pl-4">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="text-lg font-semibold text-white">
-                              Month {mod.month}: {mod.title}
-                            </h3>
-                            <p className="text-sm text-gray-400 mt-1">{mod.hours} hrs</p>
-                          </div>
-                        </div>
-
-                        {/* Topics List */}
-                        <ul className="mt-3 text-sm text-gray-300 space-y-1 pl-2">
-                          {mod.topics.map((topic, j) => (
-                            <li key={j} className="flex items-start gap-2">
-                              <span className="text-[#FF40EB] mt-1">•</span>
-                              <span>{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <Accordion modules={course.modulesByMonth} />
               </section>
+
 
               {/* Instructor */}
               <section>
@@ -163,9 +131,9 @@ const CoursePage = ({ course }) => {
             {/* Sticky Sidebar Card — Right 1/3 (Desktop only) */}
             <div className="lg:col-span-1">
               <div className="sticky top-28 hidden lg:block">
-                <div className="bg-gray-900/70 backdrop-blur-sm border border-[#FF40EB]/40 rounded-2xl p-6 space-y-5">
+                <div className="bg-black/30 backdrop-blur-sm border border-[#FF40EB]/40 rounded-2xl p-6 space-y-5">
                   {/* Small Course Image */}
-                  <div className="relative rounded-xl overflow-hidden border border-[#FF40EB]/50">
+                  <div className="relative rounded-xl overflow-hidden ">
                     <Image
                       src={course.image}
                       alt={course.title}

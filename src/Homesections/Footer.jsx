@@ -53,13 +53,11 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-12">
             
             {/* Brand */}
-            <div className="space-y-6 md:space-y-4">
+            <div className="space-y-6 md:space-y-2">
               <div className="flex items-center space-x-3">
                 <div className="relative">
-                  
-                 
+                  <img className='w-[140px] scale-105' src="/Nigapepic/nigape.svg" alt="NIGAPE" />
                 </div>
-                    <img className='w-[140px] scale-105' src="/NIGAPE-logo.svg" alt="NIGAPE" />
                 
               </div>
               
