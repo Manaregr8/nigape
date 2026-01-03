@@ -193,8 +193,12 @@ export default function ContactPage() {
                 Office
               </h3>
               <p className="text-pink-100/90 leading-relaxed">
-                1520 Luna Road Carrollton,<br />
-                TX 75006, United States
+                Spacetime Management<br />
+                Pvt Ltd Design House,<br />
+                behind Savitri Cinema Complex,<br />
+                Greater Kailash II,<br />
+                Chittaranjan Park,<br />
+                New Delhi, Delhi 110048
               </p>
             </div>
 

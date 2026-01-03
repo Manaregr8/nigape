@@ -78,6 +78,20 @@ export default function Footer() {
                   <Globe className="w-10 h-10 text-[#FF40EB] group-hover:scale-110 transition" />
                 </a>
               </div>
+
+              {/* Contact Details */}
+              <div className="pt-4 border-t border-[#FF40EB]/20">
+                <div className="text-gray-300 text-sm space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#FF40EB]">✉</span>
+                    <a href="mailto:info@iidadd.com" className="hover:text-[#FF40EB] transition">info@iidadd.com</a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#FF40EB]">☎</span>
+                    <a href="tel:+919205435653" className="hover:text-[#FF40EB] transition">+91 92054 35653</a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Programs */}

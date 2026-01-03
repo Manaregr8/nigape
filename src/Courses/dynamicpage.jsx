@@ -44,12 +44,12 @@ const CoursePage = ({ course }) => {
                     alt={course.title}
                     width={1200}
                     height={600}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-contain min-h-[180px] max-h-[320px] sm:min-h-[220px] sm:max-h-[400px] md:min-h-[260px] md:max-h-[500px] lg:min-h-[320px] lg:max-h-[600px]"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 </div>
-                <div className="mt-6 space-y-2">
+                <div className="mt-[-12px] sm:mt-0 space-y-2">
                   <span className="inline-block px-3 py-1 bg-[#FF40EB]/20 text-[#FF40EB] rounded-full text-sm">
                     {course.level.charAt(0).toUpperCase() + course.level.slice(1)} • {course.mode}
                   </span>
@@ -99,7 +99,7 @@ const CoursePage = ({ course }) => {
                 <div className="flex items-center gap-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#FF40EB]">
                     <Image
-                      src={course.instructor.image}
+                      src='/shagun.png'
                       alt={course.instructor.name}
                       width={80}
                       height={80}

@@ -202,38 +202,37 @@ export default function CoursesPage() {
 
       {/* SECTION 2: Mentor Image + Introduction to Courses */}
       <section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 lg:order-1">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="relative order-2 lg:order-1 flex flex-col items-center">
             {/* Image with drop-shadow around figure */}
-            <div className="relative w-full max-w-lg mx-auto">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
               <div className="relative rounded-3xl overflow-hidden">
                 <div
-                  className="inline-block"
+                  className="inline-block w-full"
                   style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
                 >
                   <img
                     src="/shagun.png"
                     alt="Dr. Shagun Mehta – Your AI Mentor"
-                    className="w-full h-[80vh] object-cover object-center"
+                    className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[80vh] object-contain object-center"
                   />
                 </div>
               </div>
             </div>
 
             {/* Gradient badge */}
-            <div className="absolute -bottom-10 right-21 left-10 max-w-[50vh] bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-6 shadow-2xl">
-              <p className="text-2xl font-bold">Miss. Shagun</p>
-              <p className="text-cyan-300 max-w-1xl">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] sm:bottom-[-2.5rem] md:bottom-[-2.5rem] lg:bottom-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-4 sm:p-6 shadow-2xl text-center">
+              <p className="text-xl sm:text-2xl font-bold">Miss. Shagun</p>
+              <p className="text-cyan-300 text-sm sm:text-base max-w-1xl">
                 AI Research Lead & Emotional Intelligence Pioneer
               </p>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 text-center lg:text-left">
+          <div className="order-1 lg:order-2 text-center lg:text-left mt-20 lg:mt-0">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                Master the Future<br />
-                of Emotional AI
+              <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
+             Creating <i>AI</i>  That Understands Humans
               </span>
             </h2>
             <p className="text-xl text-gray-300 mb-10 leading-relaxed">

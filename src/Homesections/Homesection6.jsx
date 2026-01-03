@@ -73,7 +73,7 @@ export default function AIEditorialSlider() {
         
         {/* Title */}
         <div className="text-center pt-10 mb-8 md:mb-12">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-3">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-[#FF40EB] mb-3">
            Career Support & Outcomes  
           </h2>
           <p className="text-blue-300/60 text-sm md:text-base tracking-wide">
