@@ -75,13 +75,19 @@ export default function TechMarquee() {
         }
 
         .animate-marquee {
-          animation: marquee 25s linear infinite;
+          animation: marquee 15s linear infinite;
         }
 
         /* Ensure pixel font renders crisply */
         .pixel-text {
           image-rendering: pixelated;
           -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        @media (max-width: 640px) {
+          .animate-marquee {
+            animation-duration: 5s;
+          }
         }
       `}</style>
     </>
