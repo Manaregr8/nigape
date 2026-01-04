@@ -58,11 +58,11 @@ export default function Homee() {
 
 
       {/* ===== VIGNETTE OVERLAY (TOP + BOTTOM SHADOW) ===== */}
-<div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/90 via-transparent to-black/90" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/90 via-transparent to-black/90" />
 
       {/* ===== CONTENT ===== */}
       <div className="relative z-10 min-h-screen flex flex-col ">
-               {/* HERO */}
+        {/* HERO */}
         <section className="flex-1  flex items-center">
           <div className="mx-auto pt-5 md:pt-20 w-full max-w-7xl px-4">
             <div className="space-y-10 text-center max-w-8xl mx-auto">
@@ -85,13 +85,13 @@ export default function Homee() {
               </h1>
 
               <p className="text-sm sm:text-base lg:text-lg text-white/90 max-w-xl mx-auto leading-relaxed">
-                Master Generative AI & Prompt Engineering with real-world
-                projects, expert mentorship and a job-ready portfolio.
+                Get hands-on Generative AI and Prompt Engineering skills through industry-driven projects – graduate with the portfolio, confidence and connections employers demand.
+
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
                 <button
-              
+
                   className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center"
                 >
                   <a href="Contactus">Join NIGAPE Now</a>
@@ -100,7 +100,7 @@ export default function Homee() {
                   Talk to a Counselor
                 </a>
               </div>
-              
+
             </div>
           </div>
         </section>
