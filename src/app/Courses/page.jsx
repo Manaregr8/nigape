@@ -108,6 +108,8 @@ const CourseCard = ({ course }) => {
   const imageSrc = courseGraphic
     ? `/coursegraphic/${courseGraphic}`
     : (course.image || "https://via.placeholder.com/600x300?text=Course+Image");
+  // Remove '12' from course card title if present
+  const cleanTitle = course.title.replace(/12/g, "");
   return (
     <Link href={`/Courses/${course.id}`} className="block">
       <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
@@ -115,7 +117,7 @@ const CourseCard = ({ course }) => {
         <div className="relative h-64 bg-black flex items-start justify-center p-0">
           <img
             src={imageSrc}
-            alt={course.title}
+            alt={cleanTitle}
             loading="lazy"
             onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x300?text=Course+Image'; }}
             className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 mt-0"
@@ -132,9 +134,9 @@ const CourseCard = ({ course }) => {
 
         {/* Content */}
         <div className="p-6 flex-1 flex flex-col">
-          <h3 className="text-lg font-bold text-white mb-2 leading-snug break-words">{course.title}</h3>
+          <h3 className="text-lg font-bold text-white mb-2 leading-snug break-words">{cleanTitle}</h3>
 
-          <p className="text-sm text-gray-400 mb-3 break-words">{course.instructor?.name || course.instructor || 'Team Nigape'}</p>
+          {/* Instructor line removed */}
 
           <p className="text-sm text-gray-300 mb-4 break-words">{course.description}</p>
 
@@ -214,32 +216,33 @@ export default function CoursesPage() {
                   <img
                     src="/shagun.png"
                     alt="Dr. Shagun Mehta – Your AI Mentor"
-                    className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[80vh] object-contain object-center"
+                    className="w-full h-[320px] sm:h-[400px]  -mt-[10] md:h-[500px] lg:h-[80vh] object-contain object-center"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Gradient badge */}
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] sm:bottom-[-2.5rem] md:bottom-[-2.5rem] lg:bottom-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-4 sm:p-6 shadow-2xl text-center">
-              <p className="text-xl sm:text-2xl font-bold">Miss. Shagun</p>
-              <p className="text-cyan-300 text-sm sm:text-base max-w-1xl">
-                AI Research Lead & Emotional Intelligence Pioneer
-              </p>
+            {/* Gradient badge below image */}
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg z-[1] mx-auto -mt-28">
+              <div className="bg-[#FF40EB] rounded-2xl p-6 shadow-2xl text-center text-white" style={{ boxShadow: '0 0 32px 0 #9234eb9c' }}>
+                <p className="text-2xl font-bold mb-2">Miss. Shagun</p>
+                <p className="text-lg text-cyan-200">AI Research Lead & Emotional Intelligence Pioneer</p>
+              </div>
             </div>
           </div>
 
           <div className="order-1 lg:order-2 text-center lg:text-left mt-20 lg:mt-0">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
               <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
-             Creating <i>AI</i>  That Understands Humans
+             Building India’s Next Generation of AI & GenAI Leaders
               </span>
             </h2>
-            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-              Learn from industry pioneers who blend cutting-edge LLM engineering with deep emotional intelligence. Build AI companions that don't just respond — they understand, heal, and grow with you.
+            <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
+             Our curriculum is deeply industry-driven, engineered to bridge India’s 1M+ skilled AI professional gap.
+ You don’t just learn AI here — you build, deploy, and scale real-world AI systems used across startups, enterprises, and global tech teams.
             </p>
             <p className="text-lg text-gray-400 mb-8">
-              Launch your journey in 2025. Transform lives — starting with your own.
+            From LLMs and RAG pipelines to AI agents and enterprise workflows — NIGAPE prepares you for real AI roles, real impact, and real careers.
             </p>
 
             {/* ✨ CTA BUTTONS */}
@@ -247,17 +250,17 @@ export default function CoursesPage() {
               {/* Primary CTA */}
               <a
                 href="/Form/form"
-                className="px-20 py-4 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5"
+                className="px-16 py-7 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-2xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-1 text-center"
               >
-                Join Now
+                Join India’s AI Workforce
               </a>
 
               {/* Secondary CTA */}
               <a
                 href="/Form/form"
-                className="px-8 py-4 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300"
+                className="px-10 py-7 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-2xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
               >
-                Meet Your Mentor
+                Meet Your Industry Mentor
               </a>
             </div>
           </div>

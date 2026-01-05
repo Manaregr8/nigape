@@ -84,9 +84,15 @@ export default function Homee() {
                 Institute
               </h1>
 
+
+              {/* Delivery Modes
+              <div className="flex justify-center gap-4 mt-2 mb-1">
+                <span className="inline-block px-4 py-1 rounded-full bg-linear-r  to-black/20 text-black text-xs sm:text-sm font-semibold shadow-md border border-blue-400/60">Online</span>
+                <span className="inline-block px-4 py-1 rounded-full bg-linear-r  to-black/20 text-black text-xs sm:text-sm font-semibold shadow-md border border-green-400/60">Offline</span>
+              </div> */}
+              
               <p className="text-sm sm:text-base lg:text-lg text-white/90 max-w-xl mx-auto leading-relaxed">
                 Get hands-on Generative AI and Prompt Engineering skills through industry-driven projects – graduate with the portfolio, confidence and connections employers demand.
-
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">

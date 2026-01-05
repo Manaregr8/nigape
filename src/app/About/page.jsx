@@ -306,7 +306,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section>.
 
       {/* Team */}
       <section className="py-20 md:py-32 px-4 sm:px-6 bg-gray-900 relative overflow-hidden">
