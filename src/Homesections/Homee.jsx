@@ -97,16 +97,73 @@ export default function Homee() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
                 <button
-
+                  onClick={openPopup}
                   className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center"
                 >
-                  <a href="Contactus">Join NIGAPE Now</a>
+                  Join NIGAPE Now
                 </button>
                 <a href="/Contactus" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
                   Talk to a Counselor
                 </a>
               </div>
 
+            {/* Modal Form Popup */}
+            {popupOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={closePopup}>
+                <div
+                  className="relative bg-black rounded-2xl shadow-2xl w-[95vw] max-w-2xl md:max-w-3xl lg:max-w-4xl flex flex-col md:flex-row landscape-form border border-[#FF40EB]/30"
+                  style={{ aspectRatio: '16/7', minHeight: '340px' }}
+                  onClick={e => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    className="absolute top-3 right-3 text-gray-400 hover:text-[#FF40EB] text-2xl font-bold z-10"
+                    onClick={closePopup}
+                    aria-label="Close"
+                  >
+                    ×
+                  </button>
+                  {/* Form Content */}
+                  <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-10">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#FF40EB]">Join NIGAPE Now</h2>
+                    <form className="w-full max-w-md space-y-5">
+                      <input
+                        type="text"
+                        placeholder="Your Name"
+                        required
+                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+                      />
+                      <input
+                        type="email"
+                        placeholder="Your Email"
+                        required
+                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+                      />
+                      <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+                      />
+                     
+                      <button
+                        type="submit"
+                        className="w-full py-3 rounded-lg bg-[#FF40EB] text-white font-bold text-lg shadow-md hover:bg-[#c026d3] transition"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                  {/* Message Box on the right column, always visible */}
+                  <div className="flex-1 flex items-center justify-center p-4 md:p-10 bg-black rounded-b-2xl md:rounded-b-none md:rounded-r-2xl min-h-[180px]">
+                    <textarea
+                        rows={3}
+                        placeholder="Your Message"
+                        className="w-full px-4 py-3 h-[220px] border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400 resize-none"
+                      />
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
           </div>
         </section>

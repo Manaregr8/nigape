@@ -120,9 +120,9 @@ export const courses = [
     title: "Advanced Generative AI & Prompt Engineering",
     level: "advanced",
     category: "generative-ai",
-    duration: "6 Months",
+    duration: "20 Weeks (160 Hours)",
     mode: "Hybrid Learning",
-    rating: 4.9,
+    level: "Professional Certificate",
     students: 920,
     price: "₹95,000",
     originalPrice: "₹1,05,000",
@@ -476,27 +476,58 @@ export const courses = [
     modulesByMonth: [
       {
         month: 1,
-        title: "Deep Learning Foundations",
-        topics: ["Neural Networks Deep Dive", "Backpropagation Mastery", "Optimizers & Regularization", "Initialization Techniques"],
+        title: "Mathematical Foundations & Neural Network Basics",
+        topics: [
+          "Math for Deep Learning",
+          "Neural Network Fundamentals",
+          "Backpropagation & Optimization",
+          "Regularization & Training Dynamics"
+        ],
         hours: 60
       },
       {
         month: 2,
-        title: "Convolutional & Recurrent Networks",
-        topics: ["Advanced CNNs", "Vision Transformers", "RNNs, LSTMs, GRUs", "Sequence Modeling"],
+        title: "Computer Vision & Convolutional Networks",
+        topics: [
+          "CNNs & Architectures",
+          "Object Detection",
+          "Image Segmentation",
+          "GANs & Image Generation"
+        ],
         hours: 65
       },
       {
         month: 3,
-        title: "Generative & Advanced Models",
-        topics: ["GANs & Diffusion Models", "VAEs", "Normalizing Flows", "Transformer Deep Dive"],
+        title: "Sequential Data & Recurrent Networks",
+        topics: [
+          "RNNs, LSTMs, GRUs",
+          "Sequence-to-Sequence Learning",
+          "Attention & Transformers",
+          "Time Series & Forecasting"
+        ],
         hours: 70
       },
       {
         month: 4,
-        title: "Reinforcement & Research Topics",
-        topics: ["Reinforcement Learning Basics", "Modern Architectures", "Research Trends", "Capstone Research Project"],
+        title: "Transformer Revolution & Modern AI",
+        topics: [
+          "Transformer Architecture",
+          "Pre-trained Language Models",
+          "Vision Transformers & Multimodal AI",
+          "Large Language Models (LLMs)"
+        ],
         hours: 75
+      },
+      {
+        month: 5,
+        title: "Advanced Topics, Production & Research",
+        topics: [
+          "Generative & Creative AI",
+          "Advanced Architectures",
+          "Model Optimization & Deployment",
+          "Research & Capstone"
+        ],
+        hours: 80
       }
     ],
     requirements: ["Strong Python & math background", "Basic ML knowledge"],

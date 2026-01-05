@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "NIGAPE - Training the Future with AI",
+  title: "NIGAPE - Nitional Institute of Generative AI & Prompt Engineering",
   description: "Your emotionally intelligent friend",
 };
 
