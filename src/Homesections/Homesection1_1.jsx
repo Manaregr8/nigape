@@ -9,9 +9,9 @@ const aiTech = [
   { name: "Llama 3", logo: "https://cdn.simpleicons.org/meta/9234eb" },
   { name: "Claude 3", logo: "https://cdn.simpleicons.org/anthropic/9234eb" },
   { name: "Gemini", logo: "https://cdn.simpleicons.org/google/9234eb" },
-  { name: "GPT-4", logo: "https://cdn.simpleicons.org/openai/9234eb" },
+  { name: "GPT-4", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" },
   { name: "Hugging Face", logo: "https://cdn.simpleicons.org/huggingface/9234eb" },
-  { name: "SageMaker", logo: "https://cdn.simpleicons.org/amazonaws/9234eb" },
+  { name: "SageMaker", logo: "https://www.awsicon.com/icon/sagemaker/64.png" },
   { name: "Vector DBs", logo: "https://cdn.simpleicons.org/databricks/9234eb" },
   { name: "RAG", logo: "https://cdn.simpleicons.org/bookstack/9234eb" },
   { name: "Fine-tuning", logo: "https://cdn.simpleicons.org/slidershare/9234eb" },
@@ -75,13 +75,19 @@ export default function TechMarquee() {
         }
 
         .animate-marquee {
-          animation: marquee 25s linear infinite;
+          animation: marquee 15s linear infinite;
         }
 
         /* Ensure pixel font renders crisply */
         .pixel-text {
           image-rendering: pixelated;
           -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        @media (max-width: 640px) {
+          .animate-marquee {
+            animation-duration: 5s;
+          }
         }
       `}</style>
     </>

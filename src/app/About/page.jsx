@@ -109,23 +109,24 @@ const TeamCard = memo(({ member, index }) => (
   >
     <div className="relative mx-auto w-full max-w-xs">
       <div
-        className="p-1 rounded-3xl shadow-2xl group-hover:shadow-purple-500/30 transition-shadow duration-500"
+        className="p-0.5 rounded-3xl shadow-2xl group-hover:shadow-purple-500/30 transition-shadow duration-500"
         style={{
           background: `linear-gradient(to bottom right, ${member.colorFrom}, ${member.colorTo})`,
         }}
       >
-        <div className="bg-gray-900 rounded-3xl p-5 md:p-6 h-auto md:h-96 flex flex-col justify-between overflow-hidden">
-          <div className="w-full h-40 md:h-48 rounded-2xl overflow-hidden mb-4">
+        <div className=" bg-gray-900 rounded-3xl px-2 py-3 md:px-3 md:py-4 h-auto flex flex-col justify-between overflow-hidden">
+          <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden mb-3 flex items-center justify-center bg-gray-900">
             <img
               src={member.img}
               alt={member.name}
-              className="w-full h-full object-cover object-top transition-transform duration-500"
+              className="w-full h-full object-contain md:object-cover object-top transition-transform duration-500 max-h-56 md:max-h-64"
               loading="lazy"
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
           </div>
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-white">{member.name}</h3>
-            <p className="text-gray-400">{member.role}</p>
+          <div className="text-center">
+            <h3 className="text-lg md:text-xl font-bold text-white leading-tight">{member.name}</h3>
+            <p className="text-gray-400 text-sm md:text-base">{member.role}</p>
           </div>
         </div>
       </div>
@@ -234,10 +235,10 @@ export default function About() {
             <div className="flex items-center gap-3 sm:gap-4 text-gray-400">
               <div className="flex -space-x-3">
                 {[
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
-                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=100&h=100&fit=crop&crop=faces",
+                  "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?w=100&h=100&fit=crop&crop=faces",
+                  "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?w=100&h=100&fit=crop&crop=faces",
+                  "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?w=100&h=100&fit=crop&crop=faces"
                 ].map((img, i) => (
                   <div
                     key={i}
@@ -305,7 +306,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section>.
 
       {/* Team */}
       <section className="py-20 md:py-32 px-4 sm:px-6 bg-gray-900 relative overflow-hidden">

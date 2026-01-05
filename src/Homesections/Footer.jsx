@@ -84,7 +84,7 @@ export default function Footer() {
                 <div className="text-gray-300 text-sm space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="text-[#FF40EB]">✉</span>
-                    <a href="mailto:info@iidadd.com" className="hover:text-[#FF40EB] transition">info@iidadd.com</a>
+                    <a href="mailto:info@nigape.com" className="hover:text-[#FF40EB] transition">info@nigape.com</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[#FF40EB]">☎</span>
