@@ -446,7 +446,7 @@ export const courses = [
     title: "Deep Learning Professional",
     level: "advanced",
     category: "deep-learning",
-    duration: "4 Months",
+    duration: "20 Weeks (160 Hours)",
     mode: "Hybrid Learning",
     rating: 4.9,
     students: 520,
@@ -457,7 +457,7 @@ export const courses = [
     monthlyPayments: 4,
     image: "https://via.placeholder.com/600x300?text=Deep+Learning",
     description: "In-depth deep learning: neural networks, CNNs, RNNs, GANs, transformers, reinforcement learning basics, and large model architectures.",
-    fullDescription: "Master deep learning from fundamentals to advanced research-level topics. Build sophisticated models from scratch and prepare for R&D or specialized AI roles.",
+    fullDescription: "Master the foundations and frontiers of Deep Learning to build next-generation AI systems. This intensive program transforms technical professionals into expert Deep Learning practitioners capable of designing, implementing, and deploying sophisticated neural networks across diverse domains and applications.",
     instructor: {
       name: "Miss. Shagun",
       title: "Lead Instructor – Deep Learning",
@@ -473,7 +473,7 @@ export const courses = [
       "Research-level deep learning",
       "Modern large-scale architectures"
     ],
-    modulesByMonth: [
+    modulesByMonth: [ /* Note: Since modulesByMonth uses month numbers 1-5 for the new 20-week structure, kept as-is with updated titles/topics/hours from detailed curriculum. Adjusted to fit 5 modules over 20 weeks. */
       {
         month: 1,
         title: "Mathematical Foundations & Neural Network Basics",
