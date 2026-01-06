@@ -17,7 +17,7 @@ export const courses = [
     description: "Perfect for beginners, 12th-pass students, and career switchers. Build strong foundations in AI/ML, Python, prompt engineering, LLMs, and hands-on projects in text, vision & multimodal AI.",
     fullDescription: "This comprehensive 12-month diploma program takes beginners from zero to job-ready in Generative AI. Learn Python for AI, prompt engineering mastery, core LLM concepts, and build real-world projects in language, vision, and multimodal AI. Graduates receive a professional portfolio and are prepared for roles like AI Developer, Prompt Engineer, or GenAI Specialist.",
     instructor: {
-      name: "Manjeet Singh",
+      name: "Shagun Srivastava",
       title: "Lead Instructor – Generative AI",
       bio: "Experienced AI educator with expertise in LLMs, prompt engineering, and applied GenAI.",
       image: "/nimlacpic/manjeet.png",
@@ -329,7 +329,7 @@ export const courses = [
     description: "Master Natural Language Processing – from text processing to transformer models and real-world NLP applications.",
     fullDescription: "Become an NLP specialist. Learn text processing, transformer architectures, and build production-grade NLP systems like chatbots, sentiment analyzers, and more.",
     instructor: {
-      name: "Manjeet Singh",
+      name: "Shagun Srivastava",
       title: "Lead Instructor – NLP",
       bio: "NLP expert with experience building enterprise language systems",
       image: "/nimlacpic/manjeet.png",

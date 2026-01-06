@@ -2,10 +2,13 @@ import React from "react";
 import CoursePage from "@/Courses/dynamicpage";
 import { getCourseById, courses as allCourses } from "@/Data/data";
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
+  const resolvedParams = await params;
+  const id = resolvedParams?.id;
+
   // If params.id is available (normal server render), use it.
-  if (params && params.id) {
-    const course = getCourseById(params.id);
+  if (id) {
+    const course = getCourseById(id);
     if (course) return <CoursePage course={course} />;
   }
 
