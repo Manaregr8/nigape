@@ -56,7 +56,7 @@ const FilterBar = ({ categories, selectedCategory, onSelect }) => {
         <button
           key={cat.id}
           onClick={() => onSelect(cat.id)}
-          className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+          className={`px-4 py-2 text-sm sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:text-base rounded-full font-medium transition-all duration-300 ${
             selectedCategory === cat.id
               ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-purple-500/30"
               : "bg-white/10 backdrop-blur-md text-gray-300 hover:bg-white/20"
@@ -223,10 +223,10 @@ export default function CoursesPage() {
             </div>
 
             {/* Gradient badge below image */}
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg z-[1] mx-auto -mt-28">
-              <div className="bg-[#FF40EB] rounded-2xl p-6 shadow-2xl text-center text-white" style={{ boxShadow: '0 0 32px 0 #9234eb9c' }}>
-                <p className="text-2xl font-bold mb-2">Miss. Shagun</p>
-                <p className="text-lg text-cyan-200">AI Research Lead & Emotional Intelligence Pioneer</p>
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg z-[1] mx-auto -mt-24">
+              <div className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white" style={{ boxShadow: '0 0 24px 0 #9234eb9c' }}>
+                <p className="text-xl sm:text-2xl font-bold mb-1">Miss. Shagun</p>
+                <p className="text-sm sm:text-base text-cyan-200">AI Research Lead & Emotional Intelligence Pioneer</p>
               </div>
             </div>
           </div>
@@ -246,11 +246,11 @@ export default function CoursesPage() {
             </p>
 
             {/* ✨ CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
               {/* Primary CTA */}
               <a
                 href="/Form/form"
-                className="px-16 py-7 bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-2xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-1 text-center"
+                className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
               >
                 Join India’s AI Workforce
               </a>
@@ -258,7 +258,7 @@ export default function CoursesPage() {
               {/* Secondary CTA */}
               <a
                 href="/Form/form"
-                className="px-10 py-7 border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-2xl bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
+                className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
               >
                 Meet Your Industry Mentor
               </a>
