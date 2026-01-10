@@ -32,31 +32,19 @@ export default function NigapePlacements() {
     }
   ];
 
-  const successStories = [
-    {
-      name: "Rahul",
-      background: "Class 12 Graduate",
-      transformation: "Zero coding experience → Leading AI projects at a startup",
-      quote: "Within weeks I was building my first AI chatbot. The career clarity and confidence I gained is unbelievable.",
-      role: "AI Project Lead",
-      color: "#FF40EB"
-    },
-    {
-      name: "Priya",
-      background: "Working Professional",
-      transformation: "Non-tech role → Data Scientist creating NLP solutions",
-      quote: "NIGAPE's program turned my career around. The real projects and corporate-style learning made all the difference.",
-      role: "Data Scientist",
-      color: "#FF40EB"
-    },
-    {
-      name: "Ankit",
-      background: "College Student",
-      transformation: "Confused about AI → Portfolio + Clear career path",
-      quote: "From confusion to clarity. Now I'm placed at a tech company working on Computer Vision.",
-      role: "Computer Vision Engineer",
-     color: "#FF40EB"
-    }
+  const companies = [
+    { name: "Google", logo: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" },
+    { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+    { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { name: "Netflix", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
+    { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+    { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
+    { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.svg" },
+    { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
+    { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" },
+    { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
+    { name: "Intel", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg" }
   ];
 
   const careerStats = [
@@ -133,20 +121,20 @@ export default function NigapePlacements() {
             </div>
           </div>
 
-          {/* RIGHT SIDE - Alumni Outcomes */}
+          {/* RIGHT SIDE - Company Logos */}
           <div className="relative">
             <div className="bg-black/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-[#FF40EB]/40">
               {/* Header */}
               <div className="mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                  REAL SUCCESS STORIES
+                  WHERE OUR LEARNERS WORK
                 </h2>
                 <p className="text-white/80 mb-4">
-                  How our learners transformed their AI careers
+                  Alumni are building AI careers at leading tech companies
                 </p>
                 <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#FF40EB]/10 border border-[#FF40EB]/30">
                   <span className="text-white text-xs sm:text-sm font-medium">
-                    ✓ Verified transformations | 2024–25
+                    ✓ Verified placements | 2024–25
                   </span>
                 </div>
               </div>
@@ -168,45 +156,23 @@ export default function NigapePlacements() {
                 ))}
               </div>
 
-              {/* Success Stories */}
-              <div className="space-y-4">
-                {successStories.map((story, idx) => (
+              {/* Company Logos Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {companies.map((company, idx) => (
                   <div
                     key={idx}
-                    className="group relative bg-black/80 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-[#FF40EB]/30 hover:border-[#FF40EB]/70 transition-all duration-300"
+                    className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-[#FF40EB]/30 hover:border-[#FF40EB]/70 transition-all duration-300 hover:scale-105 flex items-center justify-center"
                   >
-                    <div className="flex items-start gap-3 sm:gap-4 mb-3">
-                      <div 
-                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm flex-shrink-0"
-                        style={{
-                          background: `linear-gradient(135deg, ${story.color}, ${story.color}80)`,
-                          border: `2px solid ${story.color}`,
-                        }}
-                      >
-                        {story.name.charAt(0)}
-                      </div>
-                      
-                      <div className="flex-1">
-                        <div className="text-white font-semibold text-sm sm:text-base mb-1">
-                          {story.name}
-                        </div>
-                        <div className="text-[#FF40EB] text-xs mb-2">
-                          {story.background}
-                        </div>
-                        <div className="text-white/90 text-xs sm:text-sm font-medium mb-2">
-                          {story.transformation}
-                        </div>
-                        <p className="text-white/70 text-xs sm:text-sm italic leading-relaxed">
-                          "{story.quote}"
-                        </p>
-                      </div>
-                    </div>
+                    <img 
+                      src={company.logo} 
+                      alt={company.name}
+                      className="w-full h-auto max-h-12 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    />
                     
-                    <div className="mt-3 pt-3 border-t border-[#FF40EB]/20">
-                      <span className="text-[#FF40EB] text-xs font-semibold">
-                        Now: {story.role}
-                      </span>
-                    </div>
+                    {/* Glow effect on hover */}
+                    <div 
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl bg-[#FF40EB]"
+                    />
                   </div>
                 ))}
               </div>
