@@ -10,7 +10,7 @@ export default function Header() {
     "text-white font-medium px-3 py-2 rounded-full transition-all duration-200 shadow-md text-base whitespace-nowrap";
 
   const activeBtn = "bg-[#FF40EB] shadow-pink-500/50";
-  const inactiveBtn = "bg-black/30 hover:bg-[#FF40EB] hover:shadow-pink-500/50";
+  const inactiveBtn = " hover:text-[#FF40EB] hover:shadow-pink-500/50";
 
   return (
     <header className="relative">
@@ -42,6 +42,7 @@ export default function Header() {
           {/* RIGHT SIDE – ABOUT | COURSES | CONTACT */}
           <div className="flex items-center gap-4">
             <Link
+            className={ ` ${baseBtn} ${pathname === '/About' ? activeBtn : inactiveBtn}`}
               href="/About"
               
             >
@@ -50,14 +51,14 @@ export default function Header() {
 
             <Link
               href="/Courses"
-              className={`${pathname === '/Courses' ? activeBtn : inactiveBtn}`}
+              className={` ${baseBtn}  ${pathname === '/Courses' ? activeBtn : inactiveBtn}`}
             >
               Courses
             </Link>
 
             <Link
               href="/Contactus"
-              className={` ${pathname === '/Contactus' ? activeBtn : inactiveBtn}`}
+              className={` ${baseBtn}  ${pathname === '/Contactus' ? activeBtn : inactiveBtn}`}
             >
               Contact
             </Link>
