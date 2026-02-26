@@ -111,7 +111,7 @@ const CourseCard = ({ course }) => {
   // Remove '12' from course card title if present
   const cleanTitle = course.title.replace(/12/g, "");
   return (
-    <Link href={`/Courses/${course.id}`} className="block">
+    <Link href={`/Courses/${course.slug}`} className="block">
       <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
         {/* Image Header with coursegraphic */}
         <div className="relative h-64 bg-black flex items-start justify-center p-0">

@@ -1,3 +1,5 @@
+import { slugify } from "@/lib/slugify";
+
 export const courses = [
   {
     id: 1,
@@ -539,7 +541,32 @@ export const courses = [
   }
 ];
 
-export function getCourseById(id) {
-  const numId = parseInt(id);
-  return courses.find(course => course.id === numId || String(course.id) === String(id));
+// ensure every course has a slug property so that URLs can use
+// human-readable names instead of numeric ids.  This runs once when the
+// module is imported.
+courses.forEach((c) => {
+  if (!c.slug) {
+    c.slug = slugify(c.title);
+  }
+});
+
+export function getCourseBySlug(slug) {
+  if (!slug) return undefined;
+  return courses.find((course) => course.slug === slug);
+}
+
+export function getCourseById(idOrSlug) {
+  // try numeric lookup first
+  const numId = parseInt(idOrSlug, 10);
+  if (!isNaN(numId)) {
+    const byId = courses.find(
+      (course) => course.id === numId || String(course.id) === String(idOrSlug)
+    );
+    if (byId) return byId;
+  }
+  // fallback: if a string was provided, treat it as a slug
+  if (typeof idOrSlug === "string") {
+    return getCourseBySlug(idOrSlug);
+  }
+  return undefined;
 }
