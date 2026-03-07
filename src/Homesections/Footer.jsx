@@ -101,23 +101,28 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                  <Link href="/courses/diploma-in-generative-ai-prompt-engineering" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                     Diploma in GenAI
                   </Link>
                 </li>
                 <li>
-                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                  <Link href="/courses/advanced-generative-ai-prompt-engineering" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                     Advanced GenAI
                   </Link>
                 </li>
                 <li>
-                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                  <Link href="/courses/generative-ai-for-professionals" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    GenAI for Professionals
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/courses/ai-literacy-for-everyone" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                     AI Literacy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
-                    Career Accelerator
+                  <Link href="/courses/deep-learning-professional" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Deep Learning Professional
                   </Link>
                 </li>
               </ul>
@@ -163,6 +168,26 @@ export default function Footer() {
                     Terms of Service
                   </Link>
                 </li>
+                <li className="group">
+                  <Link href="/terms-and-conditions" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Terms and Conditions
+                  </Link>
+                </li>
+                <li className="group">
+                  <Link href="/disclaimer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Disclaimer
+                  </Link>
+                </li>
+                <li className="group">
+                  <a href="/sitemap.xml" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Sitemap XML
+                  </a>
+                </li>
+                <li className="group">
+                  <Link href="/sitemap.html" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Sitemap HTML
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -175,7 +200,7 @@ export default function Footer() {
             </div>
             
             <div className="flex items-center gap-6 text-gray-500">
-              <span className="hover:text-[#FF40EB] cursor-default transition">Empowering India's AI Workforce</span>
+              <span className="hover:text-[#FF40EB] cursor-default transition">Empowering India&apos;s AI Workforce</span>
               <span className="text-[#FF40EB] font-semibold flex items-center gap-1">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF40EB] opacity-75"></span>

@@ -3,6 +3,7 @@
 import { Home, Info, Contact, BookOpen } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 import Iridescence from "@/Homesections/bits/Iridescence.js";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -251,7 +252,7 @@ export default function Homee() {
                 with
                 <br />
                 <span className="text-white drop-shadow-[0_0_45px_rgba(147,51,234,0.8)]">
-                  India's First-GenAI & Prompt Engineering
+                  India&apos;s First-GenAI & Prompt Engineering
                 </span>{" "}
                 Institute
               </h1>
@@ -268,15 +269,12 @@ export default function Homee() {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
-                <button
-                  onClick={openPopup}
-                  className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center"
-                >
-                  Join NIGAPE Now
-                </button>
-                <a href="/contact-us" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
-                  Visit Our Campus
+                <a href="?enroll=1" className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center">
+                  Enroll Now
                 </a>
+                <Link href="/courses" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
+                  Explore Our Courses
+                </Link>
               </div>
 
             {/* Modal Form Popup */}

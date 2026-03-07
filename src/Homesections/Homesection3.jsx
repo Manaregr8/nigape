@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, Briefcase, TrendingUp, Clock, Users } from 'lucide-react';
 
 // Ensure Geist is loaded globally or via next/font
@@ -108,16 +109,16 @@ export default function NigapePlacements() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="/contact-us" className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#a045eb] text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] text-center">
+              <a href="?enroll=1" className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#a045eb] text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] text-center">
                 <span className="flex items-center justify-center gap-2">
-                  Book Free Career Counseling
+                  Enroll Now
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
 
-              <a href="/courses" className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-transparent border-2 border-[#FF40EB] text-white font-semibold text-base sm:text-lg hover:bg-[#9234eb]/10 transition-all duration-300 text-center">
-                Explore Our Programs
-              </a>
+              <Link href="/courses" className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-transparent border-2 border-[#FF40EB] text-white font-semibold text-base sm:text-lg hover:bg-[#9234eb]/10 transition-all duration-300 text-center">
+                Explore Our Courses
+              </Link>
             </div>
           </div>
 

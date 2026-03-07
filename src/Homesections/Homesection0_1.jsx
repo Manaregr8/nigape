@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function AboutUsSection() {
@@ -58,7 +59,7 @@ export default function AboutUsSection() {
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <h3 className="text-2xl font-bold mb-3">Our Mission</h3>
               <p className="text-sm text-gray-200 mb-4">
-                Build India's strongest AI talent pipeline through practical GenAI training
+                Build India&apos;s strongest AI talent pipeline through practical GenAI training
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
@@ -144,15 +145,15 @@ export default function AboutUsSection() {
             Ready to Transform Your Career?
           </h3> */}
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-            Start your GenAI and Prompt Engineering journey with India's dedicated institute
+            Start your GenAI and Prompt Engineering journey with India&apos;s dedicated institute
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/courses" className="bg-[#FF40EB]  text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
-              Join NIGAPE Now
+            <a href="?enroll=1" className="bg-[#FF40EB] text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
+              Enroll Now
             </a>
-            <a href="/contact-us" className="border-2 border-[#FF40EB] text-white hover:bg-[#FF40EB] hover:text-black font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
-              Talk to a Counselor
-            </a>
+            <Link href="/courses" className="border-2 border-[#FF40EB] text-white hover:bg-[#FF40EB] hover:text-black font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
+              Explore Our Courses
+            </Link>
           </div>
         </div>
       </div>

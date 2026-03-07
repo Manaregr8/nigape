@@ -1,12 +1,10 @@
 // app/contact/page.jsx
 'use client';
 
-import { Home, Info, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { memo } from "react";
+import { useState } from "react";
 import Iridescence from '@/Homesections/bits/Iridescence.js';
-import FAQSection from '@/Homesections/Homesection7.jsx';
 
 
 // const navItems = [
@@ -72,6 +70,65 @@ const socials = ["X", "Discord", "Telegram", "Instagram"];
 // Navbar.displayName = "ContactNavbar";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    city: "",
+    message: "",
+  });
+  const [submitState, setSubmitState] = useState({ status: "idle", message: "" });
+
+  const appsScriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!appsScriptUrl) {
+      setSubmitState({
+        status: "error",
+        message: "Form endpoint not configured. Add NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL.",
+      });
+      return;
+    }
+
+    setSubmitState({ status: "submitting", message: "Submitting your request..." });
+
+    try {
+      const payload = new URLSearchParams({
+        ...formData,
+        source: "website-contact-us",
+        submittedAt: new Date().toISOString(),
+      });
+
+      const response = await fetch(appsScriptUrl, {
+        method: "POST",
+        body: payload,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      setSubmitState({
+        status: "success",
+        message: "Thanks! Your details were submitted successfully.",
+      });
+      setFormData({ name: "", email: "", phone: "", course: "", city: "", message: "" });
+    } catch {
+      setSubmitState({
+        status: "error",
+        message: "Submission failed. Please try again.",
+      });
+    }
+  };
+
   return (
     <>
       {/* Background */}
@@ -131,33 +188,79 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <form className="space-y-5 sm:space-y-7">
+            <form className="space-y-5 sm:space-y-7" onSubmit={handleSubmit}>
               <input
                 type="text"
+                name="name"
                 placeholder="* Your Name"
                 required
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
               />
 
               <input
                 type="email"
+                name="email"
                 placeholder="* Your Email"
                 required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="* Phone Number"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="text"
+                name="course"
+                placeholder="Course Interested In"
+                value={formData.course}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={formData.city}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
               />
 
               <textarea
                 rows={5}
+                name="message"
                 placeholder="Tell us about your current background and AI career goal..."
                 required
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 resize-none backdrop-blur-sm text-base sm:text-lg"
               />
 
+              {submitState.status !== "idle" && (
+                <p
+                  className={`text-sm ${submitState.status === "success" ? "text-green-300" : submitState.status === "error" ? "text-red-300" : "text-pink-100"}`}
+                >
+                  {submitState.message}
+                </p>
+              )}
+
               <button
                 type="submit"
+                disabled={submitState.status === "submitting"}
                 className="w-full py-4 sm:py-5 bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-500 hover:to-purple-600 text-white font-bold text-base sm:text-lg rounded-xl transition-all duration-300 shadow-lg shadow-pink-600/30 hover:shadow-pink-600/50"
               >
-                Request Counseling Call
+                {submitState.status === "submitting" ? "Submitting..." : "Request Counseling Call"}
               </button>
             </form>
           </motion.div>
@@ -179,12 +282,12 @@ export default function ContactPage() {
                 Have a quick question?
                 Check our FAQs for instant guidance on courses, eligibility, and placements.
               </p>
-              <a
+              <Link
                 href="/#faq"
                 className="inline-block mt-3 sm:mt-5 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 transition"
               >
                 View FAQs →
-              </a>
+              </Link>
             </div>
 
             {/* OFFICE */}

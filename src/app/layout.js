@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../Homesections/Header.jsx";
 import Footer from "../Homesections/Footer.jsx";
 import ClientWrapper from "./wraper.jsx";
+import EnrollmentPopupGate from "@/components/EnrollmentPopupGate";
 
 // ✅ Use consistent variable names
 const geist = Geist({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <EnrollmentPopupGate />
         </ClientWrapper>
       </body>
     </html>

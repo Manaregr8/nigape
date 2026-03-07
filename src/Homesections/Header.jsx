@@ -43,7 +43,7 @@ export default function Header() {
           {/* RIGHT SIDE – ABOUT | COURSES | CONTACT */}
           <div className="flex items-center gap-4">
             <Link
-            className={ ` ${baseBtn} ${normalizedPath === '/about' ? activeBtn : inactiveBtn}`}
+            className={ `hidden sm:inline-block ${baseBtn} ${normalizedPath === '/about' ? activeBtn : inactiveBtn}`}
               href="/About"
               
             >

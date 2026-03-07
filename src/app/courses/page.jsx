@@ -249,18 +249,18 @@ export default function CoursesPage() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
               {/* Primary CTA */}
               <a
-                href="/contact-us"
+                href="?enroll=1"
                 className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
               >
-                Join India’s AI Workforce
+                Enroll Now
               </a>
 
               {/* Secondary CTA */}
               <a
-                href="/contact-us"
+                href="#all-programs"
                 className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
               >
-                Talk to a Program Advisor
+                Explore Our Courses
               </a>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default function CoursesPage() {
       <Marquee  />
 
       {/* SECTION 3: Packages / Courses Cards */}
-      <section className="relative py-24 px-6">
+      <section id="all-programs" className="relative py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
