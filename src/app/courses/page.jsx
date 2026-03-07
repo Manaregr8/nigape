@@ -25,6 +25,51 @@ const categories = [
   { id: "short", label: "Short Courses" }
 ];
 
+function isShortCourse(course) {
+  try {
+    const dur = String(course?.duration || "").toLowerCase();
+    return course?.monthlyPayments === 1 || dur.includes("week") || dur.includes("1.5");
+  } catch {
+    return false;
+  }
+}
+
+function getUiCategory(course) {
+  const rawCategory = String(course?.category || "").toLowerCase();
+  const title = String(course?.title || "").toLowerCase();
+  const description = String(course?.description || "").toLowerCase();
+
+  if (rawCategory === "engineering" || rawCategory === "prompt" || rawCategory === "business") {
+    return rawCategory;
+  }
+
+  if (["deep-learning", "computer-vision", "nlp"].includes(rawCategory)) {
+    return "engineering";
+  }
+
+  if (rawCategory === "ai-literacy") {
+    return "business";
+  }
+
+  if (rawCategory === "generative-ai") {
+    if (title.includes("professional") || description.includes("business")) {
+      return "business";
+    }
+    return "prompt";
+  }
+
+  // Fallback: if nothing matches, keep it discoverable under business track.
+  return "business";
+}
+
+function getUiCategoryLabel(course) {
+  const mapped = getUiCategory(course);
+  if (mapped === "engineering") return "Engineering";
+  if (mapped === "prompt") return "Prompt";
+  if (mapped === "business") return "Business";
+  return "Short";
+}
+
 // Marquee Component (FIXED — now moves infinitely)
 const Marquee = () => {
   const aiTech = [
@@ -125,10 +170,7 @@ const CourseCard = ({ course }) => {
           />
           {/* Category Badge */}
           <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
-            {course.category === "engineering" ? "Engineering" :
-              course.category === "prompt" ? "Prompt" :
-              course.category === "business" ? "Business" :
-              "Short"} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
+            {(isShortCourse(course) ? "Short" : getUiCategoryLabel(course))} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
           </div>
         </div>
 
@@ -166,8 +208,18 @@ export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
 
-  // Combine all courses including short ones
-  const allCourses = [...courses, ...shortCourses];
+  // Combine all courses while avoiding duplicates from overlapping subsets.
+  const allCourses = useMemo(() => {
+    const seen = new Set();
+    return [...courses, ...shortCourses].filter((course) => {
+      const key = String(course.slug || course.id || course.title || "").toLowerCase();
+      if (!key || seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    });
+  }, []);
 
   // Filtered and searched courses
   const filteredCourses = useMemo(() => {
@@ -177,7 +229,7 @@ export default function CoursesPage() {
       if (selectedCategory === "short") {
         results = shortCourses;
       } else {
-        results = courses.filter((course) => course.category === selectedCategory);
+        results = allCourses.filter((course) => getUiCategory(course) === selectedCategory);
       }
     }
 
@@ -191,7 +243,7 @@ export default function CoursesPage() {
     }
 
     return results;
-  }, [selectedCategory, searchQuery]);
+  }, [allCourses, selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen pt-20 bg-black text-white overflow-hidden">

@@ -135,18 +135,13 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 <li className="group">
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                  <a href="https://www.linkedin.com/in/national-institute-genai-and-prompt-engineering-116711381/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                     LinkedIn
                   </a>
                 </li>
                 <li className="group">
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                  <a href="https://www.instagram.com/nigape.official/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
                     Instagram
-                  </a>
-                </li>
-                <li className="group">
-                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
-                    YouTube
                   </a>
                 </li>
               </ul>

@@ -12,7 +12,18 @@ import Iridescence from '@/Homesections/bits/Iridescence.js';
 //   { name: "Courses", icon: BookOpen, href: "/courses" },
 // ];
 
-const socials = ["X", "Discord", "Telegram", "Instagram"];
+const socials = [
+  {
+    name: "Instagram",
+    label: "IG",
+    href: "https://www.instagram.com/nigape.official/",
+  },
+  {
+    name: "LinkedIn",
+    label: "IN",
+    href: "https://www.linkedin.com/in/national-institute-genai-and-prompt-engineering-116711381/",
+  },
+];
 
 // const Navbar = memo(() => (
 //   <motion.nav
@@ -308,13 +319,18 @@ export default function ContactPage() {
                 Follow Us
               </h3>
               <div className="flex gap-3 sm:gap-5">
-                {socials.map((s) => (
-                  <div
-                    key={s}
-                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 border border-pink-500/40 flex items-center justify-center text-base sm:text-lg font-semibold hover:bg-pink-500/20 hover:border-pink-400 cursor-pointer transition-all duration-300"
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    title={social.name}
+                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 border border-pink-500/40 flex items-center justify-center text-base sm:text-lg font-semibold hover:bg-pink-500/20 hover:border-pink-400 transition-all duration-300"
                   >
-                    {s[0]}
-                  </div>
+                    {social.label}
+                  </a>
                 ))}
               </div>
             </div>
