@@ -30,7 +30,7 @@ export default function NigapeGallery() {
             {/* Bottom Headline - Responsive positioning and sizing */}
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 p-4 sm:p-5 lg:p-6 bg-black/60 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-[#9234eb]/50 shadow-2xl">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                Own a Piece <br />of the Digital Future
+                Learn, Build, and Launch <br />Your AI Career
               </h2>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function NigapeGallery() {
               Schedule a Campus Tour
             </button>
             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#9234eb] to-[#7b2cbf] text-white font-bold text-sm sm:text-base hover:from-[#8a2edc] hover:to-[#6a1fa8] hover:scale-105 transition-all duration-300 shadow-xl">
-              Explore Our Programs
+              Explore AI & Prompt Programs
             </button>
           </div>
         </div>

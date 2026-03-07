@@ -204,9 +204,9 @@ export default function About() {
             transition={{ duration: 1 }}
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
           >
-            India's First Premium
+            India's First Dedicated
             <br className="hidden sm:block" />
-            Generative AI Institute
+            GenAI & Prompt Engineering Institute
           </motion.h1>
 
           <motion.p
@@ -215,7 +215,7 @@ export default function About() {
             transition={{ delay: 0.45, duration: 1 }}
             className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Not just another classroom. A corporate-style AI training environment where you build real projects, work with industry mentors, and graduate with the portfolio employers demand.
+            Not just another classroom. Learn from our campus and online cohorts, build real GenAI projects, and graduate with a portfolio built for AI hiring teams.
           </motion.p>
 
           <motion.div
@@ -225,7 +225,7 @@ export default function About() {
             className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           >
             <Link
-              href="/try"
+              href="/courses"
               className="group px-8 sm:px-10 py-3.5 sm:py-5 rounded-full font-bold text-white text-base sm:text-lg shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500"
             >
               <span>Explore Our Programs</span>
@@ -248,7 +248,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
-              <span className="text-sm sm:text-base">Join 3.6M+ learners upskilling in AI</span>
+              <span className="text-sm sm:text-base">Join learners building practical AI careers with NIGAPE</span>
             </div>
           </motion.div>
         </motion.div>
@@ -271,7 +271,7 @@ export default function About() {
             </h2>
             <p className="text-base sm:text-lg text-gray-400 leading-relaxed">
               We designed our programs around one core belief:{" "}
-              <strong className="text-purple-400">India needs 1M+ skilled AI professionals</strong> — and we're here to train them with real-world, industry-grade skills.
+              <strong className="text-purple-400">India needs practical AI and Prompt Engineering talent at scale</strong> — and we're training that talent with project-driven, career-focused programs.
             </p>
             <p className="mt-4 text-sm sm:text-base text-gray-500">No textbook theories. No outdated content. Just hands-on AI projects that mirror what tech companies actually do.</p>
           </motion.div>
@@ -306,7 +306,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>.
+      </section>
 
       {/* Team */}
       <section className="py-20 md:py-32 px-4 sm:px-6 bg-gray-900 relative overflow-hidden">
@@ -315,7 +315,7 @@ export default function About() {
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             Meet Our Expert Team
           </motion.h2>
-          <p className="text-base sm:text-lg text-gray-400 mb-8">Industry veterans crafting India's AI workforce.</p>
+          <p className="text-base sm:text-lg text-gray-400 mb-8">Our mentors help learners become role-ready for GenAI teams across India.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {team.map((member, i) => (
@@ -343,7 +343,7 @@ export default function About() {
 
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }}>
             <Link
-              href="/Courses"
+              href="/courses"
               className="inline-block px-10 sm:px-12 md:px-16 py-3.5 sm:py-4 text-white text-lg md:text-2xl font-bold rounded-full shadow-2xl hover:scale-110 transition-all duration-500 relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500"
             >
               <span className="relative z-10">Explore Programs</span>

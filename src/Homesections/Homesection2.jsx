@@ -5,22 +5,22 @@ export default function HomeSection2() {
     {
       keyword: 'Skills',
       description:
-        'Master AI concepts (machine learning, deep learning, NLP, computer vision) and apply them through prompt engineering and real AI system design.',
+        'Master Generative AI, Prompt Engineering, LLM workflows, automation, and deployment through structured, mentor-led projects.',
     },
     {
       keyword: 'Confidence',
       description:
-        'By solving real problems and demoing projects, you’ll know you can innovate with AI in any workplace.',
+        'Build confidence by solving real business use-cases from startups, agencies, and operations teams.',
     },
     {
       keyword: 'Exposure',
       description:
-        'Work on team projects that replicate actual R&D cycles. Receive feedback from AI professionals. Build an AI portfolio that stands out.',
+        'Work in sprint-based cohorts, get feedback from industry mentors, and build a portfolio that demonstrates practical prompt engineering outcomes.',
     },
     {
       keyword: 'Clarity & Readiness',
       description:
-        'With guidance from our mentors and counsellors, you’ll identify the AI roles that fit your strengths and have the resume and interview practice to land them.',
+        'Get career counseling, resume feedback, and interview prep tailored for AI roles hiring across India and remote teams.',
     },
   ];
 
@@ -33,7 +33,7 @@ export default function HomeSection2() {
             What You Will Gain
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            At NIGAPE, you don't just learn theory – you get results. Graduates emerge with:
+            At NIGAPE, you move beyond theory and graduate with measurable outcomes:
           </p>
         </div>
 
@@ -57,9 +57,9 @@ export default function HomeSection2() {
         {/* CTA */}
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-gray-400 italic text-lg mb-8">
-            Ready to transform? Take the first step – explore our courses and launch your AI journey.
+            Ready to start with India's dedicated GenAI and Prompt Engineering institute?
           </p>
-          <Link href="/Courses" passHref>
+          <Link href="/courses" passHref>
             <button className="px-8 py-4 bg-[#FF40EB] hover:bg-pink-600 text-white font-bold rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-[#FF40EB]/30 hover:shadow-xl transform hover:-translate-y-0.5">
               Explore Courses
             </button>

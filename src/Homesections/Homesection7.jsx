@@ -8,27 +8,27 @@ export default function FAQSection() {
   const faqs = [
     {
       question: "What is NIGAPE?",
-      answer: "India's first premium institute dedicated to Generative AI, Prompt Engineering, and real-world, project-based learning that mirrors how the AI industry actually works."
+      answer: "NIGAPE is an India-first institute dedicated to Generative AI and Prompt Engineering with project-first training for students, graduates, and professionals."
     },
     {
       question: "Who can join NIGAPE courses?",
-      answer: "Anyone from Class 12 students to working professionals and career switchers. No coding or tech background required."
+      answer: "Anyone from Class 12 students to working professionals and career switchers can join. We provide beginner and advanced tracks, with coding support where needed."
     },
     {
       question: "What makes NIGAPE different from other AI institutes?",
-      answer: "We don't teach theory for the sake of it. Our courses are industry-aligned, mentorship-led, and built around real AI tools, workflows, and portfolio-grade projects."
+      answer: "Our curriculum is focused on real Prompt Engineering workflows, GenAI tools, sprint projects, and career mentoring instead of only theoretical lectures."
     },
     {
       question: "Do I need coding experience to start?",
-      answer: "No. We have beginner-friendly pathways that guide you step by step—even if you're starting from zero."
+      answer: "No. We have beginner-friendly pathways and guided labs for non-coders, plus advanced tracks for technical learners."
     },
     {
       question: "What kind of projects will I build?",
-      answer: "You'll work on GenAI apps, NLP tools, chatbots, CV models and more—everything built with real datasets, not dummy assignments."
+      answer: "You will build GenAI assistants, prompt libraries, automation workflows, chatbots, and domain projects relevant to real business use-cases."
     },
     {
       question: "Will I get placement support after the course?",
-      answer: "Yes resume help, interview prep, project reviews, and career guidance. No fake promises, just solid support to get you AI-job ready."
+      answer: "Yes. We provide resume refinement, mock interviews, project reviews, and role guidance for opportunities across India and remote teams."
     }
   ];
 
@@ -37,7 +37,7 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="min-h-screen pt-28 sm:pt-36 bg-black py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div id="faq" className="min-h-screen pt-28 sm:pt-36 bg-black py-12 px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-4xl mx-auto mt-8 sm:mt-12 border-t border-gray-800/40 pt-8">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
@@ -45,7 +45,7 @@ export default function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-gray-400 text-lg">
-            Everything you need to know about NIGAPE
+            Everything you need to know about our institute
           </p>
         </div>
 
@@ -89,9 +89,9 @@ export default function FAQSection() {
         {/* Bottom CTA */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-6">Still have questions?</p>
-          <button className="px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-lg hover:bg-[#ff2de6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#FF40EB]/50">
-           <a href="/Contactus">Contact Us</a> 
-          </button>
+          <a href="/contact-us" className="inline-block px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-lg hover:bg-[#ff2de6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#FF40EB]/50">
+            Contact Us
+          </a>
         </div>
       </div>
 

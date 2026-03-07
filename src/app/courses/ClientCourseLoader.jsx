@@ -34,7 +34,7 @@ export default function ClientCourseLoader({ availableCourses = [] }) {
           <h2 className="text-2xl font-bold mb-2">Missing course slug</h2>
           <p className="text-sm text-gray-300">No slug in route params. Try navigating directly or check the link.</p>
           <div className="mt-4">
-            <button className="px-4 py-2 bg-purple-600 rounded" onClick={() => router.push('/Courses')}>Back to Courses</button>
+            <button className="px-4 py-2 bg-purple-600 rounded" onClick={() => router.push('/courses')}>Back to Courses</button>
           </div>
         </div>
       </div>

@@ -15,13 +15,13 @@ export default function AboutUsSection() {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-8">
             NIGAPE <span className="inline-block align-middle w-16 h-16 md:w-20 md:h-20 bg-gray-700 rounded-lg"></span> is<br />
             <span className="inline-block align-middle w-16 h-16 md:w-20 md:h-20 bg-gray-700 rounded-lg"></span> Known for<br />
-            <span className="text-[#FF40EB]">Innovative</span>
+            <span className="text-[#FF40EB]">Industry-Ready AI Training</span>
           </h1>
           <p className="text-sm text-gray-400 max-w-xs ml-auto">
-            Top 1 in India<br />
-            <span className="text-gray-200 font-medium">Premium AI Training Institute</span><br />
-            Their meticulously crafted<br />
-            programs blend excellence
+            Campus + live online cohorts<br />
+            <span className="text-gray-200 font-medium">India-first GenAI & Prompt Engineering institute</span><br />
+            Career-focused programs built with<br />
+            practical projects and mentor feedback
           </p>
         </div>
 
@@ -29,19 +29,19 @@ export default function AboutUsSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           <div>
             <div className="text-6xl md:text-7xl font-bold text-white mb-2">1M+</div>
-            <div className="text-gray-400 text-sm">AI Professionals Needed</div>
+            <div className="text-gray-400 text-sm">AI Roles Opening Across India</div>
           </div>
           <div>
-            <div className="text-6xl md:text-7xl font-bold text-white mb-2">3.6M</div>
-            <div className="text-gray-400 text-sm">Learners Upskilling</div>
+            <div className="text-6xl md:text-7xl font-bold text-white mb-2">1200+</div>
+            <div className="text-gray-400 text-sm">Learners Trained Across India</div>
           </div>
           <div>
-            <div className="text-6xl md:text-7xl font-bold text-white mb-2">95%</div>
-            <div className="text-gray-400 text-sm">Career Success Rate</div>
+            <div className="text-6xl md:text-7xl font-bold text-white mb-2">92%</div>
+            <div className="text-gray-400 text-sm">Interview Conversion Support</div>
           </div>
           <div>
-            <div className="text-6xl md:text-7xl font-bold text-white mb-2">500+</div>
-            <div className="text-gray-400 text-sm">Projects Completed</div>
+            <div className="text-6xl md:text-7xl font-bold text-white mb-2">400+</div>
+            <div className="text-gray-400 text-sm">Portfolio Projects Reviewed</div>
           </div>
         </div>
 
@@ -58,12 +58,12 @@ export default function AboutUsSection() {
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <h3 className="text-2xl font-bold mb-3">Our Mission</h3>
               <p className="text-sm text-gray-200 mb-4">
-                Bridge India's AI talent gap through corporate-style training
+                Build India's strongest AI talent pipeline through practical GenAI training
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-400">→</span>
-                  <span>Industry-aligned curriculum</span>
+                  <span>Prompt engineering-first curriculum</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-400">→</span>
@@ -88,7 +88,7 @@ export default function AboutUsSection() {
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <h3 className="text-2xl font-bold mb-3">Corporate-Style Learning</h3>
               <p className="text-sm text-gray-200 mb-4">
-                Learn AI like real tech companies operate
+                Learn AI exactly how modern product and automation teams work
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
@@ -118,7 +118,7 @@ export default function AboutUsSection() {
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <h3 className="text-2xl font-bold mb-3">Career Outcomes</h3>
               <p className="text-sm text-gray-200 mb-4">
-                Real support for your AI career growth
+                Placement-focused support from experienced mentors
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
@@ -144,15 +144,15 @@ export default function AboutUsSection() {
             Ready to Transform Your Career?
           </h3> */}
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-            Join India's most serious AI learning ecosystem
+            Start your GenAI and Prompt Engineering journey with India's dedicated institute
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#FF40EB]  text-white font-semibold px-10 py-4 rounded-full transition-all duration-300">
+            <a href="/courses" className="bg-[#FF40EB]  text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
               Join NIGAPE Now
-            </button>
-            <button className="border-2 border-[#FF40EB] text-white hover:bg-[#FF40EB] hover:text-black font-semibold px-10 py-4 rounded-full transition-all duration-300">
+            </a>
+            <a href="/contact-us" className="border-2 border-[#FF40EB] text-white hover:bg-[#FF40EB] hover:text-black font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
               Talk to a Counselor
-            </button>
+            </a>
           </div>
         </div>
       </div>

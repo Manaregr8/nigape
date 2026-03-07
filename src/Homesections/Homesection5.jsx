@@ -5,25 +5,25 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       quote:
-        "Before <span style='color:#9234eb; font-weight:600'>NIGAPE</span>, I had just finished school and had zero coding experience. Within weeks of joining, I was building my first AI chatbot project. Today I’m leading an AI project at a startup. The career clarity and confidence I gained here is unbelievable.",
-      name: "Rahul",
-      role: "Class 1 2 graduate",
+        "I joined <span style='color:#9234eb; font-weight:600'>NIGAPE</span> right after Class 12. In 3 months I built my first AI support bot and portfolio website. The mentors made Prompt Engineering simple and practical.",
+      name: "Rohit Sharma",
+      role: "Class 12 Graduate",
       avatarUrl: "https://i.pravatar.cc/40?img=1",
       linkedinUrl: "#",
     },
     {
       quote:
-        "I was an engineer stuck in a non-tech role. <span style='color:#9234eb; font-weight:600'>NIGAPE</span>’s program turned my career around: I now work as a Data Scientist, creating NLP solutions. The real projects and corporate-style learning made all the difference.",
-      name: "Priya",
+        "As a working professional in marketing, I used <span style='color:#9234eb; font-weight:600'>NIGAPE</span> to transition into AI automation consulting. The live classes and weekend support helped me switch roles with confidence.",
+      name: "Priya Verma",
       role: "Working Professional",
       avatarUrl: "https://i.pravatar.cc/40?img=2",
       linkedinUrl: "#",
     },
     {
       quote:
-        "<span style='color:#9234eb; font-weight:600'>NIGAPE</span>’s mentorship gave me clarity. I went from being confused about AI jobs to having a portfolio of completed AI projects and a clear path: now I’m happily placed at a tech company working on Computer Vision.",
-      name: "Ankit",
-      role: "College Student",
+        "The best part of <span style='color:#9234eb; font-weight:600'>NIGAPE</span> was career direction. I completed GenAI + Prompt Engineering projects, practiced interviews, and secured an internship with a product startup.",
+      name: "Ankit Mehra",
+      role: "B.Tech Student",
       avatarUrl: "https://i.pravatar.cc/40?img=3",
       linkedinUrl: "#",
     },

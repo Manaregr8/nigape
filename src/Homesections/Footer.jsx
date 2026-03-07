@@ -62,7 +62,7 @@ export default function Footer() {
               </div>
               
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                India's Premium Generative AI & Prompt Engineering Institute
+                India-first institute dedicated to Generative AI and Prompt Engineering outcomes.
               </p>
               
               <div className="flex space-x-4 pt-2">
@@ -74,7 +74,7 @@ export default function Footer() {
                    className="w-10 h-10 rounded-full bg-[#FF40EB]/10 border border-[#FF40EB]/30 flex items-center justify-center hover:bg-[#FF40EB]/20 hover:border-[#FF40EB] transition-all duration-300 group">
                   <MessageCircle className="w-5 h-5 text-[#FF40EB] group-hover:scale-110 transition" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#FF40EB]/10 border border-[#FF40EB]/30 flex items-center justify-center hover:bg-[#FF40EB]/20 hover:border-[#FF40EB] transition-all duration-300 group">
+                <a href="/contact-us" className="w-10 h-10 rounded-full bg-[#FF40EB]/10 border border-[#FF40EB]/30 flex items-center justify-center hover:bg-[#FF40EB]/20 hover:border-[#FF40EB] transition-all duration-300 group">
                   <Globe className="w-10 h-10 text-[#FF40EB] group-hover:scale-110 transition" />
                 </a>
               </div>
@@ -100,13 +100,26 @@ export default function Footer() {
                 Programs
               </h3>
               <ul className="space-y-3">
-                {['Diploma in GenAI', 'Advanced GenAI', 'AI Literacy', 'NLP Professional'].map((item) => (
-                  <li key={item}>
-                    <Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Diploma in GenAI
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Advanced GenAI
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    AI Literacy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/courses" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Career Accelerator
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -116,13 +129,21 @@ export default function Footer() {
                 Community
               </h3>
               <ul className="space-y-3">
-                {['Twitter (X)', 'Telegram', 'Medium'].map((item) => (
-                  <li key={item} className="group">
-                    <a href="#" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li className="group">
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    LinkedIn
+                  </a>
+                </li>
+                <li className="group">
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Instagram
+                  </a>
+                </li>
+                <li className="group">
+                  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    YouTube
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -132,13 +153,16 @@ export default function Footer() {
                 Legal
               </h3>
               <ul className="space-y-3">
-                {['Privacy Policy', 'Terms of Service'].map((item) => (
-                  <li key={item} className="group">
-                    <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                <li className="group">
+                  <Link href="/privacy-policy" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li className="group">
+                  <Link href="/terms-of-service" className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-0.5 inline-block">
+                    Terms of Service
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -151,7 +175,7 @@ export default function Footer() {
             </div>
             
             <div className="flex items-center gap-6 text-gray-500">
-              <span className="hover:text-[#FF40EB] cursor-default transition">Empowering India's AI Future</span>
+              <span className="hover:text-[#FF40EB] cursor-default transition">Empowering India's AI Workforce</span>
               <span className="text-[#FF40EB] font-semibold flex items-center gap-1">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF40EB] opacity-75"></span>

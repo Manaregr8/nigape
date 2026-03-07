@@ -104,8 +104,8 @@ export default function ContactPage() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-base xs:text-lg md:text-xl text-white leading-relaxed max-w-xl sm:max-w-3xl mx-auto"
           >
-            Have questions about our AI programs, industry partnerships, or career pathways?
-            Our NIGAPE team is here to guide you with clarity, expertise, and timely support.
+            Have questions about admissions, batches, or career support in Generative AI and Prompt Engineering?
+            Our institute team will guide you with clear next steps.
           </motion.p>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                 We’re happy to help!
               </h2>
               <p className="text-pink-200/85 text-base xs:text-lg leading-relaxed">
-                Questions or concerns? Send us a message below.
+                Share your background and goals, and we’ll suggest the right NIGAPE learning path.
               </p>
             </div>
 
@@ -148,7 +148,7 @@ export default function ContactPage() {
 
               <textarea
                 rows={5}
-                placeholder="Your message..."
+                placeholder="Tell us about your current background and AI career goal..."
                 required
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 resize-none backdrop-blur-sm text-base sm:text-lg"
               />
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 type="submit"
                 className="w-full py-4 sm:py-5 bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-500 hover:to-purple-600 text-white font-bold text-base sm:text-lg rounded-xl transition-all duration-300 shadow-lg shadow-pink-600/30 hover:shadow-pink-600/50"
               >
-                Send Message
+                Request Counseling Call
               </button>
             </form>
           </motion.div>
@@ -177,7 +177,7 @@ export default function ContactPage() {
               </h3>
               <p className="text-pink-100/90 text-sm xs:text-base leading-relaxed">
                 Have a quick question?
-                Check our FAQs for instant answers.
+                Check our FAQs for instant guidance on courses, eligibility, and placements.
               </p>
               <a
                 href="/#faq"
@@ -190,15 +190,12 @@ export default function ContactPage() {
             {/* OFFICE */}
             <div>
               <h3 className="text-xl xs:text-2xl md:text-3xl font-bold text-pink-400 mb-3 sm:mb-5">
-                Office
+                Campus Address
               </h3>
               <p className="text-pink-100/90 text-sm xs:text-base leading-relaxed">
-                Spacetime Management<br />
-                Pvt Ltd Design House,<br />
-                behind Savitri Cinema Complex,<br />
-                Greater Kailash II,<br />
-                Chittaranjan Park,<br />
-                New Delhi, Delhi 110048
+                Spacetime GK2,<br />
+                near Savitri Cinema Complex,<br />
+                New Delhi, Delhi 110048, India
               </p>
             </div>
 

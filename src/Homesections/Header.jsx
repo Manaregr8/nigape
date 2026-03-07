@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const pathname = usePathname();
+  const normalizedPath = (pathname || "").toLowerCase();
 
   const baseBtn =
     "text-white font-medium px-3 py-2 rounded-full transition-all duration-200 shadow-md text-base whitespace-nowrap";
@@ -42,7 +43,7 @@ export default function Header() {
           {/* RIGHT SIDE – ABOUT | COURSES | CONTACT */}
           <div className="flex items-center gap-4">
             <Link
-            className={ ` ${baseBtn} ${pathname === '/About' ? activeBtn : inactiveBtn}`}
+            className={ ` ${baseBtn} ${normalizedPath === '/about' ? activeBtn : inactiveBtn}`}
               href="/About"
               
             >
@@ -50,15 +51,15 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/Courses"
-              className={` ${baseBtn}  ${pathname === '/Courses' ? activeBtn : inactiveBtn}`}
+              href="/courses"
+              className={` ${baseBtn}  ${normalizedPath === '/courses' ? activeBtn : inactiveBtn}`}
             >
               Courses
             </Link>
 
             <Link
-              href="/Contactus"
-              className={` ${baseBtn}  ${pathname === '/Contactus' ? activeBtn : inactiveBtn}`}
+              href="/contact-us"
+              className={` ${baseBtn}  ${normalizedPath === '/contact-us' ? activeBtn : inactiveBtn}`}
             >
               Contact
             </Link>

@@ -8,14 +8,14 @@ export default function AIEditorialSlider() {
   const [progress, setProgress] = useState(0);
 
   const slides = [
-    { name: "Alex Rivera", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop&q=80", badge: "AI INSIGHT" },
-    { name: "Sarah Chen", role: "CTO - AI Lead", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=800&fit=crop&q=80", badge: "SMART NEWS" },
-    { name: "Marcus Johnson", role: "Blockchain Architect", img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=800&fit=crop&q=80", badge: "AI UPDATE" },
-    { name: "Emma Liu", role: "Head of Design", img: "https://images.unsplash.com/photo-1675557009688-45637bc8c4c8?w=1200&h=800&fit=crop&q=80", badge: "AI INSIGHT" },
-    { name: "David Kim", role: "Strategy Director", img: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=1200&h=800&fit=crop&q=80", badge: "SMART NEWS" },
-    { name: "Luna Voss", role: "AI Ethics Officer", img: "https://images.unsplash.com/photo-1676277791608-ac5521e44598?w=1200&h=800&fit=crop&q=80", badge: "AI UPDATE" },
-    { name: "Kai Zen", role: "Lead Developer", img: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&h=800&fit=crop&q=80", badge: "AI INSIGHT" },
-    { name: "Nova Rex", role: "Community Lead", img: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=1200&h=800&fit=crop&q=80", badge: "SMART NEWS" },
+    { name: "Ritika Malhotra", role: "Prompt Engineering Intern", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop&q=80", badge: "STUDENT STORY" },
+    { name: "Mohit Arora", role: "GenAI Analyst", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=800&fit=crop&q=80", badge: "PLACEMENT UPDATE" },
+    { name: "Sneha Gupta", role: "AI Project Associate", img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=800&fit=crop&q=80", badge: "ALUMNI HIGHLIGHT" },
+    { name: "Aman Khanna", role: "LLM Operations Trainee", img: "https://images.unsplash.com/photo-1675557009688-45637bc8c4c8?w=1200&h=800&fit=crop&q=80", badge: "STUDENT STORY" },
+    { name: "Ishita Nanda", role: "AI Automation Consultant • Remote", img: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=1200&h=800&fit=crop&q=80", badge: "PLACEMENT UPDATE" },
+    { name: "Harsh Vardhan", role: "Prompt Specialist • Startup Team", img: "https://images.unsplash.com/photo-1676277791608-ac5521e44598?w=1200&h=800&fit=crop&q=80", badge: "ALUMNI HIGHLIGHT" },
+    { name: "Neha Bansal", role: "GenAI Content Engineer", img: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&h=800&fit=crop&q=80", badge: "STUDENT STORY" },
+    { name: "Yash Raj", role: "AI Support Automation Lead", img: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=1200&h=800&fit=crop&q=80", badge: "PLACEMENT UPDATE" },
   ];
 
   const SLIDE_DURATION = 5000;
@@ -77,7 +77,7 @@ export default function AIEditorialSlider() {
            Career Support & Outcomes  
           </h2>
           <p className="text-blue-300/60 text-sm md:text-base tracking-wide">
-         We empower your career growth 
+         From training to real AI roles 
           </p>
         </div>
 
@@ -228,8 +228,8 @@ export default function AIEditorialSlider() {
         {/* Bottom Text */}
         <div className="text-center mt-12 max-w-3xl mx-auto px-4">
           <p className="text-blue-300/60 text-sm md:text-base leading-relaxed">
-            Our AI-powered insights combine cutting-edge machine learning with human expertise 
-            to deliver the most advanced intelligence solutions on the planet.
+            Every outcome story reflects project-based learning, Prompt Engineering practice,
+            and dedicated mentor support from our institute's structured learning environment.
           </p>
         </div>
       </div>

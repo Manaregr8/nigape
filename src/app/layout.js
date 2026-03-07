@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "NIGAPE - Nitional Institute of Generative AI & Prompt Engineering",
-  description: "Your emotionally intelligent friend",
+  title: "NIGAPE - GK2 Delhi Institute of Generative AI & Prompt Engineering",
+  description: "India-first institute dedicated to Generative AI and Prompt Engineering careers.",
 };
 
 export default function RootLayout({ children }) {
