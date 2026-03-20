@@ -5,6 +5,7 @@ import Header from "../Homesections/Header.jsx";
 import Footer from "../Homesections/Footer.jsx";
 import ClientWrapper from "./wraper.jsx";
 import EnrollmentPopupGate from "@/components/EnrollmentPopupGate";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
 
 // ✅ Use consistent variable names
 const geist = Geist({
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
           <EnrollmentPopupGate />
+          <FloatingContactButtons />
         </ClientWrapper>
       </body>
     </html>
