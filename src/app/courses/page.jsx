@@ -25,6 +25,51 @@ const categories = [
   { id: "short", label: "Short Courses" }
 ];
 
+function isShortCourse(course) {
+  try {
+    const dur = String(course?.duration || "").toLowerCase();
+    return course?.monthlyPayments === 1 || dur.includes("week") || dur.includes("1.5");
+  } catch {
+    return false;
+  }
+}
+
+function getUiCategory(course) {
+  const rawCategory = String(course?.category || "").toLowerCase();
+  const title = String(course?.title || "").toLowerCase();
+  const description = String(course?.description || "").toLowerCase();
+
+  if (rawCategory === "engineering" || rawCategory === "prompt" || rawCategory === "business") {
+    return rawCategory;
+  }
+
+  if (["deep-learning", "computer-vision", "nlp"].includes(rawCategory)) {
+    return "engineering";
+  }
+
+  if (rawCategory === "ai-literacy") {
+    return "business";
+  }
+
+  if (rawCategory === "generative-ai") {
+    if (title.includes("professional") || description.includes("business")) {
+      return "business";
+    }
+    return "prompt";
+  }
+
+  // Fallback: if nothing matches, keep it discoverable under business track.
+  return "business";
+}
+
+function getUiCategoryLabel(course) {
+  const mapped = getUiCategory(course);
+  if (mapped === "engineering") return "Engineering";
+  if (mapped === "prompt") return "Prompt";
+  if (mapped === "business") return "Business";
+  return "Short";
+}
+
 // Marquee Component (FIXED — now moves infinitely)
 const Marquee = () => {
   const aiTech = [
@@ -111,7 +156,7 @@ const CourseCard = ({ course }) => {
   // Remove '12' from course card title if present
   const cleanTitle = course.title.replace(/12/g, "");
   return (
-    <Link href={`/Courses/${course.id}`} className="block">
+    <Link href={`/courses/${course.slug}`} className="block">
       <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
         {/* Image Header with coursegraphic */}
         <div className="relative h-64 bg-black flex items-start justify-center p-0">
@@ -125,10 +170,7 @@ const CourseCard = ({ course }) => {
           />
           {/* Category Badge */}
           <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
-            {course.category === "engineering" ? "Engineering" :
-              course.category === "prompt" ? "Prompt" :
-              course.category === "business" ? "Business" :
-              "Short"} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
+            {(isShortCourse(course) ? "Short" : getUiCategoryLabel(course))} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
           </div>
         </div>
 
@@ -166,8 +208,18 @@ export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
 
-  // Combine all courses including short ones
-  const allCourses = [...courses, ...shortCourses];
+  // Combine all courses while avoiding duplicates from overlapping subsets.
+  const allCourses = useMemo(() => {
+    const seen = new Set();
+    return [...courses, ...shortCourses].filter((course) => {
+      const key = String(course.slug || course.id || course.title || "").toLowerCase();
+      if (!key || seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    });
+  }, []);
 
   // Filtered and searched courses
   const filteredCourses = useMemo(() => {
@@ -177,7 +229,7 @@ export default function CoursesPage() {
       if (selectedCategory === "short") {
         results = shortCourses;
       } else {
-        results = courses.filter((course) => course.category === selectedCategory);
+        results = allCourses.filter((course) => getUiCategory(course) === selectedCategory);
       }
     }
 
@@ -191,7 +243,7 @@ export default function CoursesPage() {
     }
 
     return results;
-  }, [selectedCategory, searchQuery]);
+  }, [allCourses, selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen pt-20 bg-black text-white overflow-hidden">
@@ -234,33 +286,33 @@ export default function CoursesPage() {
           <div className="order-1 lg:order-2 text-center lg:text-left mt-20 lg:mt-0">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
               <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
-             Building India’s Next Generation of AI & GenAI Leaders
+             Building India’s Next Generation of GenAI & Prompt Engineering Leaders
               </span>
             </h2>
             <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
-             Our curriculum is deeply industry-driven, engineered to bridge India’s 1M+ skilled AI professional gap.
- You don’t just learn AI here — you build, deploy, and scale real-world AI systems used across startups, enterprises, and global tech teams.
+             Our curriculum is industry-driven and designed to bridge real hiring needs.
+ You don’t just learn concepts here — you build, deploy, and improve real-world AI systems used by startups and business teams.
             </p>
             <p className="text-lg text-gray-400 mb-8">
-            From LLMs and RAG pipelines to AI agents and enterprise workflows — NIGAPE prepares you for real AI roles, real impact, and real careers.
+            From LLM prompting and RAG pipelines to AI agents and workflow automation — NIGAPE prepares you for practical AI roles and measurable impact.
             </p>
 
             {/* ✨ CTA BUTTONS */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
               {/* Primary CTA */}
               <a
-                href="/Form/form"
+                href="?enroll=1"
                 className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
               >
-                Join India’s AI Workforce
+                Enroll Now
               </a>
 
               {/* Secondary CTA */}
               <a
-                href="/Form/form"
+                href="#all-programs"
                 className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
               >
-                Meet Your Industry Mentor
+                Explore Our Courses
               </a>
             </div>
           </div>
@@ -271,14 +323,14 @@ export default function CoursesPage() {
       <Marquee  />
 
       {/* SECTION 3: Packages / Courses Cards */}
-      <section className="relative py-24 px-6">
+      <section id="all-programs" className="relative py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-              AI Programs Built for Healers & Builders
+              AI Programs Built for Students, Graduates, and Professionals
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Choose your path in the age of conscious intelligence
+              Choose your path in Generative AI and Prompt Engineering
             </p>
           </div>
 

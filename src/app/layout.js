@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "../Homesections/Header.jsx";
 import Footer from "../Homesections/Footer.jsx";
 import ClientWrapper from "./wraper.jsx";
+import EnrollmentPopupGate from "@/components/EnrollmentPopupGate";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
 
 // ✅ Use consistent variable names
 const geist = Geist({
@@ -17,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "NIGAPE - Nitional Institute of Generative AI & Prompt Engineering",
-  description: "Your emotionally intelligent friend",
+  title: "NIGAPE - GK2 Delhi Institute of Generative AI & Prompt Engineering",
+  description: "India-first institute dedicated to Generative AI and Prompt Engineering careers.",
 };
 
 export default function RootLayout({ children }) {
@@ -60,6 +62,8 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <EnrollmentPopupGate />
+          <FloatingContactButtons />
         </ClientWrapper>
       </body>
     </html>

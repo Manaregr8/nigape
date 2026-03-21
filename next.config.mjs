@@ -12,6 +12,25 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/Contactus",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
+        source: "/Form/form",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
+        source: "/try",
+        destination: "/courses",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

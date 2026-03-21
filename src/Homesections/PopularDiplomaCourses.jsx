@@ -1,0 +1,100 @@
+import Link from "next/link";
+import Image from "next/image";
+import { courses } from "@/Data/data";
+
+function getPopularDiplomaCourses(limit = 3) {
+  const diplomaFirst = courses.filter((course) => {
+    const title = String(course.title || "").toLowerCase();
+    const level = String(course.level || "").toLowerCase();
+    const duration = String(course.duration || "").toLowerCase();
+
+    // Prioritize true diploma-tagged records; then include long-form diploma-style courses.
+    return (
+      title.includes("diploma") ||
+      level.includes("diploma") ||
+      duration.includes("month")
+    );
+  });
+
+  return diplomaFirst.slice(0, limit);
+}
+
+function getCourseImage(course) {
+  const courseGraphicMap = {
+    "Diploma in Generative AI & Prompt Engineering": "/coursegraphic/Generative AI & Prompt Engineering (Diploma — 12 Months).png",
+    "Advanced Generative AI & Prompt Engineering": "/coursegraphic/Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
+    "AI Literacy for Everyone": "/coursegraphic/AI Literacy Course (1.5 Months).png",
+    "Generative AI for Professionals": "/coursegraphic/Generative AI for Professionals (4 Months).png",
+    "NLP Professional": "/coursegraphic/Natural Language Processing Professional (4 Months).png",
+    "Computer Vision Professional": "/coursegraphic/Computer Vision Professional (4 Months).png",
+    "Deep Learning Professional": "/coursegraphic/Deep Learning Professional (4 Months).png",
+  };
+
+  return courseGraphicMap[course.title] || course.image || "https://via.placeholder.com/800x450?text=Course+Image";
+}
+
+export default function PopularDiplomaCourses() {
+  const popularCourses = getPopularDiplomaCourses(3);
+
+  if (!popularCourses.length) {
+    return null;
+  }
+
+  return (
+    <section className="relative px-6 py-16 bg-black text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 text-center">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#FF40EB]">Popular Courses</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold">Top Diploma Programs</h2>
+          <p className="mt-3 text-gray-400 max-w-2xl mx-auto">
+            Explore our most in-demand diploma-focused programs with project-based learning and mentorship.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {popularCourses.map((course) => (
+            <article
+              key={course.id}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] backdrop-blur-sm transition hover:border-[#FF40EB]/60 hover:shadow-[0_12px_40px_rgba(255,64,235,0.18)]"
+            >
+              <div className="relative w-full aspect-video bg-black">
+                <Image
+                  src={getCourseImage(course)}
+                  alt={course.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#FF40EB]">
+                    Diploma Track
+                  </span>
+                  <span className="text-xs text-gray-300">{course.duration}</span>
+                </div>
+
+                <h3 className="mt-4 text-xl font-semibold leading-snug">{course.title}</h3>
+
+                <p className="mt-3 text-sm text-gray-300 line-clamp-3">{course.description}</p>
+
+                <div className="mt-5 flex items-center justify-between text-sm text-gray-300">
+                  <span>{course.mode}</span>
+                  <span>{course.rating} / 5</span>
+                </div>
+
+                <Link
+                  href={`/courses/${course.slug}`}
+                  className="mt-6 inline-flex items-center rounded-full bg-[#FF40EB] px-5 py-2.5 text-sm font-semibold text-black transition group-hover:brightness-110"
+                >
+                  View Course
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

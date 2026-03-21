@@ -1,3 +1,5 @@
+import { slugify } from "@/lib/slugify";
+
 export const courses = [
   {
     id: 1,
@@ -17,7 +19,7 @@ export const courses = [
     description: "Perfect for beginners, 12th-pass students, and career switchers. Build strong foundations in AI/ML, Python, prompt engineering, LLMs, and hands-on projects in text, vision & multimodal AI.",
     fullDescription: "This comprehensive 12-month diploma program takes beginners from zero to job-ready in Generative AI. Learn Python for AI, prompt engineering mastery, core LLM concepts, and build real-world projects in language, vision, and multimodal AI. Graduates receive a professional portfolio and are prepared for roles like AI Developer, Prompt Engineer, or GenAI Specialist.",
     instructor: {
-      name: "Manjeet Singh",
+      name: "Shagun Srivastava",
       title: "Lead Instructor – Generative AI",
       bio: "Experienced AI educator with expertise in LLMs, prompt engineering, and applied GenAI.",
       image: "/nimlacpic/manjeet.png",
@@ -112,7 +114,7 @@ export const courses = [
     targetAudience: ["Beginners", "12th-pass students", "Career switchers to AI", "Anyone serious about GenAI career"],
     includes: ["200+ hours of content", "40+ hands-on projects", "GPU access", "Lifetime access", "Diploma certificate", "Job assistance", "Professional portfolio"],
     reviews: [
-      { name: "Priya Sharma", rating: 5, comment: "From zero to building my own AI tools – life-changing course!", date: "2025-12-05" }
+      { name: "Priya Sharma", rating: 5, comment: "NIGAPE gave me the confidence to build and present real GenAI projects in interviews.", date: "2025-12-05" }
     ]
   },
   {
@@ -190,7 +192,7 @@ export const courses = [
     targetAudience: ["Intermediate AI learners", "Professionals upgrading skills", "Those aiming for senior GenAI roles"],
     includes: ["140+ hours of advanced content", "25+ complex projects", "GPU credits", "Advanced certificate", "Mentorship"],
     reviews: [
-      { name: "Rahul Verma", rating: 5, comment: "Mastered cutting-edge GenAI – now leading AI projects at my company!", date: "2025-12-01" }
+      { name: "Rahul Verma", rating: 5, comment: "The advanced track helped me lead Prompt Engineering and AI automation initiatives at work.", date: "2025-12-01" }
     ]
   },
   {
@@ -243,7 +245,7 @@ export const courses = [
     targetAudience: ["School & college students", "Non-technical professionals", "Parents", "Anyone new to AI"],
     includes: ["45+ hours of content", "Interactive sessions", "AI tool practice", "Certificate of Completion"],
     reviews: [
-      { name: "Ananya Rao", rating: 5, comment: "Now I confidently use AI for my college projects!", date: "2025-11-28" }
+      { name: "Ananya Rao", rating: 5, comment: "As a beginner, this course made AI practical and useful for my college work and internships.", date: "2025-11-28" }
     ]
   },
   {
@@ -308,7 +310,7 @@ export const courses = [
     targetAudience: ["Mid-level professionals", "Managers", "Business analysts", "Career pivoters"],
     includes: ["120+ hours content", "15+ business projects", "Employer-recognized certificate", "Implementation toolkit"],
     reviews: [
-      { name: "Vikram Malhotra", rating: 5, comment: "Doubled my team's productivity using GenAI techniques learned here.", date: "2025-11-25" }
+      { name: "Vikram Malhotra", rating: 5, comment: "I applied the cohort learnings directly to automate reporting and improve team productivity.", date: "2025-11-25" }
     ]
   },
   {
@@ -329,7 +331,7 @@ export const courses = [
     description: "Master Natural Language Processing – from text processing to transformer models and real-world NLP applications.",
     fullDescription: "Become an NLP specialist. Learn text processing, transformer architectures, and build production-grade NLP systems like chatbots, sentiment analyzers, and more.",
     instructor: {
-      name: "Manjeet Singh",
+      name: "Shagun Srivastava",
       title: "Lead Instructor – NLP",
       bio: "NLP expert with experience building enterprise language systems",
       image: "/nimlacpic/manjeet.png",
@@ -373,7 +375,7 @@ export const courses = [
     targetAudience: ["Aspiring NLP Engineers", "Data Scientists specializing in text"],
     includes: ["180+ hours content", "20+ NLP projects", "Certificate", "Portfolio"],
     reviews: [
-      { name: "Kavya Iyer", rating: 5, comment: "Now confidently building enterprise chatbots and RAG systems!", date: "2025-12-02" }
+      { name: "Kavya Iyer", rating: 5, comment: "I now build chatbots and RAG workflows with clear deployment practices taught at NIGAPE.", date: "2025-12-02" }
     ]
   },
   {
@@ -438,7 +440,7 @@ export const courses = [
     targetAudience: ["Aspiring CV Engineers", "Professionals in healthcare, automotive, robotics"],
     includes: ["190+ hours", "25+ CV projects", "GPU access", "Certificate"],
     reviews: [
-      { name: "Aditya Kapoor", rating: 5, comment: "Built production-ready object detection systems – excellent course!", date: "2025-11-30" }
+      { name: "Aditya Kapoor", rating: 5, comment: "The hands-on labs and mentor reviews helped me ship production-ready vision projects.", date: "2025-11-30" }
     ]
   },
   {
@@ -534,12 +536,37 @@ export const courses = [
     targetAudience: ["Aspiring AI researchers", "Deep learning engineers", "R&D professionals"],
     includes: ["200+ hours", "30+ advanced projects", "GPU resources", "Advanced certificate"],
     reviews: [
-      { name: "Sarthak Jain", rating: 5, comment: "Best deep learning course I’ve taken – ready for research roles now.", date: "2025-12-04" }
+      { name: "Sarthak Jain", rating: 5, comment: "This program gave me the depth and project rigor I needed for AI research-track roles.", date: "2025-12-04" }
     ]
   }
 ];
 
-export function getCourseById(id) {
-  const numId = parseInt(id);
-  return courses.find(course => course.id === numId || String(course.id) === String(id));
+// ensure every course has a slug property so that URLs can use
+// human-readable names instead of numeric ids.  This runs once when the
+// module is imported.
+courses.forEach((c) => {
+  if (!c.slug) {
+    c.slug = slugify(c.title);
+  }
+});
+
+export function getCourseBySlug(slug) {
+  if (!slug) return undefined;
+  return courses.find((course) => course.slug === slug);
+}
+
+export function getCourseById(idOrSlug) {
+  // try numeric lookup first
+  const numId = parseInt(idOrSlug, 10);
+  if (!isNaN(numId)) {
+    const byId = courses.find(
+      (course) => course.id === numId || String(course.id) === String(idOrSlug)
+    );
+    if (byId) return byId;
+  }
+  // fallback: if a string was provided, treat it as a slug
+  if (typeof idOrSlug === "string") {
+    return getCourseBySlug(idOrSlug);
+  }
+  return undefined;
 }

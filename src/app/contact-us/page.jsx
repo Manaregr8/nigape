@@ -1,12 +1,10 @@
 // app/contact/page.jsx
 'use client';
 
-import { Home, Info, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { memo } from "react";
+import { useState } from "react";
 import Iridescence from '@/Homesections/bits/Iridescence.js';
-import FAQSection from '@/Homesections/Homesection7.jsx';
 
 
 // const navItems = [
@@ -14,7 +12,18 @@ import FAQSection from '@/Homesections/Homesection7.jsx';
 //   { name: "Courses", icon: BookOpen, href: "/courses" },
 // ];
 
-const socials = ["X", "Discord", "Telegram", "Instagram"];
+const socials = [
+  {
+    name: "Instagram",
+    label: "IG",
+    href: "https://www.instagram.com/nigape.official/",
+  },
+  {
+    name: "LinkedIn",
+    label: "IN",
+    href: "https://www.linkedin.com/in/national-institute-genai-and-prompt-engineering-116711381/",
+  },
+];
 
 // const Navbar = memo(() => (
 //   <motion.nav
@@ -72,6 +81,65 @@ const socials = ["X", "Discord", "Telegram", "Instagram"];
 // Navbar.displayName = "ContactNavbar";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    city: "",
+    message: "",
+  });
+  const [submitState, setSubmitState] = useState({ status: "idle", message: "" });
+
+  const appsScriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!appsScriptUrl) {
+      setSubmitState({
+        status: "error",
+        message: "Form endpoint not configured. Add NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL.",
+      });
+      return;
+    }
+
+    setSubmitState({ status: "submitting", message: "Submitting your request..." });
+
+    try {
+      const payload = new URLSearchParams({
+        ...formData,
+        source: "website-contact-us",
+        submittedAt: new Date().toISOString(),
+      });
+
+      const response = await fetch(appsScriptUrl, {
+        method: "POST",
+        body: payload,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      setSubmitState({
+        status: "success",
+        message: "Thanks! Your details were submitted successfully.",
+      });
+      setFormData({ name: "", email: "", phone: "", course: "", city: "", message: "" });
+    } catch {
+      setSubmitState({
+        status: "error",
+        message: "Submission failed. Please try again.",
+      });
+    }
+  };
+
   return (
     <>
       {/* Background */}
@@ -104,8 +172,8 @@ export default function ContactPage() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-base xs:text-lg md:text-xl text-white leading-relaxed max-w-xl sm:max-w-3xl mx-auto"
           >
-            Have questions about our AI programs, industry partnerships, or career pathways?
-            Our NIGAPE team is here to guide you with clarity, expertise, and timely support.
+            Have questions about admissions, batches, or career support in Generative AI and Prompt Engineering?
+            Our institute team will guide you with clear next steps.
           </motion.p>
         </div>
       </section>
@@ -127,37 +195,83 @@ export default function ContactPage() {
                 We’re happy to help!
               </h2>
               <p className="text-pink-200/85 text-base xs:text-lg leading-relaxed">
-                Questions or concerns? Send us a message below.
+                Share your background and goals, and we’ll suggest the right NIGAPE learning path.
               </p>
             </div>
 
-            <form className="space-y-5 sm:space-y-7">
+            <form className="space-y-5 sm:space-y-7" onSubmit={handleSubmit}>
               <input
                 type="text"
+                name="name"
                 placeholder="* Your Name"
                 required
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
               />
 
               <input
                 type="email"
+                name="email"
                 placeholder="* Your Email"
                 required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="* Phone Number"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="text"
+                name="course"
+                placeholder="Course Interested In"
+                value={formData.course}
+                onChange={handleChange}
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
+              />
+
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={formData.city}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 backdrop-blur-sm text-base sm:text-lg"
               />
 
               <textarea
                 rows={5}
-                placeholder="Your message..."
+                name="message"
+                placeholder="Tell us about your current background and AI career goal..."
                 required
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full px-4 sm:px-6 py-4 sm:py-5 bg-white/10 border border-pink-500/30 rounded-xl text-white placeholder-pink-300/70 focus:outline-none focus:border-pink-400 focus:bg-white/15 transition-all duration-300 resize-none backdrop-blur-sm text-base sm:text-lg"
               />
 
+              {submitState.status !== "idle" && (
+                <p
+                  className={`text-sm ${submitState.status === "success" ? "text-green-300" : submitState.status === "error" ? "text-red-300" : "text-pink-100"}`}
+                >
+                  {submitState.message}
+                </p>
+              )}
+
               <button
                 type="submit"
+                disabled={submitState.status === "submitting"}
                 className="w-full py-4 sm:py-5 bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-500 hover:to-purple-600 text-white font-bold text-base sm:text-lg rounded-xl transition-all duration-300 shadow-lg shadow-pink-600/30 hover:shadow-pink-600/50"
               >
-                Send Message
+                {submitState.status === "submitting" ? "Submitting..." : "Request Counseling Call"}
               </button>
             </form>
           </motion.div>
@@ -177,28 +291,25 @@ export default function ContactPage() {
               </h3>
               <p className="text-pink-100/90 text-sm xs:text-base leading-relaxed">
                 Have a quick question?
-                Check our FAQs for instant answers.
+                Check our FAQs for instant guidance on courses, eligibility, and placements.
               </p>
-              <a
+              <Link
                 href="/#faq"
                 className="inline-block mt-3 sm:mt-5 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 transition"
               >
                 View FAQs →
-              </a>
+              </Link>
             </div>
 
             {/* OFFICE */}
             <div>
               <h3 className="text-xl xs:text-2xl md:text-3xl font-bold text-pink-400 mb-3 sm:mb-5">
-                Office
+                Campus Address
               </h3>
               <p className="text-pink-100/90 text-sm xs:text-base leading-relaxed">
-                Spacetime Management<br />
-                Pvt Ltd Design House,<br />
-                behind Savitri Cinema Complex,<br />
-                Greater Kailash II,<br />
-                Chittaranjan Park,<br />
-                New Delhi, Delhi 110048
+                Spacetime GK2,<br />
+                near Savitri Cinema Complex,<br />
+                New Delhi, Delhi 110048, India
               </p>
             </div>
 
@@ -208,13 +319,18 @@ export default function ContactPage() {
                 Follow Us
               </h3>
               <div className="flex gap-3 sm:gap-5">
-                {socials.map((s) => (
-                  <div
-                    key={s}
-                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 border border-pink-500/40 flex items-center justify-center text-base sm:text-lg font-semibold hover:bg-pink-500/20 hover:border-pink-400 cursor-pointer transition-all duration-300"
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    title={social.name}
+                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 border border-pink-500/40 flex items-center justify-center text-base sm:text-lg font-semibold hover:bg-pink-500/20 hover:border-pink-400 transition-all duration-300"
                   >
-                    {s[0]}
-                  </div>
+                    {social.label}
+                  </a>
                 ))}
               </div>
             </div>

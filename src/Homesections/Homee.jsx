@@ -3,7 +3,9 @@
 import { Home, Info, Contact, BookOpen } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 import Iridescence from "@/Homesections/bits/Iridescence.js";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 
 // Load Playfair Display with variable weights (includes Black 900)
@@ -16,11 +18,182 @@ const playfair = Playfair_Display({
 
 export default function Homee() {
   const [popupOpen, setPopupOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    city: "",
+    message: "",
+  });
+  const [submitState, setSubmitState] = useState({ status: "idle", message: "" });
+
+  const appsScriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+
   const openPopup = (e) => {
     e.preventDefault();
     setPopupOpen(true);
+    setSubmitState({ status: "idle", message: "" });
   };
   const closePopup = () => setPopupOpen(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      course: "",
+      city: "",
+      message: "",
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!appsScriptUrl) {
+      setSubmitState({
+        status: "error",
+        message: "Form endpoint not configured. Add NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL.",
+      });
+      return;
+    }
+
+    setSubmitState({ status: "submitting", message: "Submitting your request..." });
+
+    try {
+      const payload = new URLSearchParams({
+        ...formData,
+        source: "website-popup",
+        submittedAt: new Date().toISOString(),
+      });
+
+      const response = await fetch(appsScriptUrl, {
+        method: "POST",
+        body: payload,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      setSubmitState({
+        status: "success",
+        message: "Thanks! Your details were submitted successfully.",
+      });
+      resetForm();
+    } catch (error) {
+      setSubmitState({
+        status: "error",
+        message: "Submission failed. Please try again.",
+      });
+    }
+  };
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  const popupModal = popupOpen ? (
+    <div className="fixed inset-0 z-[9999] flex items-start sm:items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-4 overflow-y-auto" onClick={closePopup}>
+      <div
+        className="relative bg-black rounded-2xl shadow-2xl w-[96vw] max-w-6xl border border-[#FF40EB]/30 max-h-[92vh] overflow-y-auto"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-3 right-3 text-gray-400 hover:text-[#FF40EB] text-2xl font-bold z-10"
+          onClick={closePopup}
+          aria-label="Close"
+        >
+          ×
+        </button>
+        {/* Form Content */}
+        <div className="flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 lg:p-9">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-[#FF40EB] text-center">Book Your Counseling Session</h2>
+          <form className="w-full max-w-none space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+              />
+              <input
+                type="text"
+                name="course"
+                placeholder="Course Interested In"
+                value={formData.course}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
+              />
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={formData.city}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400 md:col-span-2"
+              />
+              <textarea
+                rows={4}
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400 resize-none md:col-span-2"
+              />
+            </div>
+
+            {submitState.status !== "idle" && (
+              <p
+                className={`text-sm ${submitState.status === "success" ? "text-green-400" : submitState.status === "error" ? "text-red-400" : "text-gray-300"}`}
+              >
+                {submitState.message}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={submitState.status === "submitting"}
+              className="w-full py-3 rounded-lg bg-[#FF40EB] text-white font-bold text-base sm:text-lg shadow-md hover:bg-[#c026d3] transition"
+            >
+              {submitState.status === "submitting" ? "Submitting..." : "Submit"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <div
       className={`relative min-h-screen w-full overflow-hidden text-white bg-black ${playfair.variable}`}
@@ -70,16 +243,16 @@ export default function Homee() {
                 className=" font-black uppercase tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.8rem] drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
                 style={{ fontWeight: 700 }} // Explicitly force Black weight
               >
-                Unlock Your{" "}
+                Build Your{" "}
                 <span className="text-white drop-shadow-[0_0_35px_rgba(147,51,234,0.7)]">
                   AI
                 </span>{" "}
                 Career
                 <br />
-                with India's First
+                with
                 <br />
                 <span className="text-white drop-shadow-[0_0_45px_rgba(147,51,234,0.8)]">
-                  Premium Generative AI
+                  India&apos;s First-GenAI & Prompt Engineering
                 </span>{" "}
                 Institute
               </h1>
@@ -92,78 +265,20 @@ export default function Homee() {
               </div> */}
               
               <p className="text-sm sm:text-base lg:text-lg text-white/90 max-w-xl mx-auto leading-relaxed">
-                Get hands-on Generative AI and Prompt Engineering skills through industry-driven projects – graduate with the portfolio, confidence and connections employers demand.
+                Learn through immersive campus and online cohorts. Build real projects in Generative AI, Prompt Engineering, agents, and automation with mentor support for internships and placements.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
-                <button
-                  onClick={openPopup}
-                  className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center"
-                >
-                  Join NIGAPE Now
-                </button>
-                <a href="/Contactus" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
-                  Talk to a Counselor
+                <a href="?enroll=1" className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center">
+                  Enroll Now
                 </a>
+                <Link href="/courses" className="rounded-full border-2 border-[#FF40EB] px-10 py-3 font-bold hover:bg-purple-600/15 transition backdrop-blur-sm flex items-center justify-center">
+                  Explore Our Courses
+                </Link>
               </div>
 
             {/* Modal Form Popup */}
-            {popupOpen && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={closePopup}>
-                <div
-                  className="relative bg-black rounded-2xl shadow-2xl w-[95vw] max-w-2xl md:max-w-3xl lg:max-w-4xl flex flex-col md:flex-row landscape-form border border-[#FF40EB]/30"
-                  style={{ aspectRatio: '16/7', minHeight: '340px' }}
-                  onClick={e => e.stopPropagation()}
-                >
-                  {/* Close Button */}
-                  <button
-                    className="absolute top-3 right-3 text-gray-400 hover:text-[#FF40EB] text-2xl font-bold z-10"
-                    onClick={closePopup}
-                    aria-label="Close"
-                  >
-                    ×
-                  </button>
-                  {/* Form Content */}
-                  <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-10">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#FF40EB]">Join NIGAPE Now</h2>
-                    <form className="w-full max-w-md space-y-5">
-                      <input
-                        type="text"
-                        placeholder="Your Name"
-                        required
-                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Your Email"
-                        required
-                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
-                      />
-                      <input
-                        type="tel"
-                        placeholder="Phone Number"
-                        className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
-                      />
-                     
-                      <button
-                        type="submit"
-                        className="w-full py-3 rounded-lg bg-[#FF40EB] text-white font-bold text-lg shadow-md hover:bg-[#c026d3] transition"
-                      >
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                  {/* Message Box on the right column, always visible */}
-                  <div className="flex-1 flex items-center justify-center p-4 md:p-10 bg-black rounded-b-2xl md:rounded-b-none md:rounded-r-2xl min-h-[180px]">
-                    <textarea
-                        rows={3}
-                        placeholder="Your Message"
-                        className="w-full px-4 py-3 h-[220px] border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400 resize-none"
-                      />
-                  </div>
-                </div>
-              </div>
-            )}
+            {mounted && createPortal(popupModal, document.body)}
             </div>
           </div>
         </section>

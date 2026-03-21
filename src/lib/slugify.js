@@ -1,5 +1,3 @@
-import prisma from "@/lib/prisma";
-
 export const slugify = (raw = "") => {
   const fallback = "post";
   const base = raw
@@ -14,6 +12,11 @@ export const slugify = (raw = "") => {
 };
 
 export const generateUniqueSlug = async (input, excludeId) => {
+  // import Prisma client lazily so that merely loading the slugify helper
+  // in non-database contexts (like static data loading) does not trigger
+  // a runtime error when the client hasn't been generated yet.
+  const prisma = (await import("@/lib/prisma")).default;
+
   const base = slugify(input);
   let candidate = base;
   let suffix = 1;
