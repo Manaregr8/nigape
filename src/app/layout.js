@@ -7,7 +7,6 @@ import ClientWrapper from "./wraper.jsx";
 import EnrollmentPopupGate from "@/components/EnrollmentPopupGate";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
 
-// ✅ Use consistent variable names
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -27,10 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Clean Tailwind CDN URL */}
         <script src="https://cdn.tailwindcss.com"></script>
-
-        {/* Optional: Tailwind config for font utilities & custom colors */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -48,23 +44,25 @@ export default function RootLayout({ children }) {
                     }
                   }
                 }
-              }
             `,
           }}
         />
       </head>
 
-    
-      <body
-        className={`${geist.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
+
+       
+        <Header />
+
+       
         <ClientWrapper>
-          <Header />
           {children}
-          <Footer />
-          <EnrollmentPopupGate />
-          <FloatingContactButtons />
         </ClientWrapper>
+
+        <Footer />
+        <EnrollmentPopupGate />
+        <FloatingContactButtons />
+
       </body>
     </html>
   );

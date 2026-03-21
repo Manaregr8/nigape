@@ -48,7 +48,7 @@ export default function NigapeGallery() {
               />
               {/* Top-right Arrow Button */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-5 lg:right-5">
-                <a href="#">
+                <a href="/about-us">
                   <button className="bg-black/80 backdrop-blur-sm text-white text-lg sm:text-xl font-bold w-9 h-9 sm:w-10 sm:h-10 rounded-full shadow-lg hover:bg-black hover:scale-110 transition-all duration-300 flex items-center justify-center border border-white/20">
                     ↗
                   </button>
@@ -64,14 +64,14 @@ export default function NigapeGallery() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              {/* Top-right CTA Button */}
+              {/* Top-right CTA Button
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-5 lg:right-5">
                 <a href="/About">
                   <button className="bg-[#FF40EB] backdrop-blur-sm border-2 border-[#FF40EB] text-black text-xs sm:text-sm font-bold px-3 py-2 sm:px-4 sm:py-2 rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg whitespace-nowrap">
                     About us →
                   </button>
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
