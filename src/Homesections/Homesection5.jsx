@@ -36,31 +36,34 @@ const TestimonialsSection = () => {
           Testimonials
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* ✅ items-stretch — sab cards same height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {testimonials.map((t, index) => (
-            <div key={index} className="relative w-full overflow-visible">
-              {/* Background layers for depth */}
-              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-30 transform translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2"></div>
-              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-50 transform translate-x-0 translate-y-0 md:translate-x-1 md:translate-y-1"></div>
+            <div key={index} className="relative w-full overflow-visible flex flex-col">
 
-              {/* Main card */}
-              <div className="relative bg-white rounded-xl shadow-xl p-4 md:p-6 z-10">
-                {/* Top tab */}
+              {/* Background shadow layers */}
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-30 transform translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2" />
+              <div className="absolute inset-0 bg-white rounded-xl shadow-lg opacity-50 transform translate-x-0 translate-y-0 md:translate-x-1 md:translate-y-1" />
+
+              {/* ✅ Main card — flex flex-col h-full */}
+              <div className="relative bg-white rounded-xl shadow-xl p-4 md:p-6 z-10 flex flex-col h-full">
+
+                {/* Top NIGAPE tab */}
                 <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-20 h-7 sm:-top-6 sm:w-24 sm:h-8 bg-white rounded-t-lg border border-gray-200 flex items-center justify-center">
                   <span className="text-sm sm:text-lg font-bold text-[#9234eb]">NIGAPE</span>
                 </div>
 
                 {/* Quote mark */}
-                <div className="text-2xl md:text-3xl text-[#9234eb] mb-4">“</div>
+                <div className="text-2xl md:text-3xl text-[#9234eb] mb-4">"</div>
 
-                {/* Quote text */}
+                {/* ✅ Quote text — flex-1 taaki baaki space fill kare */}
                 <p
-                  className="text-gray-700 leading-relaxed mb-6 text-sm md:text-base"
+                  className="text-gray-700 leading-relaxed text-sm md:text-base flex-1"
                   dangerouslySetInnerHTML={{ __html: t.quote }}
                 />
 
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                {/* ✅ Footer — mt-auto taaki hamesha bottom pe rahe */}
+                <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
                   <div className="flex items-center space-x-3">
                     <img
                       src={t.avatarUrl.trim()}
@@ -86,6 +89,7 @@ const TestimonialsSection = () => {
                     </svg>
                   </a>
                 </div>
+
               </div>
             </div>
           ))}

@@ -55,7 +55,7 @@ export default function Footer() {
               <img
                 src="/Nigapepic/nigape.svg"
                 alt="NIGAPE"
-                className="w-[110px] h-auto object-contain"
+                className="w-[110px] h-auto object-contain "
               />
 
               <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
 
               {/* Contact */}
-              <div className="pt-4 border-t border-[#FF40EB]/20 flex flex-col gap-2">
+              <div className="pt-4 border-t border-[#FF40EB]/20 flex  gap-2">
                 <a href="mailto:info@nigape.com"
                   className="flex items-center gap-2 text-gray-300 text-sm hover:text-[#FF40EB] transition">
                   <span className="text-[#FF40EB]">✉</span>

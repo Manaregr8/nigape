@@ -254,70 +254,81 @@ export default function CoursesPage() {
       {/* Top Marquee */}
       <Marquee />
 
-      {/* SECTION 2: Mentor Image + Introduction to Courses */}
-      <section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative order-2 lg:order-1 flex flex-col items-center">
-            {/* Image with drop-shadow around figure */}
-            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
-              <div className="relative rounded-3xl overflow-hidden">
-                <div
-                  className="inline-block w-full"
-                  style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
-                >
-                  <img
-                    src="/shagun.png"
-                    alt="Dr. Shagun Mehta – Your AI Mentor"
-                    className="w-full h-[320px] sm:h-[400px]  -mt-[10] md:h-[500px] lg:h-[80vh] object-contain object-center"
-                  />
-                </div>
-              </div>
-            </div>
+    {/* SECTION 2: Mentor Image + Introduction */}
+<section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
-            {/* Gradient badge below image */}
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg z-[1] mx-auto -mt-24">
-              <div className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white" style={{ boxShadow: '0 0 24px 0 #9234eb9c' }}>
-                <p className="text-xl sm:text-2xl font-bold mb-1">Miss. Shagun</p>
-                <p className="text-sm sm:text-base text-cyan-200">AI Research Lead & Emotional Intelligence Pioneer</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2 text-center lg:text-left mt-20 lg:mt-0">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
-             Building India’s Next Generation of GenAI & Prompt Engineering Leaders
-              </span>
-            </h2>
-            <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
-             Our curriculum is industry-driven and designed to bridge real hiring needs.
- You don’t just learn concepts here — you build, deploy, and improve real-world AI systems used by startups and business teams.
-            </p>
-            <p className="text-lg text-gray-400 mb-8">
-            From LLM prompting and RAG pipelines to AI agents and workflow automation — NIGAPE prepares you for practical AI roles and measurable impact.
-            </p>
-
-            {/* ✨ CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
-              {/* Primary CTA */}
-              <a
-                href="?enroll=1"
-                className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
-              >
-                Enroll Now
-              </a>
-
-              {/* Secondary CTA */}
-              <a
-                href="#all-programs"
-                className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
-              >
-                Explore Our Courses
-              </a>
-            </div>
+    {/* LEFT — Image */}
+    <div className="relative order-2 lg:order-1 flex flex-col items-center">
+      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+        <div className="relative rounded-3xl overflow-hidden">
+          <div
+            className="inline-block w-full"
+            style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
+          >
+            <img
+              src="/group/group_final.png"
+              alt="Dr. Shagun Mehta – Your AI Mentor"
+              className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[80vh] object-contain object-center"
+     
+            />
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Badge */}
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto -mt-24 z-10">
+        <div
+          className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white"
+          style={{ boxShadow: '0 0 24px 0 #9234eb9c' }}
+        >
+          <p className="text-xl sm:text-2xl font-bold mb-1">Our Team</p>
+          {/* <p className="text-sm sm:text-base text-cyan-200">
+            AI Research Lead & Emotional Intelligence Pioneer
+          </p> */}
+        </div>
+      </div>
+    </div>
+
+    {/* RIGHT — Text */}
+    {/* ✅ mt-20 hataya — yahi right side gap ka reason tha */}
+    <div className="order-1 lg:order-2 text-center lg:text-left">
+      <h2 className="text-4xl md:text-4xl font-bold mb-8">
+        <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
+          Building India's Next Generation of GenAI & Prompt Engineering Leaders
+        </span>
+      </h2>
+
+      <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
+        Our curriculum is industry-driven and designed to bridge real hiring needs.
+        You don't just learn concepts here — you build, deploy, and improve real-world
+        AI systems used by startups and business teams.
+      </p>
+
+      <p className="text-lg text-gray-400 mb-8">
+        From LLM prompting and RAG pipelines to AI agents and workflow automation —
+        NIGAPE prepares you for practical AI roles and measurable impact.
+      </p>
+
+      {/* CTA Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
+        <a
+          href="?enroll=1"
+          className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
+        >
+          Enroll Now
+        </a>
+        <a
+          href="#all-programs"
+          className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
+        >
+          Explore Our Courses
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
       {/* Bottom Marquee */}
       <Marquee  />
