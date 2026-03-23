@@ -264,7 +264,7 @@ export default function CoursesPage() {
         <div className="relative rounded-3xl overflow-hidden">
           <div
             className="inline-block w-full"
-            style={{ filter: 'drop-shadow(0 0 12px #9234eb9c)' }}
+            style={{ filter: 'drop-shadow(0 0 12px #f707f3)' }}
           >
             <img
               src="/group/group_final.png"
@@ -280,9 +280,9 @@ export default function CoursesPage() {
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto -mt-24 z-10">
         <div
           className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white"
-          style={{ boxShadow: '0 0 24px 0 #9234eb9c' }}
+        
         >
-          <p className="text-xl sm:text-2xl font-bold mb-1">Our Team</p>
+          <p className="text-xl sm:text-3xl font-bold mb-1">Our Specialists</p>
           {/* <p className="text-sm sm:text-base text-cyan-200">
             AI Research Lead & Emotional Intelligence Pioneer
           </p> */}
