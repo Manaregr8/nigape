@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FiClock, FiUser, FiStar } from 'react-icons/fi';
 import Accordion from './Accordion';
 
@@ -183,9 +184,9 @@ const CoursePage = ({ course }) => {
                     </div>
                   </div>
 
-                  <a href="?enroll=1" className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] rounded-lg font-bold text-black hover:opacity-90 transition-opacity flex items-center justify-center">
+                  <Link href="?enroll=1" className="w-full py-3 mt-2 bg-gradient-to-r from-[#FF40EB] to-[#FF40EB] rounded-lg font-bold text-black hover:opacity-90 transition-opacity flex items-center justify-center">
                     Enroll Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

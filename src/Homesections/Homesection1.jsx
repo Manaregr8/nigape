@@ -94,9 +94,9 @@ export default function NigapeGallery() {
         {/* Footer CTAs - Better mobile spacing */}
         <div className="text-center mt-8 sm:mt-10 lg:mt-12">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-2 sm:px-0">
-            <a href="?enroll=1" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#9234eb] to-[#7b2cbf] text-white font-bold text-sm sm:text-base hover:from-[#8a2edc] hover:to-[#6a1fa8] hover:scale-105 transition-all duration-300 shadow-xl text-center">
+            <Link href="?enroll=1" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#9234eb] to-[#7b2cbf] text-white font-bold text-sm sm:text-base hover:from-[#8a2edc] hover:to-[#6a1fa8] hover:scale-105 transition-all duration-300 shadow-xl text-center">
               Enroll Now
-            </a>
+            </Link>
             <Link href="/courses" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-transparent border-2 border-[#9234eb] text-white font-bold text-sm sm:text-base hover:bg-[#9234eb]/20 hover:scale-105 transition-all duration-300 shadow-lg text-center">
               Explore Our Courses
             </Link>

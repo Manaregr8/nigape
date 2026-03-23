@@ -148,9 +148,9 @@ export default function AboutUsSection() {
             Start your GenAI and Prompt Engineering journey with India&apos;s dedicated institute
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="?enroll=1" className="bg-[#FF40EB] text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
+            <Link href="?enroll=1" className="bg-[#FF40EB] text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
               Enroll Now
-            </a>
+            </Link>
             <Link href="/courses" className="border-2 border-[#FF40EB] text-white hover:bg-[#FF40EB] hover:text-black font-semibold px-10 py-4 rounded-full transition-all duration-300 text-center">
               Explore Our Courses
             </Link>

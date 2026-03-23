@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -89,9 +90,9 @@ export default function FAQSection() {
         {/* Bottom CTA */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-6">Still have questions?</p>
-          <a href="?enroll=1" className="inline-block px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-lg hover:bg-[#ff2de6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#FF40EB]/50">
+          <Link href="?enroll=1" className="inline-block px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-lg hover:bg-[#ff2de6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#FF40EB]/50">
             Enroll Now
-          </a>
+          </Link>
         </div>
       </div>
 

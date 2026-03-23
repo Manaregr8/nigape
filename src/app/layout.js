@@ -52,16 +52,16 @@ export default function RootLayout({ children }) {
       <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
 
        
-        <Header />
 
        
         <ClientWrapper>
+        <Header />
           {children}
+        <EnrollmentPopupGate />
+        <Footer />
+        <FloatingContactButtons />
         </ClientWrapper>
 
-        <Footer />
-        <EnrollmentPopupGate />
-        <FloatingContactButtons />
 
       </body>
     </html>
