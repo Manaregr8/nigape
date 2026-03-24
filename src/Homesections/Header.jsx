@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header className="relative">
 
-      {/* LOGO */}
+      {/* LOGO — desktop floating (lg+) */}
       <div className="fixed -top-8 left-20 z-50 hidden lg:block">
         <img
           src="/Nigapepic/nigape.svg"
@@ -34,71 +34,65 @@ export default function Header() {
         />
       </div>
 
-      {/* NAVBAR */}
+      {/* DESKTOP NAVBAR — pill style, only on sm+ */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-40
+        hidden sm:block
         bg-black/20 backdrop-blur-lg rounded-full border border-white/20
         shadow-xl px-6 py-2 w-[88%] max-w-3xl">
-
-        <div className="flex items-center justify-between">
-
-          {/* LOGO — mobile only */}
-          <div className="sm:hidden flex items-center">
-            <img
-              src="/Nigapepic/nigape.svg"
-              alt="Nigape Logo"
-              className="h-10 w-auto object-contain"
-            />
-          </div>
-
-          {/* DESKTOP LINKS */}
-          <div className="hidden sm:flex items-center justify-between w-full">
-
-            <Link
-              href="/"
-              className={`${baseBtn} ${pathname === '/' ? activeBtn : inactiveBtn}`}
-            >
-              Home
-            </Link>
-
-            <div className="flex items-center gap-4">
-              <Link
-                href="/about-us"
-                className={`${baseBtn} ${normalizedPath === '/about-us' ? activeBtn : inactiveBtn}`}
-              >
-                About
-              </Link>
-              <Link
-                href="/courses"
-                className={`${baseBtn} ${normalizedPath === '/courses' ? activeBtn : inactiveBtn}`}
-              >
-                Courses
-              </Link>
-              <Link
-                href="/contact-us"
-                className={`${baseBtn} ${normalizedPath === '/contact-us' ? activeBtn : inactiveBtn}`}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-
-          {/* HAMBURGER BUTTON — mobile only */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="sm:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 focus:outline-none"
-            aria-label="Toggle menu"
+        <div className="flex items-center justify-between w-full">
+          <Link
+            href="/"
+            className={`${baseBtn} ${pathname === '/' ? activeBtn : inactiveBtn}`}
           >
-            <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-          </button>
-
+            Home
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/about-us"
+              className={`${baseBtn} ${normalizedPath === '/about-us' ? activeBtn : inactiveBtn}`}
+            >
+              About
+            </Link>
+            <Link
+              href="/courses"
+              className={`${baseBtn} ${normalizedPath === '/courses' ? activeBtn : inactiveBtn}`}
+            >
+              Courses
+            </Link>
+            <Link
+              href="/contact-us"
+              className={`${baseBtn} ${normalizedPath === '/contact-us' ? activeBtn : inactiveBtn}`}
+            >
+              Contact
+            </Link>
+          </div>
         </div>
       </nav>
 
+      {/* MOBILE TOPBAR — bare, no pill, only on < sm */}
+      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-2 sm:hidden">
+        {/* Logo */}
+        <img
+          src="/Nigapepic/nigape.svg"
+          alt="Nigape Logo"
+          className="h-28 w-auto object-contain"
+        />
+
+        {/* Hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex flex-col justify-center items-center gap-[5px] w-8 h-8 focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-[2px] w-6 bg-white rounded-full transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
+      </div>
+
       {/* MOBILE DROPDOWN MENU */}
       <div
-        className={`fixed top-[72px] left-1/2 -translate-x-1/2 z-30 w-[88%] max-w-3xl
+        className={`fixed top-[96px] left-1/2 -translate-x-1/2 z-30 w-[88%] max-w-3xl
           bg-black/80 backdrop-blur-lg border border-white/20 rounded-2xl
           overflow-hidden transition-all duration-300 sm:hidden
           ${menuOpen ? "max-h-[300px] opacity-100 py-4" : "max-h-0 opacity-0 py-0"}`}
@@ -121,7 +115,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* BACKDROP (closes menu on outside click) */}
+      {/* BACKDROP */}
       {menuOpen && (
         <div
           className="fixed inset-0 z-20 sm:hidden"
