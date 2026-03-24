@@ -240,7 +240,7 @@ export default function Homee() {
           <div className="mx-auto pt-5 md:pt-20 w-full max-w-7xl px-4">
             <div className="space-y-10 text-center max-w-8xl mx-auto">
               <h1
-                className=" font-black uppercase tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.8rem] drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
+                className=" font-black uppercase tracking-tight leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
                 style={{ fontWeight: 800 }} // Explicitly force Black weight
               >
                 Build Your{" "}
@@ -268,7 +268,7 @@ export default function Homee() {
                 Learn through immersive campus and online cohorts. Build real projects in Generative AI, Prompt Engineering, agents, and automation with mentor support for internships and placements.
               </p>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
+              <div className="flex flex-col sm:flex-row justify-center gap-5 pt-2">
                 <Link href="?enroll=1" className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center">
                   Enroll Now
                 </Link>

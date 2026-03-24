@@ -108,11 +108,11 @@ export default function NigapePlacements() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="?enroll=1" className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#a045eb] text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] text-center">
-                <span className="flex items-center justify-center gap-2">
+            <div className="flex flex-col h-auto w-auto sm:flex-row gap-4 pt-2">
+              <Link href="?enroll=1" className="group relative px-4 sm:px-8 py-1 sm:py-4 rounded-xl bg-gradient-to-r from-[#FF40EB] to-[#a045eb] text-white font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] text-center">
+                <span className="flex items-center justify-center text-l gap-2">
                   Enroll Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-auto group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
 

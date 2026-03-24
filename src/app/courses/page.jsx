@@ -252,7 +252,7 @@ export default function CoursesPage() {
       <div className="fixed inset-0 bg-gradient-to-tr from-pink-800/20 via-transparent to-cyan-800/20"></div> */}
 
       {/* Top Marquee */}
-      <Marquee />
+      {/* <Marquee /> */}
 
     {/* SECTION 2: Mentor Image + Introduction */}
 <section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
@@ -264,7 +264,7 @@ export default function CoursesPage() {
         <div className="relative rounded-3xl overflow-hidden">
           <div
             className="inline-block w-full"
-            style={{ filter: 'drop-shadow(0 0 12px #f707f3)' }}
+            style={{ filter: 'drop-shadow(0 0 12px #ffffff49)' }}
           >
             <img
               src="/group/group_final.png"
@@ -276,18 +276,15 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      {/* Badge */}
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto -mt-24 z-10">
+     
+      {/* <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto -mt-24 z-10">
         <div
           className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white"
         
         >
-          <p className="text-xl sm:text-3xl font-bold mb-1">Our Specialists</p>
-          {/* <p className="text-sm sm:text-base text-cyan-200">
-            AI Research Lead & Emotional Intelligence Pioneer
-          </p> */}
+      
         </div>
-      </div>
+      </div> */}
     </div>
 
     {/* RIGHT — Text */}
@@ -305,16 +302,16 @@ export default function CoursesPage() {
         AI systems used by startups and business teams.
       </p>
 
-      <p className="text-lg text-gray-400 mb-8">
+      {/* <p className="text-lg text-gray-400 mb-8">
         From LLM prompting and RAG pipelines to AI agents and workflow automation —
         NIGAPE prepares you for practical AI roles and measurable impact.
-      </p>
+      </p> */}
 
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
         <Link
           href="?enroll=1"
-          className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
+          className="w-full sm:w-auto px-3 py-1 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
         >
           Enroll Now
         </Link>
