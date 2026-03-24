@@ -76,7 +76,7 @@ export default function RoadmapSection() {
   return (
     <section className="relative bg-black text-white">
       {/* HEADER */}
-      <div className="max-w-[1350px] mx-auto px-6 py-20 text-center">
+      <div className="max-w-[1350px] mx-auto px-6 py-10 text-center">
         <span className="inline-block mb-4 px-4 py-2 text-xs uppercase tracking-wider rounded-full border border-[#FF40EB]/40 bg-[#FF40EB]/20">
           Learning Journey
         </span>
