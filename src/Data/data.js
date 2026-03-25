@@ -538,7 +538,148 @@ export const courses = [
     reviews: [
       { name: "Sarthak Jain", rating: 5, comment: "This program gave me the depth and project rigor I needed for AI research-track roles.", date: "2025-12-04" }
     ]
-  }
+  },
+{
+  id: 8,
+  title: "Advanced Certification in Generative AI & Prompt Engineering",
+  level: "certification",
+  category: "generative-ai",
+  duration: "6 Months",
+  rating: 4.8,
+  students: 1100,
+  price: "₹85,000",
+  originalPrice: "₹95,000",
+  discount: "11% off",
+  monthlyPrice: "₹14,167",
+  monthlyPayments: 6,
+  image: "https://via.placeholder.com/600x300?text=Advanced+Certification+GenAI",
+  description:
+    "An industry-recognized certification for learners who want to master Generative AI and Prompt Engineering with hands-on projects, LLM fine-tuning, and real-world deployment skills.",
+  fullDescription:
+    "This 6-month Advanced Certification program is designed for learners who want a structured, employer-recognized credential in Generative AI and Prompt Engineering. You will cover advanced prompting frameworks, LLM architecture, fine-tuning, RAG pipelines, agentic systems, and production-grade deployment — all backed by a portfolio of real-world projects.",
+  instructor: {
+    name: "Miss. Shagun",
+    title: "Lead Instructor – Generative AI & Prompt Engineering",
+    bio: "Master in AI | Expert in LLMs, Prompt Engineering, and Enterprise GenAI",
+    image: "/nimlacpic/shagun.png",
+    credentials: ["Master in AI", "15+ Years Experience", "Published AI Researcher"],
+  },
+  topics: [
+    "Prompt Engineering Mastery",
+    "LLM Architectures",
+    "Fine-tuning & RLHF",
+    "RAG Systems",
+    "AI Agents",
+    "Production Deployment",
+  ],
+  whatYouWillLearn: [
+    "Advanced and automated prompt engineering techniques",
+    "Deep understanding of LLM architectures (GPT, LLaMA, Mistral)",
+    "Fine-tuning models with LoRA and QLoRA",
+    "Building RAG pipelines for accurate, grounded AI",
+    "Designing and deploying autonomous AI agents",
+    "Deploying GenAI apps to production (vLLM, FastAPI, Docker)",
+    "Building a job-ready GenAI portfolio",
+  ],
+  modulesByMonth: [
+    {
+      month: 1,
+      title: "Prompt Engineering Mastery",
+      topics: [
+        "Core & Advanced Prompting Techniques",
+        "Chain-of-Thought, Tree-of-Thoughts",
+        "ReAct & Tool-Augmented Prompting",
+        "Automatic Prompt Optimization",
+      ],
+      hours: 55,
+    },
+    {
+      month: 2,
+      title: "LLM Architecture & Internals",
+      topics: [
+        "Transformer Deep Dive",
+        "GPT, LLaMA, Mistral, Gemma Families",
+        "Tokenization, Embeddings & Inference",
+        "Scaling Laws & Efficiency",
+      ],
+      hours: 60,
+    },
+    {
+      month: 3,
+      title: "Fine-tuning & Alignment",
+      topics: [
+        "Supervised Fine-tuning (SFT)",
+        "LoRA & QLoRA",
+        "RLHF & DPO Basics",
+        "Instruction Tuning & Evaluation",
+      ],
+      hours: 65,
+    },
+    {
+      month: 4,
+      title: "RAG & Knowledge Systems",
+      topics: [
+        "Vector Databases (Pinecone, Chroma, Weaviate)",
+        "Retrieval-Augmented Generation Pipelines",
+        "Hybrid Search & Re-ranking",
+        "Document QA & Knowledge Bases",
+      ],
+      hours: 60,
+    },
+    {
+      month: 5,
+      title: "AI Agents & Autonomous Systems",
+      topics: [
+        "Agent Architectures & Frameworks",
+        "LangChain & LlamaIndex",
+        "Tool Use & Function Calling",
+        "Multi-Agent Workflows",
+      ],
+      hours: 65,
+    },
+    {
+      month: 6,
+      title: "Deployment, Portfolio & Career",
+      topics: [
+        "Production Deployment (vLLM, FastAPI, Docker)",
+        "Monitoring & Evaluation in Production",
+        "Capstone Project",
+        "Portfolio Building & Interview Prep",
+      ],
+      hours: 70,
+    },
+  ],
+  requirements: [
+    "Basic Python knowledge",
+    "Familiarity with AI/ML concepts",
+    "Laptop with 8GB+ RAM",
+    "10–12 hours/week commitment",
+  ],
+  targetAudience: [
+    "Learners who completed AI Literacy or a beginner AI course",
+    "Professionals seeking an industry certification in GenAI",
+    "Developers and analysts adding GenAI to their skillset",
+    "Career switchers targeting Prompt Engineer or GenAI Developer roles",
+  ],
+  includes: [
+    "150+ hours of content",
+    "30+ hands-on projects",
+    "GPU access",
+    "Lifetime access",
+    "Industry-recognized certification",
+    "Job assistance",
+    "Professional portfolio",
+  ],
+  reviews: [
+    {
+      name: "Neha Kapoor",
+      rating: 5,
+      comment:
+        "The certification gave me the structured depth I needed. I landed a GenAI role within 2 months of completing it.",
+      date: "2025-12-10",
+    },
+  ],
+}
 ];
 
 // ensure every course has a slug property so that URLs can use

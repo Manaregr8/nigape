@@ -51,9 +51,9 @@ export default function Footer() {
             {/* ── Brand ── */}
             {/* Mobile: full width | Tablet: full width top | Desktop: col 1 */}
             <div className="col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col gap-5">
-
+            
               <img
-                src="/Nigapepic/nigape.svg"
+                src="/Nigapepic/nigape1.png"
                 alt="NIGAPE"
                 className="w-[110px] h-auto object-contain "
               />
@@ -80,11 +80,11 @@ export default function Footer() {
 
               {/* Contact */}
               <div className="pt-4 border-t border-[#FF40EB]/20 flex  gap-2">
-                <a href="mailto:info@nigape.com"
+                {/* <a href="mailto:info@nigape.com"
                   className="flex items-center gap-2 text-gray-300 text-sm hover:text-[#FF40EB] transition">
                   <span className="text-[#FF40EB]">✉</span>
                   info@nigape.com
-                </a>
+                </a> */}
                 <a href="tel:+917428114918"
                   className="flex items-center gap-2 text-gray-300 text-sm hover:text-[#FF40EB] transition">
                   <span className="text-[#FF40EB]">☎</span>

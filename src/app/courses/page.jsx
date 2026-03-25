@@ -104,6 +104,7 @@ const CourseCard = ({ course }) => {
   const courseGraphicMap = {
     "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).png",
     "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
+    "Advanced Certification in Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
     "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).png",
     "Generative AI for Professionals": "Generative AI for Professionals (4 Months).png",
     "NLP Professional": "Natural Language Processing Professional (4 Months).png",
