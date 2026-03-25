@@ -38,10 +38,10 @@ export default function FAQSection() {
   };
 
   return (
-    <div id="faq" className="min-h-screen pt-28 sm:pt-36 bg-black py-12 px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-4xl mx-auto mt-8 sm:mt-12 border-t border-gray-800/40 pt-8">
+    <div id="faq" className="min-h-screen pt-4 sm:pt-36 bg-black py-4 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto mt-2 sm:mt-12 border-t border-gray-800/40 ">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-4 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
             Frequently Asked Questions
           </h2>

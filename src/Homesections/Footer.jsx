@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="absolute inset-0 bg-top-glow pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12 md:py-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-2 md:py-16 relative z-10">
 
           {/*
             Mobile  < 640px  : 1 col  — sab ek ke neeche ek

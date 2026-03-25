@@ -43,21 +43,21 @@ const features = [
 const team = [
   {
     name: "Miss . Shagun ",
-    role: "AI Research Director",
+    role: "AI Expert",
     img: "shagun.png",
     colorFrom: "#ec4899",
     colorTo: "#be123c",
   },
   {
     name: "Mr Deepanshu",
-    role: "Head of Curriculum",
+    role: "Data Analyst",
     img: "Nigapepic/me.webp",
     colorFrom: "#f59e0b",
     colorTo: "#d97706",
   },
   {
     name: " Mr Manjeet singh",
-    role: "Lead AI Instructor",
+    role: "Senior Developer",
     img: "Nigapepic/manjeet.webp",
     colorFrom: "#06b6d4",
     colorTo: "#0e7490",
