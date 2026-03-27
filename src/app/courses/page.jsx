@@ -102,14 +102,14 @@ const Marquee = () => {
 // ─── Course Card ──────────────────────────────────────────────────────────────
 const CourseCard = ({ course }) => {
   const courseGraphicMap = {
-    "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).png",
-    "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
-    "Advanced Certification in Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
-    "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).png",
-    "Generative AI for Professionals": "Generative AI for Professionals (4 Months).png",
-    "NLP Professional": "Natural Language Processing Professional (4 Months).png",
-    "Computer Vision Professional": "Computer Vision Professional (4 Months).png",
-    "Deep Learning Professional": "Deep Learning Professional (4 Months).png",
+    "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).webp",
+    "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
+    "Advanced Certification in Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
+    "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).webp",
+    "Generative AI for Professionals": "Generative AI for Professionals (4 Months).webp",
+    "NLP Professional": "Natural Language Processing Professional (4 Months).webp",
+    "Computer Vision Professional": "Computer Vision Professional (4 Months).webp",
+    "Deep Learning Professional": "Deep Learning Professional (4 Months).webp",
   };
   const courseGraphic = courseGraphicMap[course.title];
   const imageSrc = courseGraphic
@@ -252,7 +252,7 @@ export default function CoursesPage() {
           <div className="w-full flex justify-center lg:order-1">
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" style={{ filter: "drop-shadow(0 0 12px #ffffff49)" }}>
               <img
-                src="/group/group_final.png"
+                src="/group/group_final.webp"
                 alt="NIGAPE Team"
                 className="w-full h-[220px] sm:h-[360px] md:h-[460px] lg:h-[80vh] object-contain object-center"
               />
