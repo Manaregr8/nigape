@@ -37,7 +37,7 @@ export default function HomesectionPGP() {
             3-Year Program Highlight
           </span>
           <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Post-Graduation Program Designed for Long-Term Career Growth
+           Graduation Program Designed for Long-Term Career Growth
           </h2>
           <p className="mt-4 text-gray-300 text-base sm:text-lg">
             A structured roadmap that takes learners from foundation to specialization to placement support in 3 focused years.

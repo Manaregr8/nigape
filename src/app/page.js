@@ -10,6 +10,7 @@ import HomeSection6 from "@/Homesections/Homesection6";
 import Homesection1_1 from "@/Homesections/Homesection1_1";
 // import Homesection0_1 from "@/Homesections/Homesection0_1";
 import Homesection7 from "@/Homesections/Homesection7";
+import Skills from "../Homesections/skills"
 import HomesectionPGP from "@/Homesections/HomesectionPGP";
 import PopularDiplomaCourses from "@/Homesections/PopularDiplomaCourses";
 
@@ -25,6 +26,7 @@ export default function Home() {
       <HomeSection3 />
       <HomeSection4 />
       {/* <HomeSection6 /> */}
+      <Skills/>
       <HomeSection5 />
       <Homesection7/>
     </div>

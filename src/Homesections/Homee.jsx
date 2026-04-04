@@ -313,7 +313,7 @@ export default function Homee() {
                 Learn through immersive campus and online cohorts. Build real projects in Generative AI, Prompt Engineering, agents, and automation with mentor support for internships and placements.
               </p>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-5 pt-6">
+              <div className="flex flex-col sm:flex-row justify-center gap-5 pt-2">
                 <Link href="?enroll=1" className="rounded-full bg-[#FF40EB] px-10 py-3 font-bold text-white shadow-[0_0_35px_rgba(147,51,234,0.6)] hover:shadow-[0_0_55px_rgba(147,51,234,0.8)] hover:scale-105 transition flex items-center justify-center">
                   Enroll Now
                 </Link>

@@ -1,83 +1,89 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import Link from "next/link";
 import { courses as dataCourses } from "../../Data/data";
 
-// Use courses from src/Data/data.js
 const courses = Array.isArray(dataCourses) ? dataCourses : [];
-
-// Derive short courses heuristically (monthlyPayments === 1 or short duration)
-const shortCourses = courses.filter((c) => {
-  try {
-    const dur = String(c.duration || "").toLowerCase();
-    return c.monthlyPayments === 1 || dur.includes("week") || dur.includes("1.5");
-  } catch (e) {
-    return false;
-  }
-});
 
 const categories = [
   { id: "all", label: "All Courses" },
   { id: "engineering", label: "Engineering" },
   { id: "prompt", label: "Prompt Engineering" },
   { id: "business", label: "Business & Product" },
-  { id: "short", label: "Short Courses" }
+  { id: "short", label: "Short Courses" },
+];
+
+const durationFilters = [
+  { id: "all", label: "All Durations" },
+  { id: "1.5", label: "1.5 Months" },
+  { id: "4", label: "4 Months" },
+  { id: "6", label: "6 Months" },
+  { id: "12", label: "12 Months" },
 ];
 
 function isShortCourse(course) {
   try {
     const dur = String(course?.duration || "").toLowerCase();
-    return course?.monthlyPayments === 1 || dur.includes("week") || dur.includes("1.5");
+    return (
+      course?.monthlyPayments === 1 ||
+      dur.includes("week") ||
+      dur.includes("1.5")
+    );
   } catch {
     return false;
   }
 }
 
 function getUiCategory(course) {
-  const rawCategory = String(course?.category || "").toLowerCase();
+  const rawCategory = String(course?.category || "").toLowerCase().trim();
   const title = String(course?.title || "").toLowerCase();
   const description = String(course?.description || "").toLowerCase();
+  const level = String(course?.level || "").toLowerCase();
 
-  if (rawCategory === "engineering" || rawCategory === "prompt" || rawCategory === "business") {
-    return rawCategory;
-  }
-
-  if (["deep-learning", "computer-vision", "nlp"].includes(rawCategory)) {
+  if (rawCategory === "nlp" || rawCategory === "computer-vision" || rawCategory === "deep-learning") {
     return "engineering";
   }
-
-  if (rawCategory === "ai-literacy") {
-    return "business";
-  }
-
+  if (rawCategory === "ai-literacy") return "business";
   if (rawCategory === "generative-ai") {
-    if (title.includes("professional") || description.includes("business")) {
+    if (
+      level === "professional" ||
+      title.includes("professional") ||
+      description.includes("business") ||
+      description.includes("working professional")
+    ) {
       return "business";
     }
     return "prompt";
   }
-
-  // Fallback: if nothing matches, keep it discoverable under business track.
+  if (rawCategory === "engineering") return "engineering";
+  if (rawCategory === "prompt") return "prompt";
+  if (rawCategory === "business") return "business";
   return "business";
 }
 
-function getUiCategoryLabel(course) {
-  const mapped = getUiCategory(course);
-  if (mapped === "engineering") return "Engineering";
-  if (mapped === "prompt") return "Prompt";
-  if (mapped === "business") return "Business";
-  return "Short";
+function getDurationMonths(course) {
+  const dur = String(course?.duration || "").toLowerCase();
+  if (dur.includes("1.5")) return "1.5";
+  if (dur.includes("week")) return "1.5";
+  if (dur.includes("12")) return "12";
+  if (dur.includes("6")) return "6";
+  if (dur.includes("4")) return "4";
+  const mp = course?.monthlyPayments;
+  if (mp === 1) return "1.5";
+  if (mp === 4) return "4";
+  if (mp === 6) return "6";
+  if (mp === 12) return "12";
+  return null;
 }
 
-// Marquee Component (FIXED — now moves infinitely)
+// ─── Marquee ──────────────────────────────────────────────────────────────────
 const Marquee = () => {
   const aiTech = [
-    "TensorFlow", "PyTorch", "LangChain", "Llama 3", "Claude 3", "Gemini", 
-    "GPT-4", "Hugging Face", "SageMaker", "Vector DBs", "RAG", 
-    "Fine-tuning", "AI Agents", "Prompt Engineering", "MLOps", "LLM APIs"
+    "TensorFlow", "PyTorch", "LangChain", "Llama 3", "Claude 3", "Gemini",
+    "GPT-4", "Hugging Face", "SageMaker", "Vector DBs", "RAG",
+    "Fine-tuning", "AI Agents", "Prompt Engineering", "MLOps", "LLM APIs",
   ];
-
   return (
     <div className="relative overflow-hidden py-4 bg-black/40 backdrop-blur-md">
       <div className="flex animate-marquee whitespace-nowrap">
@@ -87,252 +93,175 @@ const Marquee = () => {
           </span>
         ))}
       </div>
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent pointer-events-none" />
     </div>
   );
 };
 
-// Filter Bar
-const FilterBar = ({ categories, selectedCategory, onSelect }) => {
-  return (
-    <div className="flex flex-wrap justify-center gap-4 mb-12">
-      {categories.map((cat) => (
-        <button
-          key={cat.id}
-          onClick={() => onSelect(cat.id)}
-          className={`px-4 py-2 text-sm sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:text-base rounded-full font-medium transition-all duration-300 ${
-            selectedCategory === cat.id
-              ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-purple-500/30"
-              : "bg-white/10 backdrop-blur-md text-gray-300 hover:bg-white/20"
-          }`}
-        >
-          {cat.label}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-// Search Bar
-const SearchBar = ({ searchQuery, onSearchChange }) => {
-  return (
-    <div className="relative max-w-md mx-auto mb-12">
-      <input
-        type="text"
-        placeholder="Search courses..."
-        value={searchQuery}
-        onChange={(e) => onSearchChange(e.target.value)}
-        className="w-full px-6 py-4 bg-gray-800/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500/50"
-      />
-      <svg
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </div>
-  );
-};
-
-// Course Card (without price)
+// ─── Course Card ──────────────────────────────────────────────────────────────
 const CourseCard = ({ course }) => {
-  // Map course title to image filename in public/coursegraphic/
   const courseGraphicMap = {
-    "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).png",
-    "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
-    "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).png",
-    "Generative AI for Professionals": "Generative AI for Professionals (4 Months).png",
-    "NLP Professional": "Natural Language Processing Professional (4 Months).png",
-    "Computer Vision Professional": "Computer Vision Professional (4 Months).png",
-    "Deep Learning Professional": "Deep Learning Professional (4 Months).png"
+    "Diploma in Generative AI & Prompt Engineering": "Generative AI & Prompt Engineering (Diploma — 12 Months).webp",
+    "Advanced Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
+    "Advanced Certification in Generative AI & Prompt Engineering": "Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
+    "AI Literacy for Everyone": "AI Literacy Course (1.5 Months).webp",
+    "Generative AI for Professionals": "Generative AI for Professionals (4 Months).webp",
+    "NLP Professional": "Natural Language Processing Professional (4 Months).webp",
+    "Computer Vision Professional": "Computer Vision Professional (4 Months).webp",
+    "Deep Learning Professional": "Deep Learning Professional (4 Months).webp",
   };
   const courseGraphic = courseGraphicMap[course.title];
   const imageSrc = courseGraphic
     ? `/coursegraphic/${courseGraphic}`
-    : (course.image || "https://via.placeholder.com/600x300?text=Course+Image");
-  // Remove '12' from course card title if present
+    : course.image || "https://via.placeholder.com/600x300?text=Course+Image";
   const cleanTitle = course.title.replace(/12/g, "");
+
   return (
-    <Link href={`/courses/${course.slug}`} className="block">
-      <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px] h-full flex flex-col border border-gray-700">
-        {/* Image Header with coursegraphic */}
+    <Link href={`/courses/${course.slug}`} className="block h-full">
+      <div className="group relative bg-black/90 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col border border-gray-700">
         <div className="relative h-64 bg-black flex items-start justify-center p-0">
           <img
             src={imageSrc}
             alt={cleanTitle}
             loading="lazy"
-            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x300?text=Course+Image'; }}
-            className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 mt-0"
-            style={{ display: 'block', margin: '0 auto' }}
+            onError={(e) => { e.currentTarget.src = "https://via.placeholder.com/600x300?text=Course+Image"; }}
+            className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
+            style={{ display: "block", margin: "0 auto" }}
           />
-          {/* Category Badge */}
-          <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium">
-            {(isShortCourse(course) ? "Short" : getUiCategoryLabel(course))} • {course.lessons ?? (course.modulesByMonth ? course.modulesByMonth.length : '-')}
-          </div>
         </div>
-
-        {/* Content */}
         <div className="p-6 flex-1 flex flex-col">
           <h3 className="text-lg font-bold text-white mb-2 leading-snug break-words">{cleanTitle}</h3>
-
-          {/* Instructor line removed */}
-
           <p className="text-sm text-gray-300 mb-4 break-words">{course.description}</p>
-
-        <div className="mt-auto">
-          {/* Rating */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-yellow-400 font-bold text-base">{course.rating?.toFixed(1)}</span>
-            <span className="text-yellow-400">★★★★★</span>
-            <span className="text-xs text-gray-400">({course.students?.toLocaleString()})</span>
-          </div>
-
-          {/* Bestseller Badge */}
-          {(course.rating >= 4.7 || course.students > 1000) && (
-            <div className="flex items-center justify-start">
-              <span className="bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Bestseller</span>
+          <div className="mt-auto">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-yellow-400 font-bold text-base">{course.rating?.toFixed(1)}</span>
+              <span className="text-yellow-400">★★★★★</span>
+              <span className="text-xs text-gray-400">({course.students?.toLocaleString()})</span>
             </div>
-          )}
+            {(course.rating >= 4.7 || course.students > 1000) && (
+              <div className="flex items-center justify-start">
+                <span className="bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Bestseller</span>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
       </div>
     </Link>
   );
 };
 
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedDuration, setSelectedDuration] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const showFiltersRef = useRef(false);
+  const [, forceUpdate] = useState(0);
 
-  // Combine all courses while avoiding duplicates from overlapping subsets.
+  const toggleFilters = useCallback(() => {
+    showFiltersRef.current = !showFiltersRef.current;
+    forceUpdate((n) => n + 1);
+  }, []);
+
   const allCourses = useMemo(() => {
     const seen = new Set();
-    return [...courses, ...shortCourses].filter((course) => {
+    return courses.filter((course) => {
       const key = String(course.slug || course.id || course.title || "").toLowerCase();
-      if (!key || seen.has(key)) {
-        return false;
-      }
+      if (!key || seen.has(key)) return false;
       seen.add(key);
       return true;
     });
   }, []);
 
-  // Filtered and searched courses
   const filteredCourses = useMemo(() => {
     let results = allCourses;
-
     if (selectedCategory !== "all") {
       if (selectedCategory === "short") {
-        results = shortCourses;
+        results = results.filter(isShortCourse);
       } else {
-        results = allCourses.filter((course) => getUiCategory(course) === selectedCategory);
+        results = results.filter((course) => getUiCategory(course) === selectedCategory);
       }
     }
-
+    if (selectedDuration !== "all") {
+      results = results.filter((course) => getDurationMonths(course) === selectedDuration);
+    }
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
+      const query = searchQuery.trim().toLowerCase();
       results = results.filter(
         (course) =>
-          course.title.toLowerCase().includes(query) ||
-          course.description.toLowerCase().includes(query)
+          String(course.title || "").toLowerCase().includes(query) ||
+          String(course.description || "").toLowerCase().includes(query)
       );
     }
-
     return results;
-  }, [allCourses, selectedCategory, searchQuery]);
+  }, [allCourses, selectedCategory, selectedDuration, searchQuery]);
+
+  const handleCategoryChange = useCallback((id) => {
+    setSelectedCategory(id);
+  }, []);
+
+  const handleDurationChange = useCallback((id) => {
+    setSelectedDuration(id);
+  }, []);
+
+  const handleSearchChange = useCallback((val) => {
+    setSearchQuery(val);
+  }, []);
+
+  const handleClearFilters = useCallback(() => {
+    setSelectedCategory("all");
+    setSelectedDuration("all");
+    setSearchQuery("");
+  }, []);
 
   return (
     <div className="min-h-screen pt-20 bg-black text-white overflow-hidden">
-      {/* Global gradient background */}
-      {/* <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-80"></div>
-      <div className="fixed inset-0 bg-gradient-to-tr from-pink-800/20 via-transparent to-cyan-800/20"></div> */}
 
-      {/* Top Marquee */}
-      <Marquee />
-
-    {/* SECTION 2: Mentor Image + Introduction */}
-<section className="relative py-10 pb-20 px-6 bg-black/40 backdrop-blur-md">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-
-    {/* LEFT — Image */}
-    <div className="relative order-2 lg:order-1 flex flex-col items-center">
-      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
-        <div className="relative rounded-3xl overflow-hidden">
-          <div
-            className="inline-block w-full"
-            style={{ filter: 'drop-shadow(0 0 12px #f707f3)' }}
-          >
-            <img
-              src="/group/group_final.png"
-              alt="Dr. Shagun Mehta – Your AI Mentor"
-              className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[80vh] object-contain object-center"
-     
-            />
+      {/* Hero */}
+      <section className="relative py-6 lg:py-10 lg:pb-20 px-6 bg-black/40 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-12 items-center">
+          <div className="w-full text-center lg:text-left lg:order-2">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 lg:mb-8">
+              <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
+                Building India's Next Generation of GenAI &amp; Prompt Engineering Leaders
+              </span>
+            </h2>
+            <p className="text-base lg:text-xl text-gray-400 mb-6 lg:mb-10 leading-relaxed">
+              Our curriculum is industry-driven and designed to bridge real hiring needs.
+              You don't just learn concepts here — you build, deploy, and improve real-world
+              AI systems used by startups and business teams.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 lg:gap-5 justify-center lg:justify-start">
+              <Link
+                href="?enroll=1"
+                className="w-full sm:w-auto px-6 py-3 text-sm md:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 hover:-translate-y-0.5 text-center"
+              >
+                Enroll Now
+              </Link>
+              <a
+                href="#all-programs"
+                className="w-full sm:w-auto px-6 py-3 text-sm md:text-base border-2 border-[#FF40EB] text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
+              >
+                Explore Our Courses
+              </a>
+            </div>
+          </div>
+          <div className="w-full flex justify-center lg:order-1">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" style={{ filter: "drop-shadow(0 0 12px #ffffff49)" }}>
+              <img
+                src="/group/group_final.webp"
+                alt="NIGAPE Team"
+                className="w-full h-[220px] sm:h-[360px] md:h-[460px] lg:h-[80vh] object-contain object-center"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Badge */}
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto -mt-24 z-10">
-        <div
-          className="bg-[#FF40EB] rounded-xl p-4 sm:p-5 shadow-2xl text-center text-white"
-        
-        >
-          <p className="text-xl sm:text-3xl font-bold mb-1">Our Specialists</p>
-          {/* <p className="text-sm sm:text-base text-cyan-200">
-            AI Research Lead & Emotional Intelligence Pioneer
-          </p> */}
-        </div>
-      </div>
-    </div>
+      <Marquee />
 
-    {/* RIGHT — Text */}
-    {/* ✅ mt-20 hataya — yahi right side gap ka reason tha */}
-    <div className="order-1 lg:order-2 text-center lg:text-left">
-      <h2 className="text-4xl md:text-4xl font-bold mb-8">
-        <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
-          Building India&apos;s Next Generation of GenAI &amp; Prompt Engineering Leaders
-        </span>
-      </h2>
-
-      <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
-        Our curriculum is industry-driven and designed to bridge real hiring needs.
-        You don&apos;t just learn concepts here — you build, deploy, and improve real-world
-        AI systems used by startups and business teams.
-      </p>
-
-      <p className="text-lg text-gray-400 mb-8">
-        From LLM prompting and RAG pipelines to AI agents and workflow automation —
-        NIGAPE prepares you for practical AI roles and measurable impact.
-      </p>
-
-      {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start">
-        <Link
-          href="?enroll=1"
-          className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base bg-gradient-to-r from-[#FF40EB] to-white text-black font-bold rounded-lg shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
-        >
-          Enroll Now
-        </Link>
-        <a
-          href="#all-programs"
-          className="w-full sm:w-auto px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm md:px-6 md:py-3 md:text-base lg:px-7 lg:py-3.5 lg:text-base border border-[#FF40EB] sm:border-2 text-[#FF40EB] font-bold rounded-lg bg-transparent hover:bg-[#FF40EB]/10 transition-all duration-300 text-center"
-        >
-          Explore Our Courses
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-      {/* Bottom Marquee */}
-      <Marquee  />
-
-      {/* SECTION 3: Packages / Courses Cards */}
+      {/* Courses section */}
       <section id="all-programs" className="relative py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -344,24 +273,105 @@ export default function CoursesPage() {
             </p>
           </div>
 
-          <FilterBar
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelect={setSelectedCategory}
-          />
+          {/* ── Search + Filter (inlined — no separate component, no remount) ── */}
+          <div className="max-w-5xl mx-auto mb-8">
+            <div className="flex gap-3 mb-4">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  placeholder="Search courses..."
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="w-full px-5 py-3 bg-gray-900/80 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-transparent transition-all text-sm"
+                />
+                <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <button
+                type="button"
+                onClick={toggleFilters}
+                className={`px-5 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 text-sm whitespace-nowrap ${
+                  showFiltersRef.current
+                    ? "bg-gradient-to-r from-[#FF40EB] to-purple-600 text-white shadow-lg shadow-pink-500/40 scale-105"
+                    : "bg-gradient-to-r from-[#FF40EB] to-pink-400 text-white shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/50 hover:scale-105"
+                }`}
+              >
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+                {showFiltersRef.current ? "Hide Filters" : "Filters"}
+              </button>
+            </div>
 
-          <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+            {showFiltersRef.current && (
+              <div className="bg-[#111114] border border-[#FF40EB]/30 rounded-xl p-5">
+                <div className="mb-5">
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Category</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        onClick={() => handleCategoryChange(cat.id)}
+                        className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all duration-300 ${
+                          selectedCategory === cat.id
+                            ? "bg-gradient-to-r from-[#FF40EB] to-purple-600 text-white shadow-lg shadow-pink-500/30"
+                            : "bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600"
+                        }`}
+                      >
+                        {cat.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Duration</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {durationFilters.map((dur) => (
+                      <button
+                        key={dur.id}
+                        type="button"
+                        onClick={() => handleDurationChange(dur.id)}
+                        className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-all duration-300 ${
+                          selectedDuration === dur.id
+                            ? "bg-gradient-to-r from-[#FF40EB] to-purple-600 text-white shadow-lg shadow-pink-500/30"
+                            : "bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600"
+                        }`}
+                      >
+                        {dur.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          {/* ── End Search + Filter ── */}
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 items-stretch">
-            {filteredCourses.map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
+          <p className="text-center text-gray-400 text-sm mb-8">
+            {filteredCourses.length} program{filteredCourses.length !== 1 ? "s" : ""} found
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 items-stretch">
+            {filteredCourses.length > 0 ? (
+              filteredCourses.map((course) => <CourseCard key={course.id} course={course} />)
+            ) : (
+              <div className="col-span-3 text-center py-16 text-gray-400">
+                <p className="text-xl">No programs found matching your filters.</p>
+                <button
+                  type="button"
+                  onClick={handleClearFilters}
+                  className="mt-4 px-6 py-2 border border-[#FF40EB] text-[#FF40EB] rounded-lg hover:bg-[#FF40EB]/10 transition-all"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* GLOBAL ANIMATION STYLES (CRITICAL FOR MARQUEE TO WORK) */}
       <style jsx global>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
@@ -369,6 +379,13 @@ export default function CoursesPage() {
         }
         .animate-marquee {
           animation: marquee 30s linear infinite;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
         }
       `}</style>
     </div>

@@ -25,7 +25,7 @@ export default function HomeSection2() {
   ];
 
   return (
-    <section className="bg-black text-white py-20 sm:py-28 lg:py-36 px-6">
+    <section className="bg-black text-white py-10 sm:py-28 lg:py-36 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Headline */}
         <div className="text-center mb-16">
