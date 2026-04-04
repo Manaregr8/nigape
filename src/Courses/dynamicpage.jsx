@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiClock, FiUser, FiStar, FiChevronDown } from 'react-icons/fi';
+import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import Accordion from './Accordion';
 import { courses as allCourses } from '@/Data/data';
@@ -23,7 +23,7 @@ function CourseFAQ() {
         <div key={i} className="border border-gray-800 rounded-xl overflow-hidden hover:border-[#FF40EB]/50 transition-all duration-300">
           <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full px-6 py-4 text-left flex items-center justify-between bg-black hover:bg-[#FF40EB]/5 transition-colors duration-200">
             <span className="text-white font-semibold pr-4">{faq.q}</span>
-            <FiChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-[#FF40EB]' : 'text-gray-400'}`} />
+            <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-[#FF40EB]' : 'text-gray-400'}`} />
           </button>
           <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
             <div className="px-6 py-4 bg-gray-900/50 border-t border-gray-800">
@@ -96,15 +96,11 @@ const CoursePage = ({ course }) => {
 
               {/* Stats Bar */}
               <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-                <div className="flex items-center gap-1">
-                  <FiClock /> <span>{course.duration}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FiUser /> <span>{course.students.toLocaleString()} students</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FiStar className="text-yellow-400" /> <span>{course.rating} rating</span>
-                </div>
+                <span>{course.duration}</span>
+                <span className="text-gray-600">·</span>
+                <span>{course.students.toLocaleString()} students</span>
+                <span className="text-gray-600">·</span>
+                <span className="text-yellow-400">{course.rating} ★ rating</span>
               </div>
 
               {/* What You’ll Learn */}
@@ -210,10 +206,7 @@ const CoursePage = ({ course }) => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Rating</span>
-                      <div className="flex items-center gap-1">
-                        <FiStar className="text-yellow-400" />
-                        <span className="text-white">{course.rating}</span>
-                      </div>
+                      <span className="text-white">{course.rating} ★</span>
                     </div>
                   </div>
 
