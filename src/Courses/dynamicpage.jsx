@@ -49,6 +49,7 @@ const CoursePage = ({ course }) => {
   const courseGraphicMap = {
     "Diploma in Generative AI & Prompt Engineering": "/coursegraphic/Generative AI & Prompt Engineering (Diploma — 12 Months).webp",
     "Advanced Generative AI & Prompt Engineering": "/coursegraphic/Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
+    "Advanced Certification in Generative AI & Prompt Engineering": "/coursegraphic/Advanced Certification in Generative AI & Prompt Engineering (6 Months).webp",
     "AI Literacy for Everyone": "/coursegraphic/AI Literacy Course (1.5 Months).webp",
     "Generative AI for Professionals": "/coursegraphic/Generative AI for Professionals (4 Months).webp",
     "NLP Professional": "/coursegraphic/Natural Language Processing Professional (4 Months).webp",
@@ -219,6 +220,32 @@ const CoursePage = ({ course }) => {
           </div>
         </main>
 
+        {/* ── RECOMMENDED COURSES ── */}
+        <section className="bg-black py-16 px-4 sm:px-6 border-t border-[#FF40EB]/10">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-white">
+              Recommended <span className="text-[#FF40EB]">Courses</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {allCourses.filter(c => c.id !== course.id).slice(0, 3).map((rec) => {
+                const recImg = courseGraphicMap[rec.title] || rec.image || "https://via.placeholder.com/600x300?text=Course";
+                return (
+                  <Link key={rec.id} href={`/courses/${rec.slug}`} className="group block bg-black/40 border border-[#FF40EB]/20 rounded-2xl overflow-hidden hover:border-[#FF40EB]/60 transition-all duration-300">
+                    <div className="relative h-40 bg-black">
+                      <img src={recImg} alt={rec.title} className="w-full h-full object-contain" loading="lazy" />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-white font-bold text-sm mb-1 line-clamp-2">{rec.title}</h3>
+                      <p className="text-gray-400 text-xs mb-3 line-clamp-2">{rec.description}</p>
+                      <span className="text-[#FF40EB] text-xs font-semibold group-hover:underline">View Course →</span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* ── ADVANTAGES OF JOINING US ── */}
         <section className="bg-black py-16 px-4 sm:px-6 border-t border-[#FF40EB]/10">
           <div className="max-w-7xl mx-auto">
@@ -227,15 +254,14 @@ const CoursePage = ({ course }) => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: "🎯", title: "Industry-Aligned Curriculum", desc: "Built with real AI hiring needs in mind — not just theory." },
-                { icon: "🤝", title: "1-on-1 Mentor Support", desc: "Get personal guidance from experienced AI practitioners." },
-                { icon: "💼", title: "Career & Placement Help", desc: "Resume reviews, mock interviews, and job-readiness coaching." },
-                { icon: "🚀", title: "Project-First Learning", desc: "Build a portfolio of 6+ real AI projects before you graduate." },
-                { icon: "🏫", title: "Campus + Online Modes", desc: "Attend from our Delhi campus or join live online cohorts." },
-                { icon: "📜", title: "Recognised Certificate", desc: "Industry-recognised certification upon completion." },
+                { title: "Industry-Aligned Curriculum", desc: "Built with real AI hiring needs in mind — not just theory." },
+                { title: "1-on-1 Mentor Support", desc: "Get personal guidance from experienced AI practitioners." },
+                { title: "Career & Placement Help", desc: "Resume reviews, mock interviews, and job-readiness coaching." },
+                { title: "Project-First Learning", desc: "Build a portfolio of 6+ real AI projects before you graduate." },
+                { title: "Campus + Online Modes", desc: "Attend from our Delhi campus or join live online cohorts." },
+                { title: "Recognised Certificate", desc: "Industry-recognised certification upon completion." },
               ].map((item, i) => (
                 <div key={i} className="bg-black/40 border border-[#FF40EB]/20 rounded-2xl p-6 hover:border-[#FF40EB]/60 transition-all duration-300">
-                  <div className="text-4xl mb-3">{item.icon}</div>
                   <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -306,40 +332,6 @@ const CoursePage = ({ course }) => {
           </div>
         </section>
 
-        {/* ── RECOMMENDED COURSES ── */}
-        <section className="bg-black py-16 px-4 sm:px-6 border-t border-[#FF40EB]/10">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-white">
-              Recommended <span className="text-[#FF40EB]">Courses</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {allCourses.filter(c => c.slug !== course.slug).slice(0, 3).map((rec) => {
-                const recGraphicMap = {
-                  "Diploma in Generative AI & Prompt Engineering": "/coursegraphic/Generative AI & Prompt Engineering (Diploma — 12 Months).png",
-                  "Advanced Generative AI & Prompt Engineering": "/coursegraphic/Advanced Certification in Generative AI & Prompt Engineering (6 Months).png",
-                  "AI Literacy for Everyone": "/coursegraphic/AI Literacy Course (1.5 Months).png",
-                  "Generative AI for Professionals": "/coursegraphic/Generative AI for Professionals (4 Months).png",
-                  "NLP Professional": "/coursegraphic/Natural Language Processing Professional (4 Months).png",
-                  "Computer Vision Professional": "/coursegraphic/Computer Vision Professional (4 Months).png",
-                  "Deep Learning Professional": "/coursegraphic/Deep Learning Professional (4 Months).png",
-                };
-                const recImg = recGraphicMap[rec.title] || rec.image || "https://via.placeholder.com/600x300?text=Course";
-                return (
-                  <Link key={rec.id} href={`/courses/${rec.slug}`} className="group block bg-black/40 border border-[#FF40EB]/20 rounded-2xl overflow-hidden hover:border-[#FF40EB]/60 transition-all duration-300">
-                    <div className="relative h-40 bg-black">
-                      <img src={recImg} alt={rec.title} className="w-full h-full object-contain" loading="lazy" />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-white font-bold text-sm mb-1 line-clamp-2">{rec.title}</h3>
-                      <p className="text-gray-400 text-xs mb-3 line-clamp-2">{rec.description}</p>
-                      <span className="text-[#FF40EB] text-xs font-semibold group-hover:underline">View Course →</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
       </div>
     </>
   );

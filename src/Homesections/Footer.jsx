@@ -109,8 +109,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* ── Programs ── */}
-            {/* Mobile: full width | Tablet: left col | Desktop: col 2 */}
+            {/* ── Programs col 1 ── */}
             <div className="col-span-1 flex flex-col gap-4">
               <h3 className="text-white font-semibold relative inline-block underline-pink pb-2">
                 Programs
@@ -119,11 +118,8 @@ export default function Footer() {
                 {[
                   { label: "Diploma in GenAI (12 Months)", href: "/courses/diploma-in-generative-ai-prompt-engineering" },
                   { label: "Advanced GenAI (6 Months)", href: "/courses/advanced-generative-ai-prompt-engineering" },
+                  { label: "Advanced Certification GenAI", href: "/courses/advanced-certification-in-generative-ai-prompt-engineering" },
                   { label: "GenAI for Professionals", href: "/courses/generative-ai-for-professionals" },
-                  { label: "AI Literacy for Everyone", href: "/courses/ai-literacy-for-everyone" },
-                  { label: "NLP Professional", href: "/courses/nlp-professional" },
-                  { label: "Computer Vision Professional", href: "/courses/computer-vision-professional" },
-                  { label: "Deep Learning Professional", href: "/courses/deep-learning-professional" },
                 ].map((item) => (
                   <li key={item.href}>
                     <Link href={item.href}
@@ -135,23 +131,23 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* ── Community ── */}
-            {/* Mobile: full width | Tablet: right col | Desktop: col 3 */}
+            {/* ── Programs col 2 ── */}
             <div className="col-span-1 flex flex-col gap-4">
               <h3 className="text-white font-semibold relative inline-block underline-pink pb-2">
-                Community
+                More Programs
               </h3>
               <ul className="flex flex-col gap-3">
                 {[
-                  { label: "LinkedIn", href: "https://www.linkedin.com/in/national-institute-genai-and-prompt-engineering-116711381/", icon: <LinkedInIcon /> },
-                  { label: "Instagram", href: "https://www.instagram.com/nigape.official/", icon: <InstagramIcon /> },
+                  { label: "AI Literacy for Everyone", href: "/courses/ai-literacy-for-everyone" },
+                  { label: "NLP Professional", href: "/courses/nlp-professional" },
+                  { label: "Computer Vision Professional", href: "/courses/computer-vision-professional" },
+                  { label: "Deep Learning Professional", href: "/courses/deep-learning-professional" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-2 text-sm">
-                      <span className="text-[#FF40EB]">{item.icon}</span>
+                    <Link href={item.href}
+                      className="text-gray-400 hover:text-[#FF40EB] transition-all duration-300 hover:translate-x-1 inline-block text-sm">
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
