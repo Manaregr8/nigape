@@ -220,6 +220,38 @@ const CoursePage = ({ course }) => {
           </div>
         </main>
 
+        {/* ── WHAT YOU WILL GAIN ── */}
+        <section className="bg-black py-16 px-4 sm:px-6 border-t border-[#FF40EB]/10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 bg-gradient-to-r from-[#FF40EB] to-[#9234eb] bg-clip-text text-transparent">
+                What You Will Gain
+              </h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                At NIGAPE, you move beyond theory and graduate with measurable outcomes:
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+              {[
+                { keyword: "Skills", description: "Master Generative AI, Prompt Engineering, LLM workflows, automation, and deployment through structured, mentor-led projects." },
+                { keyword: "Confidence", description: "Build confidence by solving real business use-cases from startups, agencies, and operations teams." },
+                { keyword: "Exposure", description: "Work in sprint-based cohorts, get feedback from industry mentors, and build a portfolio that demonstrates practical prompt engineering outcomes." },
+                { keyword: "Clarity & Readiness", description: "Get career counseling, resume feedback, and interview prep tailored for AI roles hiring across India and remote teams." },
+              ].map((item, i) => (
+                <div key={i} className="group flex flex-col border-l-4 border-[#FF40EB] pl-6 hover:border-pink-700 transition-all duration-300">
+                  <h3 className="text-2xl md:text-3xl font-black mb-3 text-[#FF40EB] group-hover:text-pink-700 transition-colors">{item.keyword}</h3>
+                  <p className="text-gray-300 leading-relaxed text-base md:text-lg">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link href="?enroll=1" className="inline-block px-8 py-4 bg-[#FF40EB] hover:bg-pink-600 text-white font-bold rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-[#FF40EB]/30 transform hover:-translate-y-0.5">
+                Enroll Now
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* ── RECOMMENDED COURSES ── */}
         <section className="bg-black py-16 px-4 sm:px-6 border-t border-[#FF40EB]/10">
           <div className="max-w-7xl mx-auto">
