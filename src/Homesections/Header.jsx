@@ -19,6 +19,7 @@ export default function Header() {
     { label: "Home", href: "/" },
     { label: "About", href: "/about-us" },
     { label: "Courses", href: "/courses" },
+    { label: "Blogs", href: "/blog" },
     { label: "Contact", href: "/contact-us" },
   ];
 
@@ -27,11 +28,13 @@ export default function Header() {
 
       {/* LOGO */}
       <div className="fixed -top-8 left-20 z-50 hidden lg:block">
-        <img
-          src="/Nigapepic/nigape.svg"
-          alt="Nigape Logo"
-          className="h-[150px] w-auto"
-        />
+        <Link href="/">
+          <img
+            src="/Nigapepic/nigape.svg"
+            alt="Nigape Logo"
+            className="h-[150px] w-auto"
+          />
+        </Link>
       </div>
 
       {/* NAVBAR */}
@@ -72,6 +75,12 @@ export default function Header() {
                 className={`${baseBtn} ${normalizedPath === '/courses' ? activeBtn : inactiveBtn}`}
               >
                 Courses
+              </Link>
+              <Link
+                href="/blog"
+                className={`${baseBtn} ${normalizedPath.startsWith('/blog') ? activeBtn : inactiveBtn}`}
+              >
+                Blogs
               </Link>
               <Link
                 href="/contact-us"

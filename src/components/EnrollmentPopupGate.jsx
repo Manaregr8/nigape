@@ -120,8 +120,11 @@ export default function EnrollmentPopupGate() {
                 name="phone"
                 placeholder="Phone Number"
                 required
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={10}
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(e) => { const v = e.target.value.replace(/\D/g, ''); handleChange({ target: { name: 'phone', value: v } }); }}
                 className="w-full px-4 py-3 border border-[#FF40EB]/30 rounded-lg focus:outline-none focus:border-[#FF40EB] bg-black/80 text-white placeholder-gray-400"
               />
               <input

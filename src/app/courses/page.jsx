@@ -206,7 +206,6 @@ const CourseCard = ({ course }) => {
 export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [showAll, setShowAll] = useState(false);
 
   // Combine all courses while avoiding duplicates from overlapping subsets.
   const allCourses = useMemo(() => {
@@ -295,13 +294,13 @@ export default function CoursesPage() {
     <div className="order-1 lg:order-2 text-center lg:text-left">
       <h2 className="text-4xl md:text-4xl font-bold mb-8">
         <span className="bg-[#FF40EB] bg-clip-text tracking-[3px] text-transparent">
-          Building India's Next Generation of GenAI & Prompt Engineering Leaders
+          Building India&apos;s Next Generation of GenAI &amp; Prompt Engineering Leaders
         </span>
       </h2>
 
       <p className="text-[20px] text-gray-400 mb-10 leading-relaxed">
         Our curriculum is industry-driven and designed to bridge real hiring needs.
-        You don't just learn concepts here — you build, deploy, and improve real-world
+        You don&apos;t just learn concepts here — you build, deploy, and improve real-world
         AI systems used by startups and business teams.
       </p>
 
@@ -355,24 +354,10 @@ export default function CoursesPage() {
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 items-stretch">
-            {filteredCourses
-              .slice(0, showAll ? filteredCourses.length : 6)
-              .map((course) => (
+            {filteredCourses.map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
           </div>
-
-          {/* Show More / Less Button */}
-          {filteredCourses.length > 6 && (
-            <div className="text-center mt-12">
-              <button
-                onClick={() => setShowAll(!showAll)}
-                className="px-8 py-3 bg-[#FF40EB] text-white font-semibold rounded-xl shadow-lg shadow-[#FF40EB]/30 hover:shadow-xl hover:shadow-[#FF40EB]/50 transition-all duration-300"
-              >
-                {showAll ? 'Show Less' : 'Show All Programs'}
-              </button>
-            </div>
-          )}
         </div>
       </section>
 

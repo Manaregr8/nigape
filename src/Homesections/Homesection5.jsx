@@ -27,6 +27,46 @@ const TestimonialsSection = () => {
       avatarUrl: "https://i.pravatar.cc/40?img=3",
       linkedinUrl: "#",
     },
+    {
+      quote:
+        "I had zero coding background but <span style='color:#9234eb; font-weight:600'>NIGAPE</span>'s guided learning tracks made LLMs and GenAI accessible. Within 2 months I was deploying my own chatbot for a small business.",
+      name: "Simran Kaur",
+      role: "BBA Student",
+      avatarUrl: "https://i.pravatar.cc/40?img=5",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "The sprint-based project model at <span style='color:#9234eb; font-weight:600'>NIGAPE</span> is unmatched. Each week you go from theory to a working prototype. My portfolio now has 6 real AI projects that impressed my interviewers.",
+      name: "Vikram Nair",
+      role: "Software Engineer",
+      avatarUrl: "https://i.pravatar.cc/40?img=6",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "After completing the Advanced GenAI program at <span style='color:#9234eb; font-weight:600'>NIGAPE</span>, I got hired as a Prompt Engineer at a Delhi-based SaaS startup. The resume and interview prep was incredibly helpful.",
+      name: "Deepika Reddy",
+      role: "Prompt Engineer",
+      avatarUrl: "https://i.pravatar.cc/40?img=9",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "NIGAPE changed how I think about AI. Not just theory — actual business use-cases, RAG pipelines, and agent workflows. I got a 40% salary hike after completing the professional track.",
+      name: "Karan Malhotra",
+      role: "Product Manager",
+      avatarUrl: "https://i.pravatar.cc/40?img=11",
+      linkedinUrl: "#",
+    },
+    {
+      quote:
+        "I came from a non-tech background. <span style='color:#9234eb; font-weight:600'>NIGAPE</span>'s structured AI literacy program gave me the confidence to present AI strategies at board level. Truly transformative learning.",
+      name: "Neha Srivastava",
+      role: "Business Analyst",
+      avatarUrl: "https://i.pravatar.cc/40?img=16",
+      linkedinUrl: "#",
+    },
   ];
 
   return (
