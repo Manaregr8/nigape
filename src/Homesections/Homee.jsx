@@ -322,6 +322,16 @@ export default function Homee() {
                 </Link>
               </div>
 
+              {/* Degree & PG Program quick links */}
+              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-1">
+                <Link href="/programs/degree-in-ai" className="rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-2.5 text-sm font-semibold text-white hover:border-[#FF40EB]/60 hover:bg-[#FF40EB]/10 transition flex items-center justify-center gap-2">
+                  Degree Programs <span className="text-[#FF40EB] text-xs">(3 Years)</span>
+                </Link>
+                <Link href="/programs/pg-in-ai" className="rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-2.5 text-sm font-semibold text-white hover:border-[#9234eb]/60 hover:bg-[#9234eb]/10 transition flex items-center justify-center gap-2">
+                  PG Programs <span className="text-[#9234eb] text-xs">(2 Years)</span>
+                </Link>
+              </div>
+
             {/* Modal Form Popup */}
             {mounted && createPortal(popupModal, document.body)}
             </div>
